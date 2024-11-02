@@ -18,16 +18,11 @@
   <style>
 
   .magnolia{
-    font-family: 'Magnolia Script', sans-serif;
-                                                  
+    font-family: 'Magnolia Script', sans-serif;                                           
   }
 
   .edited{
     color: #4b4f7b; 
-    /* text-stroke: 2px #4b4f7b; */
-    /* -webkit-text-stroke: 1px ; /* Fallback for non-webkit browsers */
-    /* font-weight: bold; */ 
-    
   };
   
   .light-grey{
@@ -39,20 +34,20 @@
   }
 
 
-    body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
-    padding: 0;
-    /* overflow-x: hidden; */
+  body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+
   }
 
   .center{
     text-align: center;
   }
 
-
+  /* lato start  */
   .lato-regular {
     font-family: "Lato", sans-serif;
     font-weight: 400;
@@ -89,7 +84,8 @@
     font-style: italic;
   }
 
-  
+  /* lato end  */
+
     .reason {
       background-color: #4b4f7b;
       color: #e6e0d6;
@@ -241,11 +237,21 @@
     @media (max-width: 768px) {
       .btn-started {
         padding: 10px 20px;
-        /* Slightly smaller padding */
         font-size: 0.9rem;
-        /* Adjust font size for smaller screens */
       }
     }
+
+    /* Smaller text size for navbar links on mobile view */
+    @media (max-width: 768px) {
+      .navbar-nav .nav-link {
+        font-size: 0.9rem; /* Adjust this size as needed */
+      }
+
+      .navbar-brand {
+        font-size: 1.2rem; /* Smaller logo text size on mobile */
+      }
+    }
+
 
     .footer .logo-section img {
         max-height: 45px; /* Adjust size to a medium value */
@@ -260,19 +266,6 @@
     .footer p {
         margin-bottom: 0;
     }
-    
-    /* .container-fluid {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    }
-    .footer {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    }
-    body, html {
-    overflow-x: hidden;
-} */
-
 
   </style>
 </head>
@@ -282,36 +275,36 @@
   <div class="w-full">
     <!-- Header: Full Width -->
     <nav class="navbar navbar-expand-lg custom-navbar fs-5">
-      <div class="container-fluid">
+      <div class="container">
         <!-- Navbar toggler for mobile view -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
+    
         <!-- Center-aligned logo -->
         <a class="navbar-brand mx-auto" href="#">
-          <img src="logo.png" alt="Crafted" class="img-fluid"> <!-- Responsive image -->
+          <img src="logo.png" alt="Crafted" class="img-fluid">
         </a>
-
+    
         <!-- Navbar collapse for mobile and larger screens -->
         <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
           <!-- Left-aligned links -->
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item me-3"> <!-- Added margin-end class to increase space on the right -->
               <a class="nav-link custom-link" href="#what-is-crafted">WHAT IS CRAFTED?</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item me-3"> <!-- Added margin-end class to increase space on the right -->
               <a class="nav-link custom-link" href="#our-team">OUR TEAM</a>
             </li>
           </ul>
-
+    
           <!-- Right-aligned links -->
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item me-3"> <!-- Added margin-end class to increase space on the right -->
               <a class="nav-link custom-link" href="login-page.html">LOG IN</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"> <!-- Removed margin on the last item -->
               <a class="nav-link custom-link navbar-button" style="border: 1px solid; border-radius: 50px;" href="signup-page.html">GET
                 STARTED HERE!</a>
             </li>
@@ -319,7 +312,7 @@
         </div>
       </div>
     </nav>
-
+  
     <!-- Main Content: Full Width -->
     <div class="container-fluid py-5 px-4">
       <section class="text-center w-100">
@@ -357,7 +350,7 @@
       <section class="text-center my-4">
         <h3 class="fs-2 fw-bold mt-4" id="what-is-crafted">What is <br><span class="magnolia edited">Crafted?</span></h3>
         <img alt="Illustration of a person working on a laptop" class="mx-auto mb-4 img-fluid" style="width: 200px;"
-          src="https://storage.googleapis.com/a1aa/image/0yAelvpbzO2DWCGllAJilqesEVqITwCjfJWAf9iHxnTHfdBdC.jpg" />
+          src="test.gif" />
         <div class="row justify-content-center">
           <h2 class="reason fw-bold fs-5">Crafted is a marketing solution that helps you manage your marketing efforts
             efficiently and effectively.</h2>
