@@ -27,6 +27,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 30px;
             width: 450px;
+            text-align:center;
         }
 
         .logo {
@@ -96,6 +97,42 @@
             font-size: 14px;
             text-align: center;
         }
+        .social-signup {
+            margin: 20px 0;
+        }
+
+        .social-signup p {
+            margin: 0;
+        }
+        .google-button {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #4b4f7b;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s /* Add some spacing */
+        }
+        .google-button:hover {
+            background-color: #f0f0f0; /* Light grey for a soft look */
+            color: #4b4f7b;
+        } 
+
+        .google-button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            /* Align the image to the left */
+        }
+
+        .google-button-text {
+            flex-grow: 1;
+            text-align: center; /* Center the text */
+        }
     </style>
 </head>
 
@@ -112,6 +149,13 @@
                 <p class="forgot-password">Forgot Password?</p>
             </div>
             <button id="signIn">Login</button>
+            <div class="social-signup"></div>
+                <p style="margin: 10px 0;">or</p>
+                <div class="google-button">
+                    <img src="google.png" alt="Google Logo">
+                    <span class="google-button-text">Login with Google</span>
+                </div>
+            </div>
             <hr>
             <p class="create-account">Don't have an account? <span class="login-instead" id="signUp"
                     style="text-decoration: underline;">Create Account</span></p>
@@ -167,8 +211,8 @@
             signInWithEmailAndPassword(auth, signInEmail, signInPassword)
                 .then((userCredential) => {
                     const user = userCredential.user
-                    
-                    window.location.href = "settings.html"; 
+                    alert('logged in!')
+                    window.location.href = "after-sign-in-1.html";
 
                 }
 
