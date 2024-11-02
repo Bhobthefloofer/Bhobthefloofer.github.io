@@ -1,0 +1,36 @@
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F3F3F6;
+            color: #383A68;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #F3F3F6;
+        }
+        /* .fc-toolbar-title {
+            font-family: 'Magnolia Script', cursive;
+        } */
+        .fc-daygrid-day.fc-day-today {
+            background-color: #E6E0D6 !important;
+        }
+        .fc-button {
+            background-color: #4B4F7D;
+            color: #F3F3F6;
+            border: none;
+        }
+        .fc-button:hover, .fc-button:focus {
+            background-color: #383A68;
+            color: #F3F3F6;
+        }
+        .fc-button:active, .fc-button:visited {
+            background-color: #383A68;
+            color: #F3F3F6;
+        }
+        @media (max-width: 768px) {
+            #calendar {
+                max-width: 100%;
+                margin: 10px;
+            }
+        }

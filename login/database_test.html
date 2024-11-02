@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {text-align: center;}
+        #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
+        #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
+        input {width: 120px;}
+    </style>
+</head>
+<body>
+    <div>
+        <div id="enterDetails">
+            <h1>Enter details</h1>
+    
+            <h4>ID</h4> 
+            <input id="enterID" type="text"> 
+    
+            <h4>Name</h4> 
+            <input id="enterName" type="text"> 
+    
+            <h4>Age</h4> 
+            <input id="enterAge" type="number"> <br><br>
+    
+            <button id="insert">INSERT</button>
+            <button id="update">UPDATE</button>
+            <button id="remove">REMOVE</button> <br><br>
+        </div>
+    
+        <div id="findDetails">
+            <h1>Find by ID</h1>
+            <h4>ID</h4>
+            <input id="findID" type="text"> <br><br>
+            <button id="find">FIND</button>
+            <h3 id="findName" type="text"></h3>
+            <h3 id="findAge" type="number"></h3> <br><br>
+    </div>
+
+    <div>
+
+
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+          authDomain: "wad2test-43dc0.firebaseapp.com",
+          databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "wad2test-43dc0",
+          storageBucket: "wad2test-43dc0.appspot.com",
+          messagingSenderId: "581094929615",
+          appId: "1:581094929615:web:927fb1303429498d1033ba"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        import {getDatabase, set, get, update, remove, ref, child} from  "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+
+        const db = getDatabase()
+
+        var enterID = document.getElementById('enterID')
+        var enterName = document.getElementById('enterName')
+        var enterAge = document.getElementById('enterAge')
+        var findID = document.getElementById('findID')
+        var findName = document.getElementById('findName')
+        var findAge = document.getElementById('findAge')
+        
+      
+        var insertBtn = document.getElementById('insert')
+        var updateBtn = document.getElementById('update')
+        var removeBtn = document.getElementById('remove')
+        var findBtn = document.getElementById('find')
+
+        function insertData() {
+            set( ref(db, "people/"+ enterID.value, ), 
+                {
+                    Name: enterName.value,
+                    ID: enterID.value,
+                    Age: enterAge.value,
+                    
+
+                }
+            )
+            .then (()=> {
+                alert("data added successfully")
+            } ) 
+            .catch ((error)=> {
+                alert(error)
+            } ) 
+        }
+        function findData() {
+            const dbref = ref(db)
+            get(child(dbref, "people/" + findID.value ))
+            .then ((snapshot)=> {
+                console.log(snapshot)
+                if (snapshot.exists()) {
+                    findName.innerText = snapshot.val().Name
+                    findAge.innerText = snapshot.val().Age
+                    
+                }
+                else {
+                    alert("User doesnt exist")
+                }
+            })
+            .catch ((error)=> {
+                alert(error)
+            }
+
+            )
+        }
+        function removeData() {
+            remove(ref(db, "people/" + enterID.value)) 
+            .then (()=> {
+                    alert("Data Deleted")
+                }
+            )
+            .catch ((error)=> {
+                alert(error)
+            }
+
+            )
+        }
+        function updateData() {
+            update(
+                ref(db, "people/" + enterID.value), {
+                    Name: enterName.value,
+                    Age: enterAge.value,
+                })
+                .then (()=> {
+                    alert("Data Updated")
+                }
+            )
+            .catch ((error)=> {
+                alert(error)
+            }
+
+            )
+            
+            
+        }
+
+        insertBtn.addEventListener('click', insertData)
+        findBtn.addEventListener('click', findData)
+        removeBtn.addEventListener('click', removeData)
+        updateBtn.addEventListener('click', updateData)
+
+
+      </script>
+</body>
+</html>

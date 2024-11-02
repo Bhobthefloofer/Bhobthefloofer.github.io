@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="calendar.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Magnolia+Script&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <title>Responsive FullCalendar</title>
+</head>
+<body>
+    <div id="calendar"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var initialView = window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth';
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: initialView,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: window.innerWidth < 768 ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Marketing Campaign Kickoff',
+                        start: '2024-11-05'
+                    },
+                    {
+                        title: 'Social Media Blitz',
+                        start: '2024-11-10',
+                        end: '2024-11-13'
+                    },
+                    {
+                        title: 'Customer Engagement Webinar',
+                        start: '2024-11-20T14:00:00'
+                    }
+                ],
+                editable: true,  
+                selectable: true  
+            });
+
+            calendar.render();
+        });
+    </script>
+</body>
+</html>

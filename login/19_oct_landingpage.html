@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crafted | Home</title>
+  <script src="https://registry.npmmirror.com/vue/3.3.11/files/dist/vue.global.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/magnolia-script" rel="stylesheet">
+</head>
+  <style>
+
+  .magnolia{
+    font-family: 'Magnolia Script', sans-serif;
+                                                  
+  }
+
+  .edited{
+    color: #4b4f7b; 
+    /* text-stroke: 2px #4b4f7b; */
+    /* -webkit-text-stroke: 1px ; /* Fallback for non-webkit browsers */
+    /* font-weight: bold; */ 
+    
+  };
+  
+  .light-grey{
+    color: #f3f3f6 !important;
+  }
+
+  .beige{
+    color: #e6e0d6; 
+  }
+
+
+    body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+  }
+
+  .center{
+    text-align: center;
+  }
+
+
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .lato-bold {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .lato-black {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .lato-regular-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .lato-bold-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .lato-black-italic {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  
+    .reason {
+      background-color: #4b4f7b;
+      color: #e6e0d6;
+      border-radius: 50px;
+      padding: 30px;
+      margin: 20px;
+    }
+
+    .backfill {
+      background-color: #4b4f7b;
+      color: white;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+
+    .header,
+    .footer {
+      background-color: #4b4f7b;
+      color: white;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+
+    .no-margin-padding {
+      margin: 0;
+      padding: 0;
+    }
+
+    .no-padding {
+      padding: 0;
+    }
+
+    .custom-navbar {
+      background-color: #4b4f7b;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+
+    .custom-link {
+      color: #e6e0d6 !important;
+      font-weight: bold !important;
+    }
+
+    .custom-link:hover {
+      color: #ffffff !important;
+    }
+
+    .custom-btn {
+      background-color: #383a68;
+      color: #e6e0d6;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    .custom-btn:hover {
+      background-color: #31337b;
+      color: #ffffff;
+    }
+
+    /* Center logo in navbar */
+    .navbar-brand {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    /* Ensure correct layout on smaller screens */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Responsive logo size */
+    .navbar-brand img {
+      height: 90px;
+      /* For larger screens */
+      transition: height 0.3s ease;
+      /* Smooth transition for resizing */
+    }
+
+    /* Reduce logo size on smaller screens */
+    @media (max-width: 768px) {
+      .navbar-brand img {
+        height: 50px;
+        /* Reduce height for smaller screens */
+      }
+    }
+
+    .navbar-brand {
+      margin-top: 45px;
+    }
+
+    .ready {
+      color: #e6e0d6;
+    }
+
+    .btn-started {
+      margin-top: 10px;
+      background-color: #383a68;
+      color: #e6e0d6;
+      border-radius: 50px;
+      padding: 12px 24px;
+      /* Adjusted padding for larger size */
+      font-weight: bold;
+      font-size: 1rem;
+      /* Adjusted font size */
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: solid;
+    }
+
+    .navbar-button {
+
+      background-color: #383a68;
+      color: #e6e0d6;
+
+      font-weight: bold;
+
+      display: inline-block;
+      transition: all 0.3s ease;
+
+      padding-left: 10px;
+      padding-right: 10px;
+
+    }
+
+    /* Smaller button on mobile devices */
+    @media (max-width: 768px) {
+      .btn-started {
+        padding: 10px 20px;
+        /* Slightly smaller padding */
+        font-size: 0.9rem;
+        /* Adjust font size for smaller screens */
+      }
+    }
+
+    .footer .logo-section img {
+        max-height: 45px; /* Adjust size to a medium value */
+    }
+
+    .footer .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer p {
+        margin-bottom: 0;
+    }
+    
+    /* .container-fluid {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    }
+    .footer {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    }
+    body, html {
+    overflow-x: hidden;
+} */
+
+
+  </style>
+</head>
+
+<body class="no-margin-padding">
+
+  <div class="w-full">
+    <!-- Header: Full Width -->
+    <nav class="navbar navbar-expand-lg custom-navbar fs-5">
+      <div class="container-fluid">
+        <!-- Navbar toggler for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Center-aligned logo -->
+        <a class="navbar-brand mx-auto" href="#">
+          <img src="logo.png" alt="Crafted" class="img-fluid"> <!-- Responsive image -->
+        </a>
+
+        <!-- Navbar collapse for mobile and larger screens -->
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <!-- Left-aligned links -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="#what-is-crafted">WHAT IS CRAFTED?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="#our-team">OUR TEAM</a>
+            </li>
+          </ul>
+
+          <!-- Right-aligned links -->
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="login-page.html">LOG IN</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link navbar-button" style="border: 1px solid; border-radius: 50px;" href="signup-page.html">GET
+                STARTED HERE!</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content: Full Width -->
+    <div class="container-fluid py-5 px-4">
+      <section class="text-center w-100">
+        <div class="row justify-content-center">
+          <h2 class="fs-2 fw-bold mb-5 col-sm-4 col-12 align-content-center">Is marketing stressing you out?</h2>
+          <img alt="Cloud icon" class="col mx-auto mb-5 col-sm-4 col-12 w-25"
+            src="https://storage.googleapis.com/a1aa/image/bwIBdvPFAhJ9L1upccTRkYOplC1TE2uU0Pkm1mldRmi87C6E.jpg" />
+          <p class="fs-2 mb-5 col col-sm-4 col-12 align-content-center fw-bold">We make marketing the least of your worries</p>
+        </div>
+        <h3 class="display-6 mb-5" >So why should you <br><span class="magnolia edited">Choose us?</span></h3>
+
+        <div class="row mb-5 justify-content-center">
+          <div class="col-12 col-md-3 mx-4 reason">
+            <h4 class="fs-3 fw-bold mb-2">Reason 1</h4>
+            <p class="fs-4">Explanation of reason 1. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
+              qui totam unde, illum omnis debitis quia nihil consectetur esse delectus enim voluptas ea asperiores ipsum
+              nemo sapiente eius porro magni.</p>
+          </div>
+          <div class="col-12 col-md-3 mx-4 reason">
+            <h4 class="fs-3 fw-bold mb-2">Reason 2</h4>
+            <p class="fs-4">Explanation of reason 2. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
+              qui totam unde, illum omnis debitis quia nihil consectetur esse delectus enim voluptas ea asperiores ipsum
+              nemo sapiente eius porro magni.</p>
+          </div>
+          <div class="col-12 col-md-3 mx-4 reason">
+            <h4 class="fs-3 fw-bold mb-2">Reason 3</h4>
+            <p class="fs-4">Explanation of reason 3. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
+              qui totam unde, illum omnis debitis quia nihil consectetur esse delectus enim voluptas ea asperiores ipsum
+              nemo sapiente eius porro magni.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- "What is Crafted?" Section -->
+      <section class="text-center my-4">
+        <h3 class="fs-2 fw-bold mt-4" id="what-is-crafted">What is <br><span class="magnolia edited">Crafted?</span></h3>
+        <img alt="Illustration of a person working on a laptop" class="mx-auto mb-4 img-fluid" style="width: 200px;"
+          src="https://storage.googleapis.com/a1aa/image/0yAelvpbzO2DWCGllAJilqesEVqITwCjfJWAf9iHxnTHfdBdC.jpg" />
+        <div class="row justify-content-center">
+          <h2 class="reason fw-bold fs-5">Crafted is a marketing solution that helps you manage your marketing efforts
+            efficiently and effectively.</h2>
+        </div>
+      </section>
+
+      <!-- Red Button Section -->
+      <section class="backfill text-center py-4 my-4">
+        <h1 class="magnolia ready">Ready to get Crafted?</h1>
+        <button class="btn-started">GET STARTED HERE!</button>
+      </section>
+
+      <section class="text-center my-4 backfill container-fluid pt-4">
+        <h2 class="beige magnolia fs-2 mb-2 py-2" style="margin-top: 0;" id="our-team">Meet The Team</h2>
+        <p class="light-grey center">5 aspiring web Designers from G9!</p>
+        <div class="row justify-content-center">
+          <div class="col-6 col-md-4 bg-indigo-900 rounded py-3">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="https://storage.googleapis.com/a1aa/image/v5v4eA9Az92sbKVTeREjsSfy1BpfBdu5AkdEItNf60c69dBdC.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Team Member 1</h4>
+            <p class="light-grey">Role of team member 1</p>
+          </div>
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="https://storage.googleapis.com/a1aa/image/v5v4eA9Az92sbKVTeREjsSfy1BpfBdu5AkdEItNf60c69dBdC.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Team Member 2</h4>
+            <p class="light-grey">Role of team member 2</p>
+          </div>
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="https://storage.googleapis.com/a1aa/image/v5v4eA9Az92sbKVTeREjsSfy1BpfBdu5AkdEItNf60c69dBdC.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Team Member 3</h4>
+            <p class="light-grey">Role of team member 3</p>
+          </div>
+
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="https://storage.googleapis.com/a1aa/image/v5v4eA9Az92sbKVTeREjsSfy1BpfBdu5AkdEItNf60c69dBdC.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Team Member 4</h4>
+            <p class="light-grey">Role of team member 4</p>
+          </div>
+
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="https://storage.googleapis.com/a1aa/image/v5v4eA9Az92sbKVTeREjsSfy1BpfBdu5AkdEItNf60c69dBdC.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Team Member 5</h4>
+            <p class="light-grey">Role of team member 5</p>
+          </div>
+        </div>
+      </section>
+
+  
+       <!-- Footer: Full Width with Full-Screen Background -->
+       <footer class="footer backfill py-4">
+        <div class="container-fluid px-4">
+          <div class="row text-center container-fluid">
+            <!-- Column 1 -->
+            <div class="col-12 col-md-2 my-auto justify-content-center ">
+              <img src="download_logo.png" alt="" style="width: 100px;" >
+            </div>
+      
+            <!-- Column 2 -->
+            <div class="col-12 col-md-8 my-auto">
+              <!-- <p>aklsdlknasdl</p> -->
+            </div>
+      
+            <!-- Column 3 -->
+            <div class="col-12 col-md-2">
+              <p class="mb-4">Follow us on our socials!</p>
+              <div class="d-flex justify-content-center">
+                <a class="light-grey me-4" href="#"><i class="fab fa-facebook-f me-4" style="font-size: 2rem;"></i></a>
+                <a class="light-grey me-4" href="#"><i class="fab fa-twitter me-4" style="font-size: 2rem;"></i></a>
+                <a class="light-grey me-4" href="#"><i class="fab fa-instagram me-4" style="font-size: 2rem;"></i></a>
+                <a class="light-grey" href="#"><i class="fab fa-linkedin-in" style="font-size: 2rem;"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+
+</body>
+
+</html>

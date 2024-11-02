@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Sidebar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset and basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            background-color: #f3f3f6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Logo styling */
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4a4a73;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Profile section */
+        .profile a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile h2 {
+            font-size: 16px;
+            color: #4a4a73;
+            margin-bottom: 5px;
+        }
+
+        .profile span {
+            font-size: 14px;
+            color: #8a8aab;
+        }
+
+        /* Navigation links */
+        .nav {
+            width: 100%;
+            list-style: none;
+        }
+
+        .nav li {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .nav li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #4a4a73;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-family: "Lato", sans-serif;
+        }
+
+        .nav li a:hover,
+        .nav li a.active {
+            background-color: #d1d1f5;
+        }
+
+        .nav li a i {
+            margin-right: 15px;
+            font-size: 24px;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar structure -->
+    <div class="sidebar">
+        <!-- Logo -->
+        <div class="logo">Crafted</div>
+
+        <!-- Profile Section with Link -->
+        <div class="profile" id="imageUploader">
+            <a href="#profile">
+                <img id="imagePreview" src="" alt="Profile Picture">
+                <h2>Maxwell Robinson</h2>
+                <span>Senior Marketer</span>
+            </a>
+            <div><input type="file" id="fileInput" accept="image/*">
+                <button id="uploadImage">Upload Image</button>
+            </div>
+
+
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav">
+            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i>Calendar</a></li>
+            <li><a href="#"><i class="fas fa-rocket"></i>Posts</a></li>
+            <li><a href="#"><i class="fas fa-bullhorn"></i>Campaigns</a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i>Analytics</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
+        </ul>
+        
+    </div>
+    
+    
+
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"
+
+        import { getStorage, ref, uploadBytes, getDownloadURL, } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"
+        const firebaseConfig = {
+            apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+            authDomain: "wad2test-43dc0.firebaseapp.com",
+            databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "wad2test-43dc0",
+            storageBucket: "wad2test-43dc0.appspot.com",
+            messagingSenderId: "581094929615",
+            appId: "1:581094929615:web:927fb1303429498d1033ba"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const storage = getStorage(app)
+        async function uploadImage() {
+            const fileInput = document.getElementById("fileInput")
+            const file = fileInput.files[0]
+            if (file) {
+                const storageRef = ref (storage, `uploaded_images/${file.name}`)
+                await uploadBytes( storageRef, file)
+                const imgURL = await getDownloadURL(storageRef            )
+
+                const imagePreview= document.getElementById("imagePreview")
+                imagePreview.src = imgURL
+
+            }
+            
+        }
+        const uploadButton = document.getElementById("uploadImage")
+        uploadButton.addEventListener('click', uploadImage)
+
+    </script>
+</body>
+
+</html>
