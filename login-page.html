@@ -160,7 +160,7 @@
             <p class="create-account">Don't have an account? <span class="login-instead" id="signUp"
                     style="text-decoration: underline;">Create Account</span></p>
 
-        </div>
+        </div>  
         <div id="secret">
 
         </div>
@@ -211,8 +211,8 @@
             signInWithEmailAndPassword(auth, signInEmail, signInPassword)
                 .then((userCredential) => {
                     const user = userCredential.user
-                    alert('logged in!')
-                    window.location.href = "after-sign-in-1.html";
+                    
+                    window.location.href = "home.html";
 
                 }
 
