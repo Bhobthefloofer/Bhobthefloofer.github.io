@@ -165,7 +165,7 @@
     <h1>Settings</h1>
 
     <!-- Settings Container -->
-    <div class="settings-container">
+    <div class="settings-container" id="content">
 
         <!-- Account Section -->
         <div class="settings-section">
@@ -301,6 +301,7 @@
         // https://firebase.google.com/docs/web/setup#available-libraries
       
         // Your web app's Firebase configuration
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"
         const firebaseConfig = {
           apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
           authDomain: "wad2test-43dc0.firebaseapp.com",
@@ -310,12 +311,32 @@
           messagingSenderId: "581094929615",
           appId: "1:581094929615:web:927fb1303429498d1033ba"
         };
-      
+        
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app)
+        const checkAuth =  async () => {
+            onAuthStateChanged(auth, user => {
+                if (user) {
+                    console.log(user)
+                    const userdetails = user.email 
+                    
+                    content.style.display = 'block'
+                }
+                else {
+                    window.location.href = 'login-page.html'
+                }
+            })
+
+            
+            
+            
+        }
+        checkAuth()
         import {getDatabase, set, get, update, remove, ref, child} from  "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
 
         const db = getDatabase()
+        
 
         var name = document.getElementById('username')
         var role = document.getElementById('role')
@@ -409,6 +430,7 @@
 
 
       </script>
+      
 </body>
 
 </html>
