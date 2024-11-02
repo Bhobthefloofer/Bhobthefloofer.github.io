@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crafted | Sign Up</title>
@@ -33,7 +33,8 @@
             margin-right: auto;  
             width: 150px;
         }
-        h2{
+
+        h2 {
             font-size: 20px;
             font-weight: bold;
             color: #383a68;
@@ -41,8 +42,7 @@
             font-family: "Lato", sans-serif;
             font-weight: 400;
             font-style: normal;
-            text-align: center;
-            
+            text-align: center;   
         }
 
         .form-group {
@@ -61,7 +61,7 @@
         }
 
         button {
-            background-color:#4b4f7b;
+            background-color: #4b4f7b;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -73,7 +73,8 @@
         }
 
         button:hover {
-            background-color:#808192;}
+            background-color: #808192;
+        }
 
         .forgot-password {
             margin-top: 10px;
@@ -86,12 +87,14 @@
         .login-instead:hover {
             color: #e6e0d6;
         }
-        .create-account{
+        
+        .create-account {
             margin-top: 10px;
-            color: #383a68 ;
+            color: #383a68;
             font-size: 14px;
             text-align: center;
         }
+        
         .social-signup {
             margin: 20px 0;
         }
@@ -99,6 +102,7 @@
         .social-signup p {
             margin: 0;
         }
+
         .google-button {
             display: flex;
             align-items: center;
@@ -110,31 +114,53 @@
             font-size: 16px;
             color: #4b4f7b;
             margin-top: 10px;
-            transition: background-color 0.3s, color 0.3s /* Add some spacing */
+            transition: background-color 0.3s, color 0.3s;
         }
+
         .google-button:hover {
-            background-color: #f0f0f0; /* Light grey for a soft look */
+            background-color: #f0f0f0;
             color: #4b4f7b;
-        } 
+        }
 
         .google-button img {
             width: 20px;
             height: 20px;
             margin-right: 5px;
-            /* Align the image to the left */
         }
 
         .google-button-text {
             flex-grow: 1;
-            text-align: center; /* Center the text */
+            text-align: center;
         }
-        
 
+        #message {
+            display: none;
+            background: #f1f1f1;
+            color: #555;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 14px; /* Smaller font size */
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .invalid {
+            color: red;
+        }
+
+        .criteria {
+            margin: 5px 0; /* Space between criteria items */
+        }
     </style>
 </head>
 <body>
     <div class="container" id="authForm">
-        <img class ="logo" src = "logo.png">
+        <img class="logo" src="logo.png">
         <h2>Let's Get Your Account Set Up</h2>
         <div>
             <div class="form-group">
@@ -142,6 +168,12 @@
             </div>
             <div class="form-group">
                 <input type="password" id="userPassword" placeholder="Password" required>
+                <div id="message">
+                    <strong>Password must be:</strong>
+                    <p id="length" class="invalid criteria">At least 8 characters long.</p>
+                    <p id="capital" class="invalid criteria">At least one uppercase letter.</p>
+                    <p id="symbol" class="invalid criteria">At least one special character.</p>
+                </div>
             </div>
             <div class="form-group">
                 <input type="password" id="userPasswordConfirm" placeholder="Confirm Password" required>
@@ -156,18 +188,14 @@
                 </div>
             </div>
             <hr>
-            <p class="create-account">Already have an account? <span class = "login-instead" id="login" style="text-decoration: underline;">Log in instead</span></p>
-
+            <p class="create-account">Already have an account? <span class="login-instead" id="login" style="text-decoration: underline;">Log in instead</span></p>
         </div>
     </div>
-    <script type = "module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
 
-        // Your web app's Firebase configuration
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
         const firebaseConfig = {
             apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
             authDomain: "wad2test-43dc0.firebaseapp.com",
@@ -178,72 +206,80 @@
             appId: "1:581094929615:web:927fb1303429498d1033ba"
         };
 
-
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app)
-        const userEmail = document.getElementById('userEmail')
-        const userPassword = document.getElementById('userPassword')
-        const signUpBtn = document.getElementById('signUp')
-        const userPasswordConfirm = document.getElementById('userPasswordConfirm')
-        const signInBtn = document.getElementById('login')
-        const signOutBtn = document.getElementById('signOut')
-        const authForm = document.getElementById('authForm')
-        const secret = document.getElementById('secret')
-        const userSignUp = async () => {
-            const signUpEmail = userEmail.value
-            const signUpPassword = userPassword.value
-            createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
-                .then((userCredential) => {
-                    const user = userCredential.user
-                     window.location.href = "after-sign-in-1.html"
+        const auth = getAuth(app);
 
-                }
+        const userEmail = document.getElementById('userEmail');
+        const userPassword = document.getElementById('userPassword');
+        const userPasswordConfirm = document.getElementById('userPasswordConfirm');
+        const signUpBtn = document.getElementById('signUp');
+        const signInBtn = document.getElementById('login');
 
-                )
-                .catch((error) => {
-                    alert(error)
-                    
-                })
-        }
-        signInBtn.addEventListener('click', redirectSignIn)
-        signUpBtn.addEventListener('click', userSignUp )
-        function redirectSignIn() {
-            window.location.href = "login-page.html"
-        }
-        userPasswordConfirm.addEventListener('input', function () {
-            validateForm();
-        });
-        function validateForm() {
-            
+        const validatePassword = () => {
+            const password = userPassword.value;
+            const length = password.length >= 8;
+            const uppercase = /[A-Z]/.test(password);
+            const symbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+            document.getElementById('length').className = length ? 'valid criteria' : 'invalid criteria';
+            document.getElementById('capital').className = uppercase ? 'valid criteria' : 'invalid criteria';
+            document.getElementById('symbol').className = symbol ? 'valid criteria' : 'invalid criteria';
+
+            // Hide message if all criteria are valid
+            if (length && uppercase && symbol) {
+                document.getElementById('message').style.display = 'none'; // Hide the message
+            } else {
+                document.getElementById('message').style.display = 'block'; // Show the message
+            }
+
+            return length && uppercase && symbol;
+        };
+
+        const validateConfirmPassword = () => {
             const errorElement = document.getElementById('passwordError');
-
-            let isValid = true;
-
-            
-
-            if (userPassword.value != userPasswordConfirm.value) {
+            if (userPassword.value !== userPasswordConfirm.value) {
                 errorElement.textContent = 'Passwords do not match';
                 errorElement.classList.remove('success');
                 errorElement.classList.add('error');
-                isValid = false;
+                return false;
             } else {
-                errorElement.textContent = 'Passwords match';
-                errorElement.classList.remove('error');
-                errorElement.classList.add('success');
-                isValid = true;
+                errorElement.textContent = '';
+                return true;
             }
-            if (isValid) {
-                signUpBtn.classList.add('enabled');
-                signUpBtn.disabled = false;
-            } else {
-                signUpBtn.classList.remove('enabled');
-                signUpBtn.disabled = true;
-                
+        };
+
+        const validateForm = () => {
+            const isPasswordValid = validatePassword();
+            const isConfirmPasswordValid = validateConfirmPassword();
+            return isPasswordValid && isConfirmPasswordValid;
+        };
+
+        userPassword.addEventListener('input', () => {
+            validatePassword();
+        });
+
+        userPasswordConfirm.addEventListener('input', () => {
+            validateConfirmPassword();
+        });
+
+        signUpBtn.addEventListener('click', async () => {
+            const email = userEmail.value;
+            const password = userPassword.value;
+
+            if (validateForm()) {
+                try {
+                    await createUserWithEmailAndPassword(auth, email, password);
+                    alert('User registered successfully!');
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                }
             }
-        }
+        });
+
+        signInBtn.addEventListener('click', () => {
+            // Redirect to login page or handle login logic
+            window.location.href = 'login.html'; // Change to your login page
+        });
     </script>
 </body>
 </html>
-
-
