@@ -1,0 +1,118 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Posts</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+        
+        <style>
+            body {
+            background-color: #f8f9fa;
+            font-family: "Lato", sans-serif;
+            }
+            .kanban-column {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 15px;
+                min-height: 300px;
+            }
+            .kanban-column h5 {
+                font-size: 1.2rem;
+                color: #6c757d;
+                margin-bottom: 10px;
+            }
+            .idea-card {
+                background-color: white;
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .idea-card p {
+                font-size: 0.9rem;
+                color: #6c757d;
+            }
+            .add-idea {
+                font-size: 1rem;
+                color: #007bff;
+                cursor: pointer;
+                display: block;
+                text-align: center;
+                padding: 10px;
+            }
+            .add-idea:hover {
+                text-decoration: underline;
+            }
+            .campaign-button {
+            font-size: 12px;
+            padding: 2px;
+            border-radius: 3px;
+            background-color: #383a68;
+            }
+                .is-dragging{
+                    scale: 1.05;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    background-color: rgb(50, 50, 50);
+                    color:white
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container my-5">
+            <div class="d-flex justify-content-between">
+                <h2>Create</h2>
+                <button class="btn btn-outline-primary">+ New Idea</button>
+            </div>
+            <div class="row mt-4">
+                <!-- Unassigned Column -->
+                <div class="col-md-3">
+                    <div class="kanban-column">
+                        <h5>Unassigned</h5>
+                        <div class="idea-card" draggable="true">
+                            <h6>This is a place to plan ✍️ your content</h6>
+                            <div>
+                                <p>test</p>
+                            <button class = "btn btn-dark campaign-button" >Campaign Name</button>
+                            </div>
+                            <p style = "margin-top: 6px;">Save your Ideas before converting them into posts. Brainstorm, plan ahead, and refine!</p>
+                        </div>
+                        <div class="idea-card" draggable="true">
+                            <h6>Save inspirations you find online with one click 🥳</h6>
+                            <div>
+                            <button class = "btn btn-dark campaign-button" >Campaign Name</button>
+                            </div>
+                            <p>Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...</p>
+                        </div>
+                        <span class="add-idea">+ New Idea</span>
+                    </div>
+                </div>
+                <!-- To Do Column -->
+                <div class="col-md-3">
+                    <div class="kanban-column">
+                        <h5>To Do</h5>
+                        <span class="add-idea">+ New Idea</span>
+                    </div>
+                </div>
+                <!-- In Progress Column -->
+                <div class="col-md-3">
+                    <div class="kanban-column">
+                        <h5>In Progress</h5>
+                        <span class="add-idea">+ New Idea</span>
+                    </div>
+                </div>
+                <!-- Done Column -->
+                <div class="col-md-3">
+                    <div class="kanban-column">
+                        <h5>Done</h5>
+                        <span class="add-idea">+ New Idea</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="drag.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
