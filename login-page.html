@@ -11,7 +11,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crafted | Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css_files/login-page.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css_files/login-page.css"> -->
+    <style>body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    .container {
+        background-color: #fff;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 450px;
+        text-align:center;
+    }
+    
+    .logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 150px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #383a68;
+        margin-bottom: 20px;
+        font-family: "Lato", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-align: center;
+    
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        background-color: #e6e0d6;
+    }
+    
+    button {
+        background-color: #4b4f7b;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
+    
+    button:hover {
+        background-color: #808192;
+    }
+    
+    .forgot-password {
+        margin-top: 10px;
+        color: #666;
+        font-size: 14px;
+        text-align: right;
+    }
+    
+    .forgot-password:hover,
+    .create-account:hover {
+        color: #333;
+    }
+    
+    .create-account {
+        margin-top: 10px;
+        color: #383a68;
+        font-size: 14px;
+        text-align: center;
+    }
+    .social-signup {
+        margin: 20px 0;
+    }
+    
+    .social-signup p {
+        margin: 0;
+    }
+    .google-button {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        color: #4b4f7b;
+        margin-top: 10px;
+        transition: background-color 0.3s, color 0.3s /* Add some spacing */
+    }
+    .google-button:hover {
+        background-color: #f0f0f0; /* Light grey for a soft look */
+        color: #4b4f7b;
+    } 
+    
+    .google-button img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        /* Align the image to the left */
+    }
+    
+    .google-button-text {
+        flex-grow: 1;
+        text-align: center; /* Center the text */
+    }
+    </style>
 </head>
 
 <body>
