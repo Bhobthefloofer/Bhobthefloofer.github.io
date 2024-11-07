@@ -8,99 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css_files/after-sign-in-1.css">
 </head>
 
-<style>
-body {
-    background-color: #f8f9fa;
-    font-family: "Lato", sans-serif;
-    display: flex;
-    align-items: center;
-}
 
-h1 {
-    font-weight: bold;
-    font-size: 3rem;
-    color:#383a68;
-}
-
-h2 {
-    font-weight: bolder;
-    font-size: 2rem;
-    color:#383a68;
-}
-
-.brand-name {
-    font-family: 'Cursive', sans-serif;
-    color: #5a5dc9;
-}
-
-h2 {
-    font-size: 1.75rem;
-    margin-top: 20px;
-}
-
-p {
-    color: #6c757d;
-}
-
-.progress-container {
-    display: flex;
-    justify-content: space-between;
-    width: 200px;
-    margin: 20px auto;
-}
-
-.step {
-    width: 40px;
-    height: 4px;
-    background-color: #ccc; /* Inactive steps */
-    border-radius: 10px;
-}
-
-.step.active {
-    background-color: #383a68; /* Active step color */
-}
-
-button {
-    width: 100%;
-    font-size: 1rem;
-}
-
-.question-div {
-    font-size: 25px;
-}
-
-.custom-input {
-    border: none;
-    border-bottom: 2px solid black;
-    border-radius: 3px;
-    outline: none;
-    box-shadow: none;
-    background-color: #5a5dc9;
-    color: white;
-}
-.custom-input:focus {
-    background-color: #5a5dc9;
-    border: 2px solid black;
-    color: white;
-}
-.custom-btn {
-    border-radius: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 25px;
-    background-color: #383a68;
-}
-#q-1, #q-2, #q-3, #q2-1, #q2-2, #q2-3 {
-    width:300px;
-}
-.next {
-    width: 15%;
-    margin: 20px;
-}
-
-</style>
 
 <body>
     <div class="container text-center mt-5">
@@ -182,7 +93,7 @@ button {
                         </div>
                     </div>
                     
-                    <button type="button" class="btn btn-primary custom-btn next">Click for Magic ✨</button>
+                    <button type="button" class="btn btn-primary custom-btn next" id="redirectHome">Click for Magic ✨</button>
    
                     <!-- organization end -->
                 </div>
