@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | Crafted</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css_files/signup-page.css">
-    
+
 </head>
+
 <body>
     <div class="container" id="authForm">
         <img class="logo" src="logo.png">
@@ -44,14 +48,15 @@
                 </div>
             </div>
             <hr>
-            <p class="create-account">Already have an account? <span class="login-instead" id="login" style="text-decoration: underline;">Log in instead</span></p>
+            <p class="create-account">Already have an account? <span class="login-instead" id="login"
+                    style="text-decoration: underline;">Log in instead</span></p>
         </div>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-        import {getDatabase, set, get, update, remove, ref, child} from  "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+        import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
 
         const firebaseConfig = {
             apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
@@ -73,7 +78,7 @@
         const userPasswordConfirm = document.getElementById('userPasswordConfirm');
         const signUpBtn = document.getElementById('signUp');
         const signInBtn = document.getElementById('login');
-        
+
 
         const validatePassword = () => {
             const password = userPassword.value;
@@ -122,20 +127,20 @@
             validateConfirmPassword();
         });
         function insertData() {
-            set( ref(db, "people/"+ userName.value, ), 
+            set(ref(db, "people/" + userName.value,),
                 {
                     Name: userName.value,
                     Email: userEmail.value
 
                 }
             )
-            .then (()=> {
-                alert("hello")
-                window.location.href = 'after-sign-in-1.html';
-            } ) 
-            .catch ((error)=> {
-                alert(error)
-            } ) 
+                .then(() => {
+                    localStorage.setItem('name', userName.value);
+                    window.location.href = 'after-sign-in-1.html';
+                })
+                .catch((error) => {
+                    alert(error)
+                })
         }
 
         signUpBtn.addEventListener('click', async () => {
@@ -146,7 +151,7 @@
                 try {
                     await createUserWithEmailAndPassword(auth, email, password);
                     insertData()
-                    
+
 
                 } catch (error) {
                     alert('Error: ' + error.message);
@@ -160,4 +165,5 @@
         });
     </script>
 </body>
+
 </html>
