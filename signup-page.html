@@ -114,6 +114,20 @@
         userPasswordConfirm.addEventListener('input', () => {
             validateConfirmPassword();
         });
+        function insertData() {
+            set( ref(db, "people/"+ userEmail, ), 
+                {
+                    
+
+                }
+            )
+            .then (()=> {
+                
+            } ) 
+            .catch ((error)=> {
+                alert(error)
+            } ) 
+        }
 
         signUpBtn.addEventListener('click', async () => {
             const email = userEmail.value;
@@ -122,7 +136,9 @@
             if (validateForm()) {
                 try {
                     await createUserWithEmailAndPassword(auth, email, password);
+                    insertData()
                     window.location.href = 'after-sign-in-1.html';
+                    
 
                 } catch (error) {
                     alert('Error: ' + error.message);
