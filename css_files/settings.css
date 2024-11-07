@@ -47,7 +47,7 @@ h1 {
 }
 
 .setting-option {
-    /* display: flex; */
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
@@ -142,7 +142,7 @@ input:checked + .slider:before {
 
 /* Align switch with text */
 .switch-label {
-    /* display: flex; */
+    display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
