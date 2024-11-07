@@ -24,14 +24,69 @@
         .small-logo {
             width: 60px;
         }
-        .burger-menu {
+        .burger-menu, .cross-icon {
             width: 55px;
             height: auto;
             border: none; 
             outline: none;
         }
+        
         .navbar-toggler {
             border: 0;
+        }
+        
+        .navbar-nav .nav-link {
+            color: #4b4f7e !important;    
+        } 
+
+        .navbar-nav .nav-link:hover {
+            background-color: #4b4f7e !important;
+            color: #e6e0d6 !important;
+            border-radius: 3px;
+        } 
+        .magic {
+            background: linear-gradient(45deg, #e6e0d6, #4b4f7b, #f8f8f9);
+            background-size: 400% 400%;
+            animation: gradient 7s ease infinite;
+        }
+    
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+        #magic-logo {
+            width: 25%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) { 
+            #magic-logo {
+                width: 30%;
+            }
+        }
+        h2 {
+            color: #383a68;
+            text-align: center;
+            font-weight: 550;
+            margin: 0px;
+            font-style:oblique;
+        } 
+        h2 {
+            font-size: 40px; /* Default for large screens */
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            h2 {
+                font-size: 30px;
+            }
         }
 
      </style>
@@ -44,37 +99,56 @@
             <img src="assets/small_logo.png" class="small-logo d-block d-md-none ml-4">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="assets/burger-menu.png" class="burger-menu" alt="Toggle navigation"> 
+            <img src="assets/burger-menu.png" class="burger-menu" alt="Toggle navigation">
+            <img src="assets/burger-menu-cross.png" class="cross-icon d-none" alt="Close navigation"> 
         </button>
-      
+    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Who Are We?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Our Magic</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">The Team</a>
+                </li>
+            </ul>
         </div>
-      </nav>
+    </nav>
+    
     <!-- navbar end -->
 
-    
+    <!-- magic start -->
+     <div class = "container-fluid magic">
+        <img id = "magic-logo" class = "starting-title"src="assets/magic.png" alt="">
+        <h2 id = "magic-sub">Here's How We Can Help You</h2> 
+
+     </div>
+     <!-- magic end -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggler = document.querySelector(".navbar-toggler");
+            const burgerMenu = document.querySelector(".burger-menu");
+            const crossIcon = document.querySelector(".cross-icon");
+
+            navbarToggler.addEventListener("click", function() {
+                if (burgerMenu.classList.contains("d-none")) {
+                    burgerMenu.classList.remove("d-none");
+                    crossIcon.classList.add("d-none");
+                } else {
+                    burgerMenu.classList.add("d-none");
+                    crossIcon.classList.remove("d-none");
+                }
+            });
+        });
+
+    </script>
     <!-- jQuery, Popper.js, and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
