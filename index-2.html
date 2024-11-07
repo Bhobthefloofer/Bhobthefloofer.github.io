@@ -36,15 +36,58 @@
         }
         
         .navbar-nav .nav-link {
-            color: #4b4f7e !important;
+            color: #4b4f7e !important;    
         } 
 
         .navbar-nav .nav-link:hover {
             background-color: #4b4f7e !important;
             color: #e6e0d6 !important;
             border-radius: 3px;
-            padding: 1px;
         } 
+        .magic {
+            background: linear-gradient(45deg, #e6e0d6, #4b4f7b, #f8f8f9);
+            background-size: 400% 400%;
+            animation: gradient 7s ease infinite;
+        }
+    
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+        #magic-logo {
+            width: 25%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) { 
+            #magic-logo {
+                width: 30%;
+            }
+        }
+        h2 {
+            color: #383a68;
+            text-align: center;
+            font-weight: 550;
+            margin: 0px;
+            font-style:oblique;
+        } 
+        h2 {
+            font-size: 40px; /* Default for large screens */
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            h2 {
+                font-size: 30px;
+            }
+        }
 
      </style>
 </head>
@@ -79,6 +122,14 @@
     </nav>
     
     <!-- navbar end -->
+
+    <!-- magic start -->
+     <div class = "container-fluid magic">
+        <img id = "magic-logo" class = "starting-title"src="assets/magic.png" alt="">
+        <h2 id = "magic-sub">Here's How We Can Help You</h2> 
+
+     </div>
+     <!-- magic end -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
