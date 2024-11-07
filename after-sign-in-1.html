@@ -16,7 +16,7 @@
 <body>
     <div class="container text-center mt-5">
         <!-- Header Section -->
-        <h1>Welcome to <span class="brand-name">Crafted</span>,<br>Where Marketing Meets Magic!</h1>
+        <h1>Welcome to <img src="logo.png" alt="" style="width: 150px;" >,<br>Where Marketing Meets Magic!</h1>
         <p>Help us get to know you and your business better to personalize your experience.</p>
 
         <!-- Progress bar -->
@@ -34,7 +34,7 @@
                     <div class="container d-flex justify-content-center align-items-center question-div mt-4">
                         <div class = "row">
                             <div class = "col-6"><label for="q-1" class="me-3">Full Name</label></div>
-                            <div class = "col-6"><input id="q-1" type="text" class="form-control custom-input" disabled></div>
+                            <div class = "col-6"><input id="q-1" type="text" class="form-control custom-input" style="color: black" disabled></div>
                         </div>
                     </div>
                     
@@ -127,7 +127,9 @@
             updateProgress(event.to);
         });
         var name = localStorage.getItem('name')
-        
+        var fullName = document.getElementById('q-1')
+        fullName.value = name
+
     </script>
 </body>
 </html>
