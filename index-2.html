@@ -14,18 +14,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- bootstrap end -->
      <style>
+        body {
+            font-family: "Lato", serif;
+        }
         .main-logo {
             width: 170px;
-            margin-left: 100px;
+            margin-left: 10px;
         }
+        .small-logo {
+            width: 70px;
+        }
+        .burger-menu {
+            width: 55px;
+            height: auto;
+            border: none; 
+            outline: none;
+        }
+        .navbar-toggler {
+            border: 0;
+        }
+
      </style>
 </head>
 <body>
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-        <a class="navbar-brand" href="#"><img src="assets/main_logo.png" class = "main-logo"></a>
+        <a class="navbar-brand" href="#">
+            <img src="assets/main_logo.png" class="main-logo d-none d-md-block">
+            <img src="assets/small_logo.png" class="small-logo d-block d-md-none">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            <img src="assets/burger-menu.png" class="burger-menu" alt="Toggle navigation"> 
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,16 +70,15 @@
               <a class="nav-link disabled" href="#">Disabled</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
       </nav>
     <!-- navbar end -->
 
-    <!-- bootstrap start -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- bootstrap end -->
 
 </body>
