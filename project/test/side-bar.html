@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Connect</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .social-connect {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      /* border: 1px dashed #ccc;
+      border-radius: 10px;
+      margin-bottom: 10px; */
+    }
+    .social-icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+    button {
+        border-radius: 20px;
+        margin: 5px
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <button>
+        <div id = "facebook-connect" class="social-connect">
+            <i class="fab fa-facebook social-icon"></i>
+            <span>Connect Facebook</span>
+        </div>
+    </button>
+
+    <button>
+        <div id = "instagram-connect" class="social-connect">
+        <i class="fab fa-instagram social-icon"></i>
+        <span>Connect Instagram</span>
+        </div>
+   </button>
+    <button>
+    <div id = "x-connect" class="social-connect">
+        <i class="fab fa-twitter social-icon"></i>
+        <span>Connect Twitter/X</span>
+    </div>
+    </button>
+    <button>
+    <div id = "linkedin-connect" class="social-connect">
+        <i class="fab fa-linkedin social-icon"></i>
+        <span>Connect LinkedIn</span>
+    </div>
+    </button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
