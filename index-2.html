@@ -129,8 +129,8 @@
 /* Outer orbit */
 #outer-orbit {
     position: absolute;
-    width: 430px;
-    height: 430px;
+    width: 400px;
+    height: 400px;
     border: 1px dashed #bbb;
     border-radius: 50%;
     animation: rotateOuter 20s linear infinite; /* Slower rotation */
@@ -159,8 +159,8 @@
 
 /* Inner orbit */
 #inner-orbit {
-    width: 370px;
-    height: 370px;
+    width: 320px;
+    height: 320px;
     border: 1px dashed #bbb;
     border-radius: 50%;
     box-sizing: border-box; /* Ensures border doesn’t affect dimensions */
@@ -227,10 +227,52 @@
 }
 
 .orbit-center-img img {
-    width: 300px; /* Adjust size as needed */
+    width: 250px; /* Adjust size as needed */
     height: auto;
     border-radius: 50%; /* Optional, if you want it circular */
 }
+
+/* Outest orbit */
+#outest-orbit {
+    position: absolute;
+    width: 470px;
+    height: 470px;
+    border: 1px dashed #bbb;
+    border-radius: 50%;
+    animation: rotateOutest 25s linear infinite; /* Slower rotation */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outest orbit circle */
+#outest-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 47px;
+    height: 47px;
+    transform: translate(-50%, -50%);
+}
+
+/* Outest circle image with counter-rotation to keep it fixed */
+#outest-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: counterRotate 25s linear infinite; /* Matches the outest orbit */
+}
+
+/* Keyframe animation for outest orbit rotation */
+@keyframes rotateOutest {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 
 
@@ -312,22 +354,31 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class = "col-12 col-lg-6 d-flex justify-content-center" id = "orbit-body">
+                        <div class = "col-12 col-lg-6 d-flex" id = "orbit-body">
                             <!-- magic animation start -->
                             <div class="orbit-container">
+                                <!-- Outest Orbit -->
+                                <div id="outest-orbit">
+                                    <div id="outest-circle">
+                                        <img src="assets/magic-likes.png" alt="Outest Circle">
+                                    </div>
+                                </div>
+                            
                                 <!-- Outer Orbit -->
                                 <div id="outer-orbit">
                                     <div id="outer-circle">
                                         <img src="assets/magic-people.png" alt="Outer Circle">
                                     </div>
                                 </div>
-                        
+                            
                                 <!-- Inner Orbit -->
                                 <div id="inner-orbit">
                                     <div id="inner-circle">
                                         <img src="assets/magic-calendar.png" alt="Inner Circle">
                                     </div>
                                 </div>
+                            
+                                <!-- Center Image -->
                                 <div class="orbit-center-img">
                                     <img src="assets/magic-marketer.png" alt="Center Image">
                                 </div>
