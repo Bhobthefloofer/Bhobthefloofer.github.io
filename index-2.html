@@ -307,8 +307,11 @@
     transform: scale(1.05); /* Slightly grow on hover */
 }
 
-
-
+    @media (max-width: 767px) {
+        #orbit-body {
+            display: none !important;
+        }
+    }
 
      </style>
 </head>
@@ -388,7 +391,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class = "col-12 col-lg-6 d-flex flex-column" id = "orbit-body">
+                        <div class = "col-12 col-lg-6 d-flex flex-column" id = "orbit-body" style = "display:block">
                             
                             <!-- magic animation start -->
                             <div class="orbit-container">
@@ -419,8 +422,9 @@
                                 </div>
                             </div>
                             <div class = "under-orbit">
+                                <!-- <br> -->
                                 <span class = "ad">For The Marketer Who Wants To Do More With Less</span>
-                                <button class = "btn btn-primary" style = "background-color: #383a68;">Start Creating</button> 
+                                <button class = "btn btn-primary mt-1">Start Creating</button> 
                             </div>
                             <!-- magic animation end -->
 
@@ -436,6 +440,7 @@
      <!-- magic end -->
 
     <script>
+        
         document.addEventListener("DOMContentLoaded", function() {
             const navbarToggler = document.querySelector(".navbar-toggler");
             const burgerMenu = document.querySelector(".burger-menu");
