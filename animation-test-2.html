@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Double Orbit</title>
+    <style>
+        /* Centering the main container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Outer orbit container */
+        #outer-orbit {
+            position: relative;
+            width: 300px; /* Larger orbit size */
+            height: 300px;
+            border: 1px dashed #bbb; /* Optional, to show orbit path */
+            border-radius: 50%;
+            animation: rotate 5s linear infinite; /* Slower rotation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Inner orbit container */
+        #inner-orbit {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 1px dashed #ccc; /* Optional, to show orbit path */
+            border-radius: 50%;
+            animation: rotate 7s linear infinite;
+        }
+
+        /* Small circle that will rotate in the inner orbit */
+        #inner-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #outer-circle {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #magic-calendar {
+            width: 80px;
+        }
+        /* Image that stays upright */
+        #magic-people {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 5s linear infinite;
+        }
+
+        /* Keyframe animation to rotate the orbits */
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation to counter-rotate the image */
+        @keyframes counterRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+        /* Counter-rotate the inner image specifically */
+        #magic-calendar {
+            animation: doubleCounterRotate 7s linear infinite;
+        }
+
+        @keyframes doubleCounterRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-720deg); /* Adjust to counteract double rotation */
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="orbit" id="outer-orbit">
+        <div class="orbit" id="inner-orbit">
+            <div class="circle" id = "inner-circle">
+                <img id="magic-calendar" src="assets/magic-calendar.png" alt="Rotating Circle">
+            </div>
+        </div>
+        <div class="circle" id = "outer-circle">
+            <img id="magic-people" src="assets/magic-people.png" alt="Rotating Circle">
+        </div>
+    </div>
+
+</body>
+</html>
