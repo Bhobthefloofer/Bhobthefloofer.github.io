@@ -273,6 +273,40 @@
     }
 }
 
+.under-orbit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ad {
+    color: #4b4f7b;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 700;
+    font-size: 24px; /* Increased size for prominence */
+    line-height: 1.3;
+}
+
+.btn {
+    background-color: #4b4f7b;
+    color: #e6e0d6;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: oblique;
+    /* text-transform: uppercase; */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn:hover {
+    background-color: #383a68;
+    transform: scale(1.05); /* Slightly grow on hover */
+}
+
 
 
 
@@ -354,7 +388,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class = "col-12 col-lg-6 d-flex" id = "orbit-body">
+                        <div class = "col-12 col-lg-6 d-flex flex-column" id = "orbit-body">
+                            
                             <!-- magic animation start -->
                             <div class="orbit-container">
                                 <!-- Outest Orbit -->
@@ -383,7 +418,12 @@
                                     <img src="assets/magic-marketer.png" alt="Center Image">
                                 </div>
                             </div>
+                            <div class = "under-orbit">
+                                <span class = "ad">For The Marketer Who Wants To Do More With Less</span>
+                                <button class = "btn btn-primary" style = "background-color: #383a68;">Start Creating</button> 
+                            </div>
                             <!-- magic animation end -->
+
                         </div>
                     </div>
                 </div>
