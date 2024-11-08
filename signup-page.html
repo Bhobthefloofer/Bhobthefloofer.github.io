@@ -1,3 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Crafted</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css_files/signup-page.css">
+</head>
+
+<body>
+    <div class="container" id="authForm">
+        <img class="logo" src="logo.png" alt="Logo">
+        <h2>Let's Get Your Account Set Up</h2>
+        <div>
+            <div class="form-group">
+                <input type="text" id="userName" placeholder="Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="userEmail" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="userPassword" placeholder="Password" required>
+                <div id="message">
+                    <strong>Password must be:</strong>
+                    <p id="length" class="invalid criteria">At least 8 characters long.</p>
+                    <p id="capital" class="invalid criteria">At least one uppercase letter.</p>
+                    <p id="symbol" class="invalid criteria">At least one special character.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" id="userPasswordConfirm" placeholder="Confirm Password" required>
+                <span id="passwordError" class="error"></span>
+            </div>
+            <button id="signUp">Sign Up</button>
+            <div class="social-signup">
+                <p style="margin: 10px 0;">or</p>
+                <div class="google-button">
+                    <img src="google.png" alt="Google Logo">
+                    <span class="google-button-text">Sign up with Google</span>
+                </div>
+            </div>
+            <hr>
+            <p class="create-account">Already have an account? <span class="login-instead" id="login"
+                    style="text-decoration: underline;">Log in instead</span></p>
+        </div>
+    </div>
+
+    Link to external JavaScript file -->
+    <!-- <script src="js_files/signup-page.js" type="module"></script>
+</body>
+
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,118 +110,11 @@
                     style="text-decoration: underline;">Log in instead</span></p>
         </div>
     </div>
+    <script type="module" src="signup-page.js">
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-        import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
-            authDomain: "wad2test-43dc0.firebaseapp.com",
-            databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "wad2test-43dc0",
-            storageBucket: "wad2test-43dc0.appspot.com",
-            messagingSenderId: "581094929615",
-            appId: "1:581094929615:web:927fb1303429498d1033ba"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getDatabase()
-
-        const userEmail = document.getElementById('userEmail');
-        const userName = document.getElementById('userName');
-        const userPassword = document.getElementById('userPassword');
-        const userPasswordConfirm = document.getElementById('userPasswordConfirm');
-        const signUpBtn = document.getElementById('signUp');
-        const signInBtn = document.getElementById('login');
-
-
-        const validatePassword = () => {
-            const password = userPassword.value;
-            const length = password.length >= 8;
-            const uppercase = /[A-Z]/.test(password);
-            const symbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-
-            document.getElementById('length').className = length ? 'valid criteria' : 'invalid criteria';
-            document.getElementById('capital').className = uppercase ? 'valid criteria' : 'invalid criteria';
-            document.getElementById('symbol').className = symbol ? 'valid criteria' : 'invalid criteria';
-
-            // Hide message if all criteria are valid
-            if (length && uppercase && symbol) {
-                document.getElementById('message').style.display = 'none'; // Hide the message
-            } else {
-                document.getElementById('message').style.display = 'block'; // Show the message
-            }
-
-            return length && uppercase && symbol;
-        };
-
-        const validateConfirmPassword = () => {
-            const errorElement = document.getElementById('passwordError');
-            if (userPassword.value !== userPasswordConfirm.value) {
-                errorElement.textContent = 'Passwords do not match';
-                errorElement.classList.remove('success');
-                errorElement.classList.add('error');
-                return false;
-            } else {
-                errorElement.textContent = '';
-                return true;
-            }
-        };
-
-        const validateForm = () => {
-            const isPasswordValid = validatePassword();
-            const isConfirmPasswordValid = validateConfirmPassword();
-            return isPasswordValid && isConfirmPasswordValid;
-        };
-
-        userPassword.addEventListener('input', () => {
-            validatePassword();
-        });
-
-        userPasswordConfirm.addEventListener('input', () => {
-            validateConfirmPassword();
-        });
-        function insertData() {
-            set(ref(db, "people/" + userName.value,),
-                {
-                    Name: userName.value,
-                    Email: userEmail.value
-
-                }
-            )
-                .then(() => {
-                    localStorage.setItem('name', userName.value);
-                    window.location.href = 'after-sign-in-1.html';
-                })
-                .catch((error) => {
-                    alert(error)
-                })
-        }
-
-        signUpBtn.addEventListener('click', async () => {
-            const email = userEmail.value;
-            const password = userPassword.value;
-
-            if (validateForm()) {
-                try {
-                    await createUserWithEmailAndPassword(auth, email, password);
-                    insertData()
-
-
-                } catch (error) {
-                    alert('Error: ' + error.message);
-                }
-            }
-        });
-
-        signInBtn.addEventListener('click', () => {
-            // Redirect to login page or handle login logic
-            window.location.href = 'login-page.html'; // Change to your login page
-        });
     </script>
+
+    
 </body>
 
 </html>
