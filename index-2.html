@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,6 +108,133 @@
         .magic-point {
             flex: 1;
         }
+        #orbit-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.orbit-container {
+    position: relative;
+    width: 300px; /* You can adjust the size */
+    height: 300px; /* You can adjust the size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outer orbit */
+#outer-orbit {
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border: 1px dashed #bbb;
+    border-radius: 50%;
+    animation: rotateOuter 20s linear infinite; /* Slower rotation */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outer orbit circle */
+#outer-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+}
+
+/* Outer circle image with counter-rotation to keep it fixed */
+#outer-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: counterRotate 20s linear infinite; /* Matches the slower outer orbit */
+}
+
+/* Inner orbit */
+#inner-orbit {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px dashed #ddd;
+    border-radius: 50%;
+    animation: rotateInner 15s linear infinite;
+    top: 25%; /* Center the inner orbit within the outer orbit */
+    left: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Inner orbit circle */
+#inner-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+}
+
+/* Inner circle image with counter-rotation to keep it fixed */
+#inner-circle img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: counterRotate 15s linear infinite; /* Matches the inner orbit */
+}
+
+/* Keyframe animation for outer orbit rotation */
+@keyframes rotateOuter {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Keyframe animation for inner orbit rotation */
+@keyframes rotateInner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Keyframe animation to counter-rotate images */
+@keyframes counterRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Center the image inside the orbits */
+.orbit-center-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensure it's above the orbits */
+}
+
+.orbit-center-img img {
+    width: 300px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%; /* Optional, if you want it circular */
+}
+
 
 
      </style>
@@ -152,38 +280,62 @@
             <div class = "row">
                 <div class = "col-1"></div>
                 <div class = "col-10" style = "background-color: #e6e0d6; border-radius: 5px;">
-                    <div class = "col-12 col-lg-6">
-                        <div class="card">
-                            <ul class="list-group list-group-flush magic-list-group">
-                                <li class="list-group-item d-flex align-items-center">
-                                    <img src="assets/magic-automate.png" class = "magic-point-img" alt="">
-                                    <span class = "magic-point">
-                                        Automate and Schedule Posts to Save Time and Streamline Your Workflow
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center">
-                                    <img src="assets/magic-plan.png" class = "magic-point-img" alt="">
-                                    <span>
-                                        Plan Strategically by Aligning Social Content with Key Campaigns and Trends
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center">
-                                    <img src="assets/magic-manage.png" class = "magic-point-img" alt="">
-                                    <span class = "magic-point">
-                                        Manage Multiple Platforms from One Centralized Social Media Dashboard
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center">
-                                    <img src="assets/magic-saving.png" class = "magic-point-img" alt="">
-                                    <span class = "magic-point">
-                                        Centralized Access to All Marketing Assets for Easy Bookkeeping
-                                    </span>
-                                </li>
-                                <li class="list-group-item d-flex align-items-center">
-                                    <img src="assets/magic-idea.png" class = "magic-point-img" alt="">
-                                    Turn Your Quick Ideas Into Optimised Content Calendars
-                                </li>
-                            </ul>
+                    <div class = "row">
+                        <div class = "col-12 col-lg-6">
+                            <div class="card">
+                                <ul class="list-group list-group-flush magic-list-group">
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-automate.png" class = "magic-point-img" alt="">
+                                        <span class = "magic-point">
+                                            Automate and Schedule Posts to Save Time and Streamline Your Workflow
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-plan.png" class = "magic-point-img" alt="">
+                                        <span>
+                                            Plan Strategically by Aligning Social Content with Key Campaigns and Trends
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-manage.png" class = "magic-point-img" alt="">
+                                        <span class = "magic-point">
+                                            Manage Multiple Platforms from One Centralized Social Media Dashboard
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-saving.png" class = "magic-point-img" alt="">
+                                        <span class = "magic-point">
+                                            Centralized Access to All Marketing Assets for Easy Bookkeeping
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-idea.png" class = "magic-point-img" alt="">
+                                        Turn Your Quick Ideas Into Optimised Content Calendars
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class = "col-12 col-lg-6 d-flex justify-content-center" id = "orbit-body">
+                            <!-- magic animation start -->
+                            <div class="orbit-container">
+                                <!-- Outer Orbit -->
+                                <div id="outer-orbit">
+                                    <div id="outer-circle">
+                                        <img src="assets/magic-people.png" alt="Outer Circle">
+                                    </div>
+                                </div>
+                        
+                                <!-- Inner Orbit -->
+                                <div id="inner-orbit">
+                                    <div id="inner-circle">
+                                        <img src="assets/magic-calendar.png" alt="Inner Circle">
+                                    </div>
+                                </div>
+                                <div class="orbit-center-img">
+                                    <img src="assets/magic-marketer.png" alt="Center Image">
+                                </div>
+                            </div>
+                            <!-- magic animation end -->
                         </div>
                     </div>
                 </div>
