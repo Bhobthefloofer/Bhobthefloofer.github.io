@@ -74,6 +74,7 @@ function insertData2() {
             CompanyName: comName.value,
             OfficialWebsite: comWeb.value,
             CompanyType: comType.value,
+            CompanyDesc: ''
 
 
         }
