@@ -10,12 +10,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Magnolia+Script&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <title>Calendar | Crafted</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="calendar"></div>
+
+    <!-- Modal structure -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Event Details</h2>
+            <p id="modalContent">Event information goes here.</p>
+            <a id="twitterLink" href="#" target="_blank">View Twitter Post</a>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
+            var modal = document.getElementById('eventModal');
+            var closeBtn = document.getElementsByClassName("close")[0];
 
             var initialView = window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth';
 
@@ -41,11 +85,40 @@
                         start: '2024-11-20T14:00:00'
                     }
                 ],
-                editable: true,  
-                selectable: true  
+                editable: true,
+                selectable: true,
+                dateClick: function(info) {
+                    // placeholder api, we need to change it with ours 
+                    fetch(`https://your-api-page-connected-to-twitter.com/posts?date=${info.dateStr}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Populate modal content with fetched data
+                            document.getElementById('modalTitle').textContent = data.title || "Event Details";
+                            document.getElementById('modalContent').textContent = data.description || "More info on Twitter.";
+                            document.getElementById('twitterLink').href = data.twitterLink;
+
+                            // Display the modal
+                            modal.style.display = "block";
+                        })
+                        .catch(error => {
+                            console.error('Error fetching data:', error);
+                            document.getElementById('modalTitle').textContent = "Error";
+                            document.getElementById('modalContent').textContent = "Could not load event information.";
+                        });
+                }
             });
 
             calendar.render();
+
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         });
     </script>
 </body>
