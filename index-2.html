@@ -112,16 +112,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 70vh; */
     margin: 0;
-    background-color: #f0f0f0;
 }
 
 .orbit-container {
     position: relative;
-    width: 300px; /* You can adjust the size */
-    height: 300px; /* You can adjust the size */
-    display: flex;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    display: flex; /* Center child elements */
     justify-content: center;
     align-items: center;
 }
@@ -159,18 +159,15 @@
 
 /* Inner orbit */
 #inner-orbit {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border: 1px dashed #ddd;
+    width: 370px;
+    height: 370px;
+    border: 1px dashed #bbb;
     border-radius: 50%;
+    box-sizing: border-box; /* Ensures border doesn’t affect dimensions */
     animation: rotateInner 15s linear infinite;
-    top: 25%; /* Center the inner orbit within the outer orbit */
-    left: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
+
 
 /* Inner orbit circle */
 #inner-circle {
