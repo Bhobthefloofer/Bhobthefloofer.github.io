@@ -25,7 +25,11 @@ const signUpBtn = document.getElementById('signUp')
 const signInBtn = document.getElementById('signIn')
 const signOutBtn = document.getElementById('signOut')
 const authForm = document.getElementById('authForm')
-const secret = document.getElementById('secret')
+
+
+
+
+
 
 signUpBtn.addEventListener('click', redirectSignUp)
 
@@ -41,10 +45,13 @@ const userSignIn = async () => {
             const user = userCredential.user
 
             window.location.href = "home.html";
-        })
 
+        }
+
+        )
         .catch((error) => {
             alert(error)
+
         })
 }
 
@@ -59,11 +66,12 @@ const checkAuth = async () => {
 
         }
     })
-}
 
+
+
+
+}
 checkAuth()
 
-const userSignOut = async () => {
-    await signOut(auth)
-}
-signOutBtn.addEventListener('click', userSignOut)
+
+
