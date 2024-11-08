@@ -68,6 +68,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+        import { getDatabase, set, get, update, remove, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
 
         const firebaseConfig = {
             apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
@@ -82,6 +83,29 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
+        const db = getDatabase()
+        const name = localStorage.getItem('name')
+
+        function findData() {
+            const dbref = ref(db)
+            get(child(dbref, "people/" + name))
+                .then((snapshot) => {
+                    console.log(snapshot)
+                    if (snapshot.exists()) {
+                        imagePreview.src = snapshot.val().profileURL
+
+
+                    }
+                    else {
+                        alert("User doesnt exist")
+                    }
+                })
+                .catch((error) => {
+                    alert(error)
+                }
+
+                )
+        }
 
         // Modal and profile handling
         const imagePreview = document.getElementById('imagePreview');
@@ -111,15 +135,22 @@
             const file = event.target.files[0];
             if (file) {
                 const storageRef = ref(storage, 'profile_pictures/' + file.name);
-                uploadBytes(storageRef, file).then((snapshot) => {
+                await uploadBytes(storageRef, file).then((snapshot) => {
                     console.log('Uploaded a blob or file!', snapshot);
                     getDownloadURL(snapshot.ref).then((url) => {
                         imagePreview.src = url;
-                        set(ref(db, "people/" + enterID.value,),
+                        update(ref(db, "people/" + name,),
                             {
-                                
+                                profileURL : url
+
                             }
                         )
+                            .then(() => {
+
+                            })
+                            .catch((error) => {
+                                alert(error)
+                            })
                     });
                 });
             }
