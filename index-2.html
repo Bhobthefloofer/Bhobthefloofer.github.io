@@ -45,7 +45,7 @@
             border-radius: 3px;
         } 
         .magic {
-            background: linear-gradient(45deg, #e6e0d6, #4b4f7b, #f8f8f9);
+            background: linear-gradient(45deg, #383a68, #4b4f7b, #f8f8f9);
             background-size: 400% 400%;
             animation: gradient 7s ease infinite;
         }
@@ -61,26 +61,26 @@
             background-position: 0% 50%;
         }
         }
-        #magic-logo {
-            width: 25%;
+        #our-magic { /* Default for large screens */
+            width: 300px;
             display: block;
             margin: 0 auto;
         }
 
-        @media (max-width: 768px) { 
-            #magic-logo {
-                width: 30%;
+        @media (max-width: 768px) { /* For medium screens and below */
+            #our-magic {
+                width: 250px;
             }
         }
         h2 {
-            color: #383a68;
+            color: #e6e0d6;
             text-align: center;
             font-weight: 550;
             margin: 0px;
             font-style:oblique;
         } 
         h2 {
-            font-size: 40px; /* Default for large screens */
+            font-size: 35px; /* Default for large screens */
         }
 
         @media (max-width: 768px) { /* For medium screens and below */
@@ -88,6 +88,26 @@
                 font-size: 30px;
             }
         }
+
+        .magic-list-group * {
+             background-color: #e6e0d6;
+        }
+
+        .magic-list-group .list-group-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .magic-point-img {
+            flex-shrink: 0;
+            margin-right: 15px; /* Spacing between image and text */
+            width: 120px;
+        }
+
+        .magic-point {
+            flex: 1;
+        }
+
 
      </style>
 </head>
@@ -109,7 +129,7 @@
                     <a class="nav-link" href="#">Who Are We?</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Our Magic</a>
+                    <a class="nav-link" href="#our-magic">Our Magic</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Testimonials</a>
@@ -125,9 +145,53 @@
 
     <!-- magic start -->
      <div class = "container-fluid magic">
-        <img id = "magic-logo" class = "starting-title"src="assets/magic.png" alt="">
+        <img id = "our-magic" class = "starting-title"src="assets/magic.png" alt="">
         <h2 id = "magic-sub">Here's How We Can Help You</h2> 
+        <br>
+        <div class = "container-flex">
+            <div class = "row">
+                <div class = "col-1"></div>
+                <div class = "col-10" style = "background-color: #e6e0d6; border-radius: 5px;">
+                    <div class = "col-6">
+                        <div class="card">
+                            <ul class="list-group list-group-flush magic-list-group">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <img src="assets/magic-automate.png" class = "magic-point-img" alt="">
+                                    <span class = "magic-point">
+                                        Automate and Schedule Posts to Save Time and Streamline Your Workflow
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <img src="assets/magic-plan.png" class = "magic-point-img" alt="">
+                                    <span>
+                                        Plan Strategically by Aligning Social Content with Key Campaigns and Trends
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <img src="assets/magic-manage.png" class = "magic-point-img" alt="">
+                                    <span class = "magic-point">
+                                        Manage Multiple Platforms from One Centralized Social Media Dashboard
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <img src="assets/magic-saving.png" class = "magic-point-img" alt="">
+                                    <span class = "magic-point">
+                                        Centralized Access to All Marketing Assets for Easy Bookkeeping
+                                    </span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <img src="assets/magic-idea.png" class = "magic-point-img" alt="">
+                                    Turn Your Quick Ideas Into Optimised Content Calendars
+                                </li>
+                            </ul>
+                          </div>
+                    </div>
+                </div>
+                <div class = "col-1"></div>
 
+            </div>
+        </div> 
+        <br>
      </div>
      <!-- magic end -->
 
