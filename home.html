@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Crafted</title>
-    
+
     <!-- CSS Links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
@@ -14,33 +14,68 @@
     <link rel="stylesheet" href="css_files/calendar.css">
     <!-- fullcalendar! -->
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <style>
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            color: #4a4a73;
+        }
+
+        .modal-content button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #4a4a73;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: #373767;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-auto sidebar collapsed" id="sidebar">
+            <div class="col-auto sidebar" id="sidebar">
                 <div class="hamburger" id="hamburger">
                     <img src="assets/burger-menu.png" alt="Menu" style="width: 30px; cursor: pointer;">
                 </div>
                 <img src="logo.png" alt="Crafted Logo" class="logo">
                 <img src="assets/small_logo.png" alt="Crafted Small Logo" class="small-logo">
-                
+
                 <!-- Profile Section -->
                 <div class="profile" id="imageUploader">
                     <img id="imagePreview" src="" alt="Profile Picture" style="width: 80px; height: 80px;" />
-                    <h2>Maxwell Robinson</h2>
-                    <span>Senior Marketer</span>
+                    <h2 id = "disName"></h2>
+                    <span id = "disRole"></span>
                 </div>
 
                 <!-- Navigation Links -->
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i><span> Home</span></a></li>
-                    <li class="nav-item"><a href="calendar.html" class="nav-link"><i class="fas fa-calendar-alt"></i><span> Calendar</span></a></li>
-                    <li class="nav-item"><a href="project/post.html" class="nav-link"><i class="fas fa-rocket"></i><span> Posts</span></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i><span> Campaigns</span></a></li>
-                    <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span> Settings</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i><span> Home</span></a>
+                    </li>
+                    <li class="nav-item"><a href="calendar.html" class="nav-link"><i
+                                class="fas fa-calendar-alt"></i><span> Calendar</span></a></li>
+                    <li class="nav-item"><a href="project/post.html" class="nav-link"><i
+                                class="fas fa-rocket"></i><span> Posts</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i><span>
+                                Campaigns</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span>
+                                Settings</span></a></li>
                 </ul>
             </div>
 
@@ -61,12 +96,27 @@
             </div>
         </div>
     </div>
+    <!-- Modal for Profile Options -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <button id="removeProfile">Remove Current Profile</button>
+            <button id="changeProfile">Change Profile</button>
+            <button id="cancel">Cancel</button>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+    </div>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script>
+    <script type="module" src="js_files/home.js"></script>
+
 
     <!-- FullCalendar Script -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    
+    <script type="module" src="js_files/home.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             var modal = document.getElementById('eventModal');
             var closeBtn = document.querySelector(".close");
@@ -109,7 +159,7 @@
                 ],
                 editable: true,
                 selectable: true,
-                eventClick: function(info) {
+                eventClick: function (info) {
                     info.jsEvent.preventDefault();
 
                     document.getElementById('modalCampaignTitle').textContent = info.event.title;
@@ -123,11 +173,11 @@
             calendar.render();
 
             // Modal close functionality
-            closeBtn.onclick = function() {
+            closeBtn.onclick = function () {
                 modal.style.display = "none";
             };
 
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
