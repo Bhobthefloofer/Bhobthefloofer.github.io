@@ -206,6 +206,6 @@ body {
 }
 .logo {
     width: 120px; /* Adjust width as needed */
-    /* max-width: 100%; Prevents it from going beyond container width */
+    max-width: 100%; /* Prevents it from going beyond container width */
     height: auto;
 }
