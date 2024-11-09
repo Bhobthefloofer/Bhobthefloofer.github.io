@@ -27,7 +27,7 @@
             const dbref = ref(db)
             get(child(dbref, "people/" + name))
                 .then((snapshot) => {
-                    console.log(snapshot)
+                   
                     if (snapshot.exists()) {
                         imagePreview.src = snapshot.val().profileURL
                         disRole.innerText = snapshot.val().Role
@@ -157,7 +157,7 @@
 
         
         
-        
+
 
 
         // Sidebar toggle functionality
