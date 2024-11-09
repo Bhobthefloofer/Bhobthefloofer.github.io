@@ -7,154 +7,155 @@
     <title>Settings | Crafted</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css_files/settings.css">
-   
+
 </head>
 
 <body>
+    <div id="content2">
+        <!-- Settings Header -->
+        <h1>Settings</h1>
 
-    <!-- Settings Header -->
-    <h1>Settings</h1>
+        <!-- Settings Container -->
+        <div class="settings-container" id="content">
 
-    <!-- Settings Container -->
-    <div class="settings-container" id="content">
+            <!-- Account Section -->
+            <div class="settings-section">
+                <h2>Account Settings</h2>
+                <div class="setting-option">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" value="Saurabh" disabled>
+                </div>
+                <div class="setting-option">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="" disabled>
+                </div>
 
-        <!-- Account Section -->
-        <div class="settings-section">
-            <h2>Account Settings</h2>
-            <div class="setting-option">
-                <label for="username">Username</label>
-                <input type="text" id="username" value="Maxwell">
+                <div class="setting-option">
+                    <label for="role">Role</label>
+                    <input type="text" id="role" value="">
+                </div>
+                <div class="setting-option">
+                    <button id="updatePersonalDetails">Save Changes</button>
+                </div>
             </div>
-            <div class="setting-option">
-                <label for="email">Email</label>
-                <input type="email" id="email" value="maxwell@gmail.com" disabled>
+
+            <!--organization section-->
+            <div class="settings-section">
+                <h2>Organization</h2>
+                <div class="setting-option">
+                    <label for="organization">Organization Name</label>
+                    <input type="text" id="organization" value="">
+                </div>
+                <div class="setting-option">
+                    <label for="url">Website URL</label>
+                    <input type="text" id="url" value="">
+                </div>
+                <div class="setting-option">
+                    <label for="type">Company type</label>
+                    <input type="text" id="type" value="">
+                </div>
+                <div class="setting-option">
+                    <label for="description">Company description</label>
+                    <input type="text" id="description" value="">
+                </div>
+                <div class="setting-option">
+                    <button id="updateComp">Save Changes</button>
+                </div>
+
             </div>
-            <div class="setting-option">
-                <label for="password">Password</label>
-                <input type="password" id="password" value="test123" disabled>
+            <!-- Privacy Section -->
+            <div class="settings-section">
+                <h2>Privacy</h2>
+                <div class="setting-option switch-label">
+                    <label>Profile Visibility</label>
+                    <button onclick="alert('Toggle visibility settings')">Public</button>
+                </div>
+                <div class="setting-option switch-label">
+                    <label>Location Access</label>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
-            <div class="setting-option">
-                <label for="role">Role</label>
-                <input type="text" id="role" value="Senior Marketer">
+
+            <!-- Notifications Section -->
+            <div class="settings-section">
+                <h2>Notifications</h2>
+                <div class="setting-option switch-label">
+                    <label>Email Notifications</label>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="setting-option switch-label">
+                    <label>Push Notifications</label>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
-            <div class="setting-option">
-                <button id = "updatePersonalDetails" onclick="updateSettings()">Save Changes</button>
+
+            <!-- Theme Section -->
+            <div class="settings-section">
+                <h2>Theme</h2>
+                <div class="setting-option switch-label">
+                    <label>Dark Mode</label>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
+
+            <!-- Location Settings Section -->
+            <div class="settings-section">
+                <h2>Location Settings</h2>
+                <div class="setting-option">
+                    <label for="location">Select Location</label>
+                    <select id="location">
+                        <option value="new_york">New York, USA</option>
+                        <option value="london">London, UK</option>
+                        <option value="tokyo">Tokyo, Japan</option>
+                        <option value="sydney">Sydney, Australia</option>
+                        <option value="mumbai">Mumbai, India</option>
+                        <option value="cairo">Cairo, Egypt</option>
+                        <option value="paris">Paris, France</option>
+                        <option value="beijing">Beijing, China</option>
+                        <option value="berlin">Berlin, Germany</option>
+                        <option value="rio">Rio de Janeiro, Brazil</option>
+                    </select>
+                </div>
+                <div class="setting-option">
+                    <button onclick="alert('Location updated')">Update Location</button>
+                </div>
+            </div>
+
+            <!-- Time Settings Section -->
+            <div class="settings-section">
+                <h2>Time Settings</h2>
+                <div class="setting-option">
+                    <label for="timezone">Select Time Zone</label>
+                    <select id="timezone">
+                        <option value="pst">Pacific Standard Time (PST)</option>
+                        <option value="mst">Mountain Standard Time (MST)</option>
+                        <option value="cst">Central Standard Time (CST)</option>
+                        <option value="est">Eastern Standard Time (EST)</option>
+                        <option value="gmt">Greenwich Mean Time (GMT)</option>
+                        <option value="cet">Central European Time (CET)</option>
+                        <option value="ist">Indian Standard Time (IST)</option>
+                        <option value="jst">Japan Standard Time (JST)</option>
+                        <option value="cst_asia">China Standard Time (CST)</option>
+                    </select>
+                </div>
+                <div class="setting-option">
+                    <button onclick="alert('Time zone updated')">Update Time Zone</button>
+                </div>
+            </div>
+
         </div>
-
-        <!--organization section-->
-        <div class="settings-section">
-            <h2>Organization</h2>
-            <div class="setting-option">
-                <label for="organization">Organization Name</label>
-                <input type="text" id="organization" value="SMU">
-            </div>
-            <div class="setting-option">
-                <label for="url">Website URL</label>
-                <input type="text" id="url" value="www.example.com">
-            </div>
-            <div class="setting-option">
-                <label for="type">Company type</label>
-                <input type="text" id="type" value="example">
-            </div>
-            <div class="setting-option">
-                <label for="description">Company description</label>
-                <input type="text" id="description" value="">
-            </div>
-
-        </div>
-        <!-- Privacy Section -->
-        <div class="settings-section">
-            <h2>Privacy</h2>
-            <div class="setting-option switch-label">
-                <label>Profile Visibility</label>
-                <button onclick="alert('Toggle visibility settings')">Public</button>
-            </div>
-            <div class="setting-option switch-label">
-                <label>Location Access</label>
-                <label class="switch">
-                    <input type="checkbox" checked>
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Notifications Section -->
-        <div class="settings-section">
-            <h2>Notifications</h2>
-            <div class="setting-option switch-label">
-                <label>Email Notifications</label>
-                <label class="switch">
-                    <input type="checkbox" checked>
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <div class="setting-option switch-label">
-                <label>Push Notifications</label>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Theme Section -->
-        <div class="settings-section">
-            <h2>Theme</h2>
-            <div class="setting-option switch-label">
-                <label>Dark Mode</label>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Location Settings Section -->
-        <div class="settings-section">
-            <h2>Location Settings</h2>
-            <div class="setting-option">
-                <label for="location">Select Location</label>
-                <select id="location">
-                    <option value="new_york">New York, USA</option>
-                    <option value="london">London, UK</option>
-                    <option value="tokyo">Tokyo, Japan</option>
-                    <option value="sydney">Sydney, Australia</option>
-                    <option value="mumbai">Mumbai, India</option>
-                    <option value="cairo">Cairo, Egypt</option>
-                    <option value="paris">Paris, France</option>
-                    <option value="beijing">Beijing, China</option>
-                    <option value="berlin">Berlin, Germany</option>
-                    <option value="rio">Rio de Janeiro, Brazil</option>
-                </select>
-            </div>
-            <div class="setting-option">
-                <button onclick="alert('Location updated')">Update Location</button>
-            </div>
-        </div>
-
-        <!-- Time Settings Section -->
-        <div class="settings-section">
-            <h2>Time Settings</h2>
-            <div class="setting-option">
-                <label for="timezone">Select Time Zone</label>
-                <select id="timezone">
-                    <option value="pst">Pacific Standard Time (PST)</option>
-                    <option value="mst">Mountain Standard Time (MST)</option>
-                    <option value="cst">Central Standard Time (CST)</option>
-                    <option value="est">Eastern Standard Time (EST)</option>
-                    <option value="gmt">Greenwich Mean Time (GMT)</option>
-                    <option value="cet">Central European Time (CET)</option>
-                    <option value="ist">Indian Standard Time (IST)</option>
-                    <option value="jst">Japan Standard Time (JST)</option>
-                    <option value="cst_asia">China Standard Time (CST)</option>
-                </select>
-            </div>
-            <div class="setting-option">
-                <button onclick="alert('Time zone updated')">Update Time Zone</button>
-            </div>
-        </div>
-
     </div>
 
     <script>
@@ -175,138 +176,165 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
-      
+
         // Your web app's Firebase configuration
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"
         const firebaseConfig = {
-          apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
-          authDomain: "wad2test-43dc0.firebaseapp.com",
-          databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
-          projectId: "wad2test-43dc0",
-          storageBucket: "wad2test-43dc0.appspot.com",
-          messagingSenderId: "581094929615",
-          appId: "1:581094929615:web:927fb1303429498d1033ba"
+            apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+            authDomain: "wad2test-43dc0.firebaseapp.com",
+            databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "wad2test-43dc0",
+            storageBucket: "wad2test-43dc0.appspot.com",
+            messagingSenderId: "581094929615",
+            appId: "1:581094929615:web:927fb1303429498d1033ba"
         };
-        
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app)
-        const checkAuth =  async () => {
+        const checkAuth = async () => {
             onAuthStateChanged(auth, user => {
                 if (user) {
-                    console.log(user)
-                    const userdetails = user.email 
-                    
+
+
+
                     content.style.display = 'block'
                 }
                 else {
                     window.location.href = 'login-page.html'
                 }
             })
-
-            
-            
-            
         }
         checkAuth()
-        import {getDatabase, set, get, update, remove, ref, child} from  "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+        import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
 
         const db = getDatabase()
-        
 
-        var name = document.getElementById('username')
+
+        var name = document.getElementById('username').value
+        var email = document.getElementById('email')
         var role = document.getElementById('role')
-        
+        var company = document.getElementById('organization')
+        var comURL = document.getElementById('url')
+        var comType = document.getElementById('type')
+        var comDesc = document.getElementById('description')
 
-        var enterID = document.getElementById('email')
-        var enterName = document.getElementById('enterName')
-        var enterAge = document.getElementById('enterAge')
-        var findID = document.getElementById('findID')
-        var findName = document.getElementById('findName')
-        var findAge = document.getElementById('findAge')
-        
-      
-        var insertBtn = document.getElementById('insert')
-        var updateBtn = document.getElementById('update')
-        var removeBtn = document.getElementById('remove')
-        var findBtn = document.getElementById('find')
 
-        function insertData() {
-            set( ref(db, "people/"+ enterID.value, ), 
-                {
-                    Name: enterName.value,
-                    ID: enterID.value,
-                    Age: enterAge.value,
-                    Role: role.value 
+        // var enterID = document.getElementById('email')
+        // var enterName = document.getElementById('enterName')
+        // var enterAge = document.getElementById('enterAge')
+        // var findID = document.getElementById('findID')
+        // var findName = document.getElementById('findName')
+        // var findAge = document.getElementById('findAge')
 
-                }
-            )
-            .then (()=> {
-                alert("data added successfully")
-            } ) 
-            .catch ((error)=> {
-                alert(error)
-            } ) 
-        }
+
+        // var insertBtn = document.getElementById('insert')
+        var updateBtn = document.getElementById('updatePersonalDetails')
+        var updateBtnC = document.getElementById('updateComp')
+        // var removeBtn = document.getElementById('remove')
+        // var findBtn = document.getElementById('find')
+
+        // function insertData() {
+        //     set(ref(db, "people/" + enterID.value,),
+        //         {
+        //             Name: enterName.value,
+        //             ID: enterID.value,
+        //             Age: enterAge.value,
+        //             Role: role.value
+
+        //         }
+        //     )
+        //         .then(() => {
+        //             alert("data added successfully")
+        //         })
+        //         .catch((error) => {
+        //             alert(error)
+        //         })
+        // }
         function findData() {
             const dbref = ref(db)
-            get(child(dbref, "people/" + findID.value ))
-            .then ((snapshot)=> {
-                console.log(snapshot)
-                if (snapshot.exists()) {
-                    findName.innerText = snapshot.val().Name
-                    role.value = snapshot.val().Role
-                    
-                }
-                else {
-                    alert("User doesnt exist")
-                }
-            })
-            .catch ((error)=> {
-                alert(error)
-            }
+            get(child(dbref, "people/" + name))
+                .then((snapshot) => {
+                    console.log("snapshot", snapshot)
+                    if (snapshot.exists()) {
+                        email.value = snapshot.val().Email
+                        role.value = snapshot.val().Role
+                        comURL.value = snapshot.val().OfficialWebsite
+                        company.value = snapshot.val().CompanyName
+                        comType.value = snapshot.val().CompanyType
+                        comDesc.value = snapshot.val().CompanyDesc
 
-            )
-        }
-        function removeData() {
-            remove(ref(db, "people/" + enterID.value)) 
-            .then (()=> {
-                    alert("Data Deleted")
-                }
-            )
-            .catch ((error)=> {
-                alert(error)
-            }
 
-            )
-        }
-        function updateData() {
-            update(
-                ref(db, "people/" + enterID.value), {
-                    Name: enterName.value,
-                    Age: enterAge.value,
+                    }
+                    else {
+                        alert("User doesnt exist")
+                    }
                 })
-                .then (()=> {
+                .catch((error) => {
+                    alert(error)
+                }
+
+                )
+        }
+        // function removeData() {
+        //     remove(ref(db, "people/" + enterID.value))
+        //         .then(() => {
+        //             alert("Data Deleted")
+        //         }
+        //         )
+        //         .catch((error) => {
+        //             alert(error)
+        //         }
+
+        //         )
+        // }
+        function updateDataR() {
+            update(
+                ref(db, "people/" + name), {
+                Role: role.value,
+
+            })
+                .then(() => {
                     alert("Data Updated")
                 }
-            )
-            .catch ((error)=> {
-                alert(error)
-            }
+                )
+                .catch((error) => {
+                    alert(error)
+                }
 
-            )
-            
-            
+                )
+
+
         }
+        function updateDataC() {
+            update(
+                ref(db, "people/" + name), {
+                CompanyName: company.value,
+                OfficialWebsite: comURL.value,
+                CompanyType: comType.value,
+                CompanyDesc: comDesc.value
+            })
+                .then(() => {
+                    alert("Data Updated")
+                }
+                )
+                .catch((error) => {
+                    alert(error)
+                }
 
-        insertBtn.addEventListener('click', insertData)
-        findBtn.addEventListener('click', findData)
-        removeBtn.addEventListener('click', removeData)
-        updateBtn.addEventListener('click', updateData)
+                )
 
 
-      </script>
-      
+        }
+        // insertBtn.addEventListener('click', insertData)
+        findData()
+        // removeBtn.addEventListener('click', removeData)
+        updateBtn.addEventListener('click', updateDataR)
+        updateBtnC.addEventListener('click', updateDataC)
+
+
+    </script>
+
 </body>
 
 </html>

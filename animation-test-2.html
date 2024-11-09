@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent Double Orbit</title>
+    <style>
+        /* Centering the main container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Position the orbits absolutely around the center */
+        .orbit-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Outer orbit */
+        #outer-orbit {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            animation: rotateOuter 20s linear infinite; /* Slower rotation */
+        }
+
+        /* Outer orbit circle */
+        #outer-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Outer circle image with counter-rotation to keep it fixed */
+        #outer-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 20s linear infinite; /* Matches the slower outer orbit */
+        }
+
+        /* Inner orbit */
+        #inner-orbit {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 1px dashed #ddd;
+            border-radius: 50%;
+            animation: rotateInner 15s linear infinite;
+            top: 25%; /* Center the inner orbit within the outer orbit */
+            left: 25%;
+        }
+
+        /* Inner orbit circle */
+        #inner-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 80px;
+            height: 80px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Inner circle image with counter-rotation to keep it fixed */
+        #inner-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 15s linear infinite; /* Matches the inner orbit */
+        }
+
+        /* Keyframe animation for outer orbit rotation */
+        @keyframes rotateOuter {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation for inner orbit rotation */
+        @keyframes rotateInner {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation to counter-rotate images */
+        @keyframes counterRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orbit-container">
+        <!-- Outer Orbit -->
+        <div id="outer-orbit">
+            <div id="outer-circle">
+                <img src="assets/magic-people.png" alt="Outer Circle">
+            </div>
+        </div>
+
+        <!-- Inner Orbit, positioned independently within the container -->
+        <div id="inner-orbit">
+            <div id="inner-circle">
+                <img src="assets/magic-people.png" alt="Inner Circle">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

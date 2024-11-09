@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Crafted</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css_files/home.css">
 </head>
@@ -16,28 +15,28 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar structure -->
-            <div class="col-auto sidebar" id="sidebar">
-                <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
-                <!-- Logo -->
-                <img src="logo.png" alt="" class="logo">
-                <br>
+            <div class="col-auto sidebar collapsed" id="sidebar">
+                <!-- <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div> -->
+                <div class="hamburger" id="hamburger">
+                    <img src="assets/burger-menu.png" alt="Menu" style="width: 30px; cursor: pointer;">
+                </div>
+                <img src="logo.png" alt="Crafted Logo" class="logo">
+                <img src="assets/small_logo.png" alt="Crafted Small Logo" class="small-logo">
+                
                 <!-- Profile Section -->
                 <div class="profile" id="imageUploader">
-                    <img id="imagePreview" src="" alt="Profile Picture" />
+                    <img id="imagePreview" src="" alt="Profile Picture" style="width: 80px; height: 80px;" />
                     <h2>Maxwell Robinson</h2>
                     <span>Senior Marketer</span>
                 </div>
 
                 <!-- Navigation Links -->
-                <ul class="nav">
-                    <li><a href="#"><i class="fas fa-home"></i><span>Home</span></a></li>
-                    <li><a href="calendar.html"><i class="fas fa-calendar-alt"></i><span>Calendar</span></a>
-                    </li>
-                    <li><a href="project/post.html"><i class="fas fa-rocket"></i><span>Posts</span></a></li>
-                    <li><a href="#"><i class="fas fa-bullhorn"></i><span>Campaigns</span></a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i><span>Analytics</span></a></li>
-                    <li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i><span> Home</span></a></li>
+                    <li class="nav-item"><a href="calendar.html" class="nav-link"><i class="fas fa-calendar-alt"></i><span> Calendar</span></a></li>
+                    <li class="nav-item"><a href="project/post.html" class="nav-link"><i class="fas fa-rocket"></i><span> Posts</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i><span> Campaigns</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span> Settings</span></a></li>
                 </ul>
             </div>
 
@@ -46,7 +45,7 @@
                 xx
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Modal for Profile Options -->
     <div id="profileModal" class="modal">
@@ -54,79 +53,21 @@
             <button id="removeProfile">Remove Current Profile</button>
             <button id="changeProfile">Change Profile</button>
             <button id="cancel">Cancel</button>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
     </div>
 
-    <!-- Hidden File Input -->
-    <input type="file" id="fileInput" accept="image/*" style="display: none;">
-
     <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+    <script type="module" src="js_files/home.js"></script>
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
-            authDomain: "wad2test-43dc0.firebaseapp.com",
-            databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "wad2test-43dc0",
-            storageBucket: "wad2test-43dc0.appspot.com",
-            messagingSenderId: "581094929615",
-            appId: "1:581094929615:web:927fb1303429498d1033ba"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const storage = getStorage(app);
-
-        // Modal and profile handling
-        const imagePreview = document.getElementById('imagePreview');
-        const fileInput = document.getElementById('fileInput');
-        const profileModal = document.getElementById('profileModal');
-        const sidebar = document.getElementById('sidebar');
-
-        document.getElementById('imageUploader').onclick = () => {
-            profileModal.style.display = 'block';
-        };
-
-        document.getElementById('removeProfile').onclick = () => {
-            imagePreview.src = '';
-            profileModal.style.display = 'none';
-        };
-
-        document.getElementById('changeProfile').onclick = () => {
-            fileInput.click();
-            profileModal.style.display = 'none';
-        };
-
-        document.getElementById('cancel').onclick = () => {
-            profileModal.style.display = 'none';
-        };
-
-        fileInput.onchange = (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const storageRef = ref(storage, 'profile_pictures/' + file.name);
-                uploadBytes(storageRef, file).then((snapshot) => {
-                    console.log('Uploaded a blob or file!', snapshot);
-                    getDownloadURL(snapshot.ref).then((url) => {
-                        imagePreview.src = url;
-                        set(ref(db, "people/" + enterID.value,),
-                            {
-                                
-                            }
-                        )
-                    });
-                });
-            }
-        };
-
-        // Sidebar toggle functionality
-        document.getElementById('hamburger').onclick = () => {
-            sidebar.classList.toggle('collapsed');
-        };
+    <script>
+        // here is the JavaScript for toggling the sidebar- need to move to the home.js file 
+        document.getElementById("hamburger").addEventListener("click", function () {
+            document.getElementById("sidebar").classList.toggle("collapsed");
+        });
     </script>
+
 </body>
 
 </html>
