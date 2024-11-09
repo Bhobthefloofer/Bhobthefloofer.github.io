@@ -1,0 +1,84 @@
+
+        body {
+            background-color: #f8f9fa;
+            font-family: "Lato", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .kanban-column {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 300px;
+        }
+        .kanban-column h5 {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .idea-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .idea-card p {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .add-idea {
+            font-size: 1rem;
+            color: #007bff;
+            cursor: pointer;
+            display: block;
+            text-align: center;
+            padding: 10px;
+        }
+        .add-idea:hover {
+            text-decoration: underline;
+        }
+        .campaign-button {
+            font-size: 12px;
+            padding: 2px;
+            border-radius: 3px;
+            background-color: #383a68;
+            color: white;
+        }
+        .social-connect {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        /* Restore the original button style */
+        button {
+            font-size: 1rem;
+            padding: 10px 15px;
+            margin: 5px 0;
+            background-color: white;
+            color: #6c757d;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.2s ease;
+        }
+        button i {
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #f1f1f1;
+        }
+        button.connecting {
+            color: lightblue;
+        }
+        button.connected {
+            color: green;
+        }
+        .channels {
+            margin-left: 20px
+        }
