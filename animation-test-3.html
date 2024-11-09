@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ticker {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+
+        .ticker__list {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .ticker__item {
+            margin-right: 20px; /* Space between items */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
+
+        .testimonial-card {
+            width: 300px;
+            height: 320px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .testimonial-card .profile-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: -40px; /* Position the image half outside the card */
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white; /* Optional: Add a border around the image */
+        }
+
+        .company-logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .name-role {
+            font-weight: bold;
+            /* margin-top: 10px; */
+        }
+        .name-box {
+            height: 50px;
+            /* background-color: antiquewhite; */
+        }
+
+        .testimonial-card p {
+            margin-top: 60px; /* Add some space between the profile image and the text */
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                max-width: 280px; /* Adjust the card width for smaller screens */
+            }
+
+            .ticker__item {
+                margin-right: 15px; /* Adjust spacing on smaller screens */
+            }
+        }
+    </style>
+    <title>Document</title>
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="ticker">
+        <div class="ticker__list">
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-rajesh.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        As a scientist running my own tech blog, Crafted's scheduling posts in advance gives me more time to focus on my research.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Rajesh Koothrappali, Founder</div>
+                    </div>
+                    <div class="company-logo">KoothTech</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-rosa.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        I never thought I could love something. But, Crafted is quick, easy, and keeps everything on track - just how I like it.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Rosa Diaz, Media Content Manager</div>
+                    </div>
+                    <div class="company-logo">99th Precinct</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-lily.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        For our family’s event planning business, Crafted lets me schedule everything from playdates to big weddings without missing a beat.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Lily Tucker-Pritchett, Event Coordinator</div>
+                    </div>
+                    <div class="company-logo">Modern Family</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-janice.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        Generally, I love mixing things up. But when it comes to marketing, I need it all prim and proper in one place. Crafted does that for me. 
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Janice Litman-Goralnik, Fashion Consultant</div>
+                    </div>
+                    <div class="company-logo">Friendly Fashion</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-kelly.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        Crafted is like my personal assistant for social media! It keeps my posts organized, letting me spend more time making sales.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Kelly Kapoor, Social Media Strategist</div>
+                    </div>
+                    <div class="company-logo">Dunder Mifflin</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-tracy.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        Crafted makes it easy to schedule posts and manage my band’s social media so I can focus on creating music and performing.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Tracy McConnell, Songwriter</div>
+                    </div>
+                    <div class="company-logo">Superfreakonomics</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-ross.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        Managing my paleontology lectures and museum events is a lot to juggle, but Crafted makes social media scheduling a breeze.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Ross Geller, Curator</div>
+                    </div>
+                    <div class="company-logo">Museum of Natural History</div>
+                </div>
+            </div>
+            
+            <div class="ticker__item">
+                <div class="card testimonial-card">
+                    <img src="assets/test-louis.png" alt="Profile Image" class="profile-image">
+                    <p>
+                        Crafted helps me schedule and manage content for our social media, keeping things professional and polished.
+                    </p>
+                    <div class="name-box">
+                        <div class="name-role">Louis Litt, Managing Partner</div>
+                    </div>
+                    <div class="company-logo">Litt Wheeler Williams Bennett</div>
+                </div>
+            </div>            
+        </div>            
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // GSAP Animation for Scrolling Ticker
+
+        // Select the ticker and list elements
+        const ticker = document.querySelector('.ticker');
+        const list = document.querySelector('.ticker__list');
+
+        // Clone the list to create a seamless loop
+        const clone = list.cloneNode(true);
+        ticker.appendChild(clone);
+
+        // Set up GSAP animation to move the ticker list to the left
+        const animation = gsap.to('.ticker__list', {
+            x: '-100%', // Move it to the left by 100% of the width
+            duration: 50, // Duration of the animation
+            repeat: -1, // Repeat infinitely
+            ease: 'linear', // Linear easing
+        });
+
+        // Pause the animation when hovering over the ticker
+        ticker.addEventListener('mouseenter', function() {
+            animation.pause(); // Pause the animation on hover
+        });
+
+        // Resume the animation when the mouse leaves
+        ticker.addEventListener('mouseleave', function() {
+            animation.resume(); // Resume the animation when mouse leaves
+        });
+    </script>
+</body>
+</html>
