@@ -1,133 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Independent Double Orbit</title>
-    <style>
-        /* Centering the main container */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continuous Scrolling Cards</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Ticker container */
+    .ticker-container {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      position: relative;
+    }
 
-        /* Position the orbits absolutely around the center */
-        .orbit-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-        }
+    /* Scrolling cards container */
+    .ticker-cards {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scrollLeft 30s linear infinite;
+    }
 
-        /* Outer orbit */
-        #outer-orbit {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border: 1px dashed #bbb;
-            border-radius: 50%;
-            animation: rotateOuter 20s linear infinite; /* Slower rotation */
-        }
+    /* Each individual card */
+    .ticker-card {
+      display: inline-block;
+      margin-right: 50px;  /* Space between cards */
+    }
 
-        /* Outer orbit circle */
-        #outer-circle {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 80px;
-            height: 80px;
-            transform: translate(-50%, -50%);
-        }
+    .testimonial-card {
+      width: 300px;
+      margin: 0;
+      padding: 15px;
+      background-color: #fff;
+      color: #333;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        /* Outer circle image with counter-rotation to keep it fixed */
-        #outer-circle img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation: counterRotate 20s linear infinite; /* Matches the slower outer orbit */
-        }
+    .profile-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-        /* Inner orbit */
-        #inner-orbit {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 1px dashed #ddd;
-            border-radius: 50%;
-            animation: rotateInner 15s linear infinite;
-            top: 25%; /* Center the inner orbit within the outer orbit */
-            left: 25%;
-        }
+    .company-logo {
+      font-weight: bold;
+      color: #007bff;
+    }
 
-        /* Inner orbit circle */
-        #inner-circle {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 80px;
-            height: 80px;
-            transform: translate(-50%, -50%);
-        }
+    .name-role {
+      font-size: 0.9em;
+      color: #555;
+    }
 
-        /* Inner circle image with counter-rotation to keep it fixed */
-        #inner-circle img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            animation: counterRotate 15s linear infinite; /* Matches the inner orbit */
-        }
-
-        /* Keyframe animation for outer orbit rotation */
-        @keyframes rotateOuter {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Keyframe animation for inner orbit rotation */
-        @keyframes rotateInner {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Keyframe animation to counter-rotate images */
-        @keyframes counterRotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(-360deg);
-            }
-        }
-    </style>
+    /* Animation to scroll cards from right to left */
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="orbit-container">
-        <!-- Outer Orbit -->
-        <div id="outer-orbit">
-            <div id="outer-circle">
-                <img src="assets/magic-people.png" alt="Outer Circle">
-            </div>
-        </div>
-
-        <!-- Inner Orbit, positioned independently within the container -->
-        <div id="inner-orbit">
-            <div id="inner-circle">
-                <img src="assets/magic-people.png" alt="Inner Circle">
-            </div>
-        </div>
+<div class="ticker-container">
+  <div class="ticker-cards">
+    <!-- The cards to scroll -->
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
     </div>
+
+    <!-- Add more cards here (duplicate the card as needed) -->
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
+    </div>
+
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
+    </div>
+
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
+    </div>
+
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
+    </div>
+
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
+    </div>
+
+    <div class="ticker-card">
+      <div class="card testimonial-card">
+        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
+        <p class="mt-5">
+          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
+        </p>
+        <div class="company-logo">Happy Socks</div>
+        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (optional for interactive components) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

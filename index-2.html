@@ -14,6 +14,10 @@
     <!-- bootstrap start -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- bootstrap end -->
+     <!-- gsap library start -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+     <!-- gsap library end -->
+
      <style>
         body {
             font-family: "Lato", serif;
@@ -109,211 +113,299 @@
             flex: 1;
         }
         #orbit-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* height: 70vh; */
-    margin: 0;
-}
-
-.orbit-container {
-    position: relative;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    display: flex; /* Center child elements */
-    justify-content: center;
-    align-items: center;
-}
-
-/* Outer orbit */
-#outer-orbit {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border: 1px dashed #bbb;
-    border-radius: 50%;
-    animation: rotateOuter 20s linear infinite; /* Slower rotation */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Outer orbit circle */
-#outer-circle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    transform: translate(-50%, -50%);
-}
-
-/* Outer circle image with counter-rotation to keep it fixed */
-#outer-circle img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: counterRotate 20s linear infinite; /* Matches the slower outer orbit */
-}
-
-/* Inner orbit */
-#inner-orbit {
-    width: 320px;
-    height: 320px;
-    border: 1px dashed #bbb;
-    border-radius: 50%;
-    box-sizing: border-box; /* Ensures border doesn’t affect dimensions */
-    animation: rotateInner 15s linear infinite;
-}
-
-
-
-/* Inner orbit circle */
-#inner-circle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    transform: translate(-50%, -50%);
-}
-
-/* Inner circle image with counter-rotation to keep it fixed */
-#inner-circle img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: counterRotate 15s linear infinite; /* Matches the inner orbit */
-}
-
-/* Keyframe animation for outer orbit rotation */
-@keyframes rotateOuter {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Keyframe animation for inner orbit rotation */
-@keyframes rotateInner {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Keyframe animation to counter-rotate images */
-@keyframes counterRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(-360deg);
-    }
-}
-
-/* Center the image inside the orbits */
-.orbit-center-img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10; /* Ensure it's above the orbits */
-}
-
-.orbit-center-img img {
-    width: 250px; /* Adjust size as needed */
-    height: auto;
-    border-radius: 50%; /* Optional, if you want it circular */
-}
-
-/* Outest orbit */
-#outest-orbit {
-    position: absolute;
-    width: 470px;
-    height: 470px;
-    border: 1px dashed #bbb;
-    border-radius: 50%;
-    animation: rotateOutest 25s linear infinite; /* Slower rotation */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Outest orbit circle */
-#outest-circle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 47px;
-    height: 47px;
-    transform: translate(-50%, -50%);
-}
-
-/* Outest circle image with counter-rotation to keep it fixed */
-#outest-circle img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    animation: counterRotate 25s linear infinite; /* Matches the outest orbit */
-}
-
-/* Keyframe animation for outest orbit rotation */
-@keyframes rotateOutest {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.under-orbit {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.ad {
-    color: #4b4f7b;
-    text-align: center;
-    margin: 10px 0;
-    font-weight: 700;
-    font-size: 24px; /* Increased size for prominence */
-    line-height: 1.3;
-}
-
-.btn {
-    background-color: #4b4f7b;
-    color: #e6e0d6;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 500;
-    font-style: oblique;
-    /* text-transform: uppercase; */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.btn:hover {
-    background-color: #383a68;
-    transform: scale(1.05); /* Slightly grow on hover */
-}
-
-    @media (max-width: 767px) {
-        #orbit-body {
-            display: none !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 70vh; */
+        margin: 0;
         }
-    }
+
+        .orbit-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            display: flex; /* Center child elements */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outer orbit */
+        #outer-orbit {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            animation: rotateOuter 20s linear infinite; /* Slower rotation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outer orbit circle */
+        #outer-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Outer circle image with counter-rotation to keep it fixed */
+        #outer-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 20s linear infinite; /* Matches the slower outer orbit */
+        }
+
+        /* Inner orbit */
+        #inner-orbit {
+            width: 320px;
+            height: 320px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            box-sizing: border-box; /* Ensures border doesn’t affect dimensions */
+            animation: rotateInner 15s linear infinite;
+        }
+
+
+
+        /* Inner orbit circle */
+        #inner-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Inner circle image with counter-rotation to keep it fixed */
+        #inner-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 15s linear infinite; /* Matches the inner orbit */
+        }
+
+        /* Keyframe animation for outer orbit rotation */
+        @keyframes rotateOuter {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation for inner orbit rotation */
+        @keyframes rotateInner {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation to counter-rotate images */
+        @keyframes counterRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        /* Center the image inside the orbits */
+        .orbit-center-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10; /* Ensure it's above the orbits */
+        }
+
+        .orbit-center-img img {
+            width: 250px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 50%; /* Optional, if you want it circular */
+        }
+
+        /* Outest orbit */
+        #outest-orbit {
+            position: absolute;
+            width: 470px;
+            height: 470px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            animation: rotateOutest 25s linear infinite; /* Slower rotation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outest orbit circle */
+        #outest-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 47px;
+            height: 47px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Outest circle image with counter-rotation to keep it fixed */
+        #outest-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 25s linear infinite; /* Matches the outest orbit */
+        }
+
+        /* Keyframe animation for outest orbit rotation */
+        @keyframes rotateOutest {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .under-orbit {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad {
+            color: #4b4f7b;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 700;
+            font-size: 24px; /* Increased size for prominence */
+            line-height: 1.3;
+        }
+
+        .btn {
+            background-color: #4b4f7b;
+            color: #e6e0d6;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 500;
+            font-style: oblique;
+            /* text-transform: uppercase; */
+            transition: all 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .btn:hover {
+            background-color: #383a68;
+            transform: scale(1.05); /* Slightly grow on hover */
+        }
+
+        @media (max-width: 767px) {
+            #orbit-body {
+                display: none !important;
+            }
+        }
+        #testimonials { /* Default for large screens */
+            width: 330px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            #our-magic {
+                width: 270px;
+            }
+        }
+        .test {
+            background-color: #383a68;
+        }
+
+        .ticker {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+
+        .ticker__list {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .ticker__item {
+            margin-right: 20px; /* Space between items */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
+
+        .testimonial-card {
+            width: 300px;
+            height: 320px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .testimonial-card .profile-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: -40px; /* Position the image half outside the card */
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white; /* Optional: Add a border around the image */
+        }
+
+        .company-logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .name-role {
+            font-weight: bold;
+            /* margin-top: 10px; */
+        }
+        .name-box {
+            height: 50px;
+            /* background-color: antiquewhite; */
+        }
+
+        .testimonial-card p {
+            margin-top: 60px; /* Add some space between the profile image and the text */
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                max-width: 280px; /* Adjust the card width for smaller screens */
+            }
+
+            .ticker__item {
+                margin-right: 15px; /* Adjust spacing on smaller screens */
+            }
+        }
 
      </style>
+
 </head>
 <body>
     <!-- navbar start -->
@@ -336,7 +428,7 @@
                     <a class="nav-link" href="#our-magic">Our Magic</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Testimonials</a>
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">The Team</a>
@@ -346,7 +438,6 @@
     </nav>
     
     <!-- navbar end -->
-
     <!-- magic start -->
      <div class = "container-fluid magic">
         <img id = "our-magic" class = "starting-title"src="assets/magic.png" alt="">
@@ -436,8 +527,131 @@
             </div>
         </div> 
         <br>
-     </div>
+    </div>
      <!-- magic end -->
+
+     <!-- testimonials start -->
+    <div class = "container-fluid test">
+        <br>
+        <img id = "testimonials" class = "starting-title" src="assets/test-logo.png" alt="">
+        <br>
+        <br>
+        <!-- ticker start -->
+            <div class="ticker">
+                <div class="ticker__list">
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-rajesh.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                As a scientist running my own tech blog, Crafted's scheduling posts in advance gives me more time to focus on my research.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Rajesh Koothrappali, Founder</div>
+                            </div>
+                            <div class="company-logo">KoothTech</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-rosa.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                I never thought I could love something. But, Crafted is quick, easy, and keeps everything on track - just how I like it.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Rosa Diaz, Media Content Manager</div>
+                            </div>
+                            <div class="company-logo">99th Precinct</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-lily.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                For our family’s event planning business, Crafted lets me schedule everything from playdates to big weddings without missing a beat.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Lily Tucker-Pritchett, Event Coordinator</div>
+                            </div>
+                            <div class="company-logo">Modern Family</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-janice.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                Generally, I love mixing things up. But when it comes to marketing, I need it all prim and proper in one place. Crafted does that for me. 
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Janice Litman-Goralnik, Fashion Consultant</div>
+                            </div>
+                            <div class="company-logo">Friendly Fashion</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-kelly.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                Crafted is like my personal assistant for social media! It keeps my posts organized, letting me spend more time making sales.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Kelly Kapoor, Social Media Strategist</div>
+                            </div>
+                            <div class="company-logo">Dunder Mifflin</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-tracy.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                Crafted makes it easy to schedule posts and manage my band’s social media so I can focus on creating music and performing.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Tracy McConnell, Songwriter</div>
+                            </div>
+                            <div class="company-logo">Superfreakonomics</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-ross.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                Managing my paleontology lectures and museum events is a lot to juggle, but Crafted makes social media scheduling a breeze.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Ross Geller, Curator</div>
+                            </div>
+                            <div class="company-logo">Museum of Natural History</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ticker__item">
+                        <div class="card testimonial-card">
+                            <img src="assets/test-louis.png" alt="Profile Image" class="profile-image">
+                            <p>
+                                Crafted helps me schedule and manage content for our social media, keeping things professional and polished.
+                            </p>
+                            <div class="name-box">
+                                <div class="name-role">Louis Litt, Managing Partner</div>
+                            </div>
+                            <div class="company-logo">Litt Wheeler Williams Bennett</div>
+                        </div>
+                    </div>            
+                </div>            
+            </div>
+        <!-- ticker end -->
+
+        <br>
+        <br>
+        <h2>Loved by marketers, creators and busy professionals!</h2>
+        <br>
+    </div>
+     <!-- testimonials end -->
 
     <script>
         
@@ -455,6 +669,34 @@
                     crossIcon.classList.remove("d-none");
                 }
             });
+        });
+
+        // GSAP Animation for Scrolling Ticker
+
+        // Select the ticker and list elements
+        const ticker = document.querySelector('.ticker');
+        const list = document.querySelector('.ticker__list');
+
+        // Clone the list to create a seamless loop
+        const clone = list.cloneNode(true);
+        ticker.appendChild(clone);
+
+        // Set up GSAP animation to move the ticker list to the left
+        const animation = gsap.to('.ticker__list', {
+            x: '-100%', // Move it to the left by 100% of the width
+            duration: 50, // Duration of the animation
+            repeat: -1, // Repeat infinitely
+            ease: 'linear', // Linear easing
+        });
+
+        // Pause the animation when hovering over the ticker
+        ticker.addEventListener('mouseenter', function() {
+            animation.pause(); // Pause the animation on hover
+        });
+
+        // Resume the animation when the mouse leaves
+        ticker.addEventListener('mouseleave', function() {
+            animation.resume(); // Resume the animation when mouse leaves
         });
 
     </script>
