@@ -46,7 +46,7 @@
                 )
         }
         findData()
-        console.log("hello")
+        
 
 
         // Modal and profile handling
