@@ -10,6 +10,82 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css_files/home.css">
 </head>
+<style>
+
+body {
+            font-family: 'Lato', sans-serif;
+            background-color: #F3F3F6;
+            color: #383A68;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #F3F3F6;
+        }
+        /* .fc-toolbar-title {
+            font-family: 'Magnolia Script', cursive;
+        } */
+        .fc-daygrid-day.fc-day-today {
+            background-color: #E6E0D6 !important;
+        }
+        .fc-button {
+            background-color: #4B4F7D;
+            color: #F3F3F6;
+            border: none;
+        }
+        .fc-button:hover, .fc-button:focus {
+            background-color: #383A68;
+            color: #F3F3F6;
+        }
+        .fc-button:active, .fc-button:visited {
+            background-color: #383A68;
+            color: #F3F3F6;
+        }
+        @media (max-width: 768px) {
+            #calendar {
+                max-width: 100%;
+                margin: 10px;
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 15px; 
+            border: 1px solid #888;
+            width: 50%; 
+            max-width: 400px; 
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+            border-radius: 8px; 
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover, .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+    .modal-content {
+        width: 90%;
+            }
+        }
+</style>
 
 <body>
 
@@ -43,6 +119,91 @@
             <!-- Main content area -->
             <div class="col bg-light p-4">
                 xx
+                <div id="calendar"></div>
+
+    <!-- Modal structure -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalCampaignTitle">Campaign Title</h2>
+            <p><strong>Time:</strong> <span id="modalCampaignTime"></span></p>
+            <p><strong>Description:</strong> <span id="modalCampaignDescription"></span></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var modal = document.getElementById('eventModal');
+            var closeBtn = document.getElementsByClassName("close")[0];
+
+            var initialView = window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth';
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: initialView,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: window.innerWidth < 768 ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Marketing Campaign Kickoff',
+                        start: '2024-11-05T10:00:00',
+                        extendedProps: {
+                            description: 'Kickoff for the new marketing campaign!',
+                            time: '10:00 AM - 11:00 AM'
+                        }
+                    },
+                    {
+                        title: 'Social Media Blitz',
+                        start: '2024-11-10T14:00:00',
+                        end: '2024-11-13T16:00:00',
+                        extendedProps: {
+                            description: 'Join us for a social media blitz across all platforms.',
+                            time: '2:00 PM - 4:00 PM'
+                        }
+                    },
+                    {
+                        title: 'Customer Engagement Webinar',
+                        start: '2024-11-20T14:00:00',
+                        extendedProps: {
+                            description: 'Engagement webinar with our customers.',
+                            time: '2:00 PM - 3:30 PM'
+                        }
+                    }
+                ],
+                editable: true,
+                selectable: true,
+                // Event click to open the modal with event details
+                eventClick: function(info) {
+                    // Prevent the default browser behavior
+                    info.jsEvent.preventDefault();
+
+                    // Populate modal content with the clicked event's data
+                    document.getElementById('modalCampaignTitle').textContent = info.event.title;
+                    document.getElementById('modalCampaignTime').textContent = info.event.extendedProps.time || "Time not specified";
+                    document.getElementById('modalCampaignDescription').textContent = info.event.extendedProps.description || "No description available.";
+
+                    // Display the modal
+                    modal.style.display = "block";
+                }
+            });
+
+            calendar.render();
+
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        });
+    </script>
             </div>
         </div>
     </div> -->
