@@ -106,7 +106,7 @@ body {
 
 .nav li a {
     display: flex;
-    align-items: left;
+    align-items: center;
     justify-content: left;
     text-decoration: none;
     color: #4a4a73;
