@@ -16,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase()
 
+const errorHeading = document.getElementById('errorbar')
 const userEmail = document.getElementById('userEmail');
 const userName = document.getElementById('userName');
 const userPassword = document.getElementById('userPassword');
@@ -81,7 +82,7 @@ function insertData() {
         window.location.href = 'after-sign-in-1.html';
     })
     .catch((error) => {
-        alert(error)
+        console.log(error)
     })
 }
 
@@ -94,7 +95,13 @@ signUpBtn.addEventListener('click', async () => {
             await createUserWithEmailAndPassword(auth, email, password);
             insertData()
         } catch (error) {
-            alert('Error: ' + error.message);
+            console.log(error.code)
+            if (error.code == "auth/email-already-in-use") {
+                errorHeading.innerText="You already have an account. Please log in instead."
+            }
+            if (error.code == "auth/invalid-email") {
+                errorHeading.innerText="Incorrect Email Provided"
+            }
         }
     }
 });

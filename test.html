@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Cards</title>
+    
+    <!-- Link to Lato font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Lato', sans-serif; /* Apply Lato font */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .team-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            width: 250px; 
+            height: 380px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px auto;
+        }
+
+        .card h2 {
+            font-size: 1.5em;
+            margin: 10px 0 5px;
+        }
+
+        .card h3 {
+            font-size: 1em;
+            color: #666;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #888;
+            line-height: 1.4;
+            height: 60px; /* Fixed height for description */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: auto; /* Align the button to the bottom */
+        }
+
+        .card a:hover {
+            background-color: #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 100%;
+                max-width: 90%;
+                height: auto; /* Allow height to adjust on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="team-container">
+        <!-- Subo -->
+        <div class="card">
+            <img src="profile_images/Subo.jpg" alt="Subodhini's photo">
+            <h2>Subodhini</h2>
+            <h3>Frontend Designer</h3>
+            <p>I'm the pixel perfectionist who makes every button, font, and color sing in harmony.</p>
+            <a href="https://www.linkedin.com/in/subodhini-vignesh/" target="_blank">Say hi on LinkedIn →</a>
+        </div>
+
+        <!-- Vivie -->
+        <div class="card">
+            <img src="profile_images/vivie.jpg" alt="Vivie's photo">
+            <h2>Vivie</h2>
+            <h3>Frontend Designer</h3>
+            <p>Attempting to make the internet a prettier place, one pixel at a time.</p>
+            <a href="#" target="_blank">Say hi on LinkedIn →</a>
+        </div>
+
+        <!-- Amrita -->
+        <div class="card">
+            <img src="profile_images/Amrita.jpg" alt="Amrita's photo">
+            <h2>Amrita</h2>
+            <h3>Frontend Designer</h3>
+            <p>I'm not into cars, but I am into wheels, the colour wheel to be exact.</p>
+            <a href="https://www.linkedin.com/in/amritadutta725/" target="_blank">Say hi on LinkedIn →</a>
+        </div>
+
+        <!-- Nabil -->
+        <div class="card">
+            <img src="profile_images/Nabil.jpg" alt="Nabil's photo">
+            <h2>Nabil</h2>
+            <h3>Frontend Architect</h3>
+            <p>If there's a way to make the code better, faster, or cleaner, I'm already on it.</p>
+            <a href="https://www.linkedin.com/in/muhammad-nabil-zuhair-933250217/" target="_blank">Say hi on LinkedIn →</a>
+        </div>
+
+        <!-- Saurabh -->
+        <div class="card">
+            <img src="profile_images/Saurabh.jpeg" alt="Saurabh's photo">
+            <h2>Saurabh</h2>
+            <h3>Frontend Architect</h3>
+            <p>If there’s a way to make our app more efficient, I'll find it – usually at 2 a.m.!</p>
+            <a href="https://www.linkedin.com/in/saurabh-maskara/?originalSubdomain=sg" target="_blank">Say hi on LinkedIn →</a>
+        </div>
+    </div>
+</body>
+</html>
