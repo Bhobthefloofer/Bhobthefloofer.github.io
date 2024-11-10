@@ -17,7 +17,9 @@
      <!-- gsap library start -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
      <!-- gsap library end -->
-
+    <!-- font awesome for footer icons start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- font awesome for footer icons end -->
      <style>
         body {
             font-family: "Lato", serif;
@@ -41,8 +43,13 @@
         }
         
         .navbar-nav .nav-link {
-            color: #4b4f7e !important;    
+            color: #4b4f7e !important;  
+            padding-left: 7px;
         } 
+
+        .navbar-nav .nav-item {
+            margin: 3px;
+        }
 
         .navbar-nav .nav-link:hover {
             background-color: #4b4f7e !important;
@@ -486,13 +493,51 @@
                 margin-right: 15px; /* Adjust spacing on smaller screens */
             }
         }
+        .horizontal-list {
+            display: flex; /* Makes the list items display in a row */
+            justify-content: center; /* Center the items horizontally */
+            list-style: none; /* Removes the default list bullets */
+            padding-left: 0; /* Removes left padding */
+            margin: 0; /* Optional: remove margin */
+            flex-wrap: wrap; /* Allows items to wrap when space is tight */
+        }
+
+        .horizontal-list a {
+            color: #383a68;
+        }
+
+
+        /* For large screens (lg and above), display all items in a single row */
+        @media (min-width: 992px) {
+            .horizontal-list li {
+                margin-right: 20px; /* Optional: adds space between items */
+            }
+        }
+
+        /* For medium screens (md) and below, split the items into two rows */
+        @media (max-width: 991px) {
+            .horizontal-list li {
+                width: 50%; /* Makes each item take up 50% of the width, creating two items per row */
+                text-align: center; /* Centers the text */
+            }
+
+            /* Remove the right margin from the second item in each row */
+            .horizontal-list li:nth-child(2n) {
+                margin-right: 0;
+            }
+        }
+
+
+        
+
 
      </style>
 
 </head>
 <body>
     <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" > 
         <a class="navbar-brand" href="#">
             <img src="assets/main_logo.png" class="main-logo d-none d-md-block">
             <img src="assets/small_logo.png" class="small-logo d-block d-md-none ml-4">
@@ -505,7 +550,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Who Are We?</a>
+                    <a class="nav-link" href="#landing-main">Who Are We?</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#our-magic">Our Magic</a>
@@ -519,6 +564,7 @@
             </ul>
         </div>
     </nav>
+    
     
     <!-- navbar end -->
     <!-- landing start -->
@@ -758,6 +804,40 @@
         <br>
     </div>
      <!-- testimonials end -->
+    <!-- footer start -->
+    <footer class="footer backfill py-4">
+    <div class="container-fluid px-4">
+        <div class="row text-center container-fluid">
+            <!-- Column 1 -->
+            <div class="col-12 col-md-2 my-auto justify-content-center">
+                <img src="assets/main_logo.png" alt="" style="width: 150px;">
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-12 col-md-8 my-auto">
+                <ul class="horizontal-list">
+                    <li><a class="nav-link" href="#landing-main">Who Are We?</a></li>
+                    <li><a class="nav-link" href="#our-magic">Our Magic</a></li>
+                    <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li><a class="nav-link" href="#">The Team</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3 -->
+            <div class="col-12 col-md-2 mt-2">
+                <div class="d-flex justify-content-center">
+                    <a class="me-4" href="#"><i class="fab fa-facebook-f me-4" style="color: #383a68; font-size: 2rem;"></i></a>
+                    <a class="me-4" href="#"><i class="fab fa-twitter me-4" style="color: #383a68; font-size: 2rem;"></i></a>
+                    <a class="me-4" href="#"><i class="fab fa-instagram me-4" style="color: #383a68; font-size: 2rem;"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in" style="color: #383a68; font-size: 2rem;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+
+
+    <!-- footer end -->
      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
     <script>
