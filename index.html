@@ -55,7 +55,37 @@
             background-color: #4b4f7e !important;
             color: #e6e0d6 !important;
             border-radius: 3px;
-        } 
+        }
+
+        .btn-outline-primary {
+            color: #4b4f7e;
+            border-color: #4b4f7e;
+        }
+
+        .btn-primary {
+            background-color: #4b4f7e;
+            border-color: #4b4f7e;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #4b4f7e;
+            color: #e6e0d6;
+        }
+
+        .btn-primary:hover {
+            background-color: #6c70a1;
+        }
+
+        /* Center align in collapsed view */
+        @media (max-width: 991.98px) { 
+            .navbar-collapse .ml-auto {
+                text-align: left;
+            }
+            .navbar-collapse .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
 
         .magic {
             background: linear-gradient(45deg, #383a68, #4b4f7b, #f8f8f9);
@@ -532,7 +562,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" > 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
         <a class="navbar-brand" href="#">
             <img src="assets/main_logo.png" class="main-logo d-none d-md-block">
             <img src="assets/small_logo.png" class="small-logo d-block d-md-none ml-4">
@@ -557,10 +587,12 @@
                     <a class="nav-link" href="#">The Team</a>
                 </li>
             </ul>
+            <div class="ms-auto">
+                <a href="#" class = "btn btn-primary" >Login</a>
+                <a href="#" class="btn mr-lg-5 btn-primary">Get Started!</a>
+            </div>
         </div>
     </nav>
-    
-    
     <!-- navbar end -->
     <!-- landing start -->
     <div class = "container-fluid landing">
