@@ -3,161 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Continuous Scrolling Cards</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* Ticker container */
-    .ticker-container {
-      overflow: hidden;
-      white-space: nowrap;
-      width: 100%;
-      background: #333;
-      color: #fff;
-      padding: 10px;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    /* Scrolling cards container */
-    .ticker-cards {
-      display: inline-block;
-      white-space: nowrap;
-      animation: scrollLeft 30s linear infinite;
-    }
-
-    /* Each individual card */
-    .ticker-card {
-      display: inline-block;
-      margin-right: 50px;  /* Space between cards */
-    }
-
-    .testimonial-card {
-      width: 300px;
-      margin: 0;
-      padding: 15px;
-      background-color: #fff;
-      color: #333;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .profile-image {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .company-logo {
-      font-weight: bold;
-      color: #007bff;
-    }
-
-    .name-role {
-      font-size: 0.9em;
-      color: #555;
-    }
-
-    /* Animation to scroll cards from right to left */
-    @keyframes scrollLeft {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-  </style>
+  <title>GSAP Animation</title>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-
-<div class="ticker-container">
-  <div class="ticker-cards">
-    <!-- The cards to scroll -->
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+  <div id="ani">
+    <div id="landing-images" style="display: flex; flex-direction: row; gap: 0;">
+      <div class="laptop-container">
+        <img src="assets/laptop.png" alt="Laptop Image" class="laptop-image">
       </div>
-    </div>
-
-    <!-- Add more cards here (duplicate the card as needed) -->
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
-      </div>
-    </div>
-
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
-      </div>
-    </div>
-
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
-      </div>
-    </div>
-
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
-      </div>
-    </div>
-
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
-      </div>
-    </div>
-
-    <div class="ticker-card">
-      <div class="card testimonial-card">
-        <img src="assets/magic-automate.png" alt="Profile Image" class="profile-image">
-        <p class="mt-5">
-          Buffer makes it easy for us to monitor all of our engagement and strengthen the connection with our audience.
-        </p>
-        <div class="company-logo">Happy Socks</div>
-        <div class="name-role">Rodrigo Hyago, Social Media Content Manager</div>
+      <div class="phone-container">
+        <img src="assets/full-phone.png" alt="Phone Image" class="phone-image">
       </div>
     </div>
   </div>
-</div>
 
-<!-- Bootstrap JS (optional for interactive components) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+  <script>
+    new Vue({
+      el: "#ani",
+      mounted() {
+        this.animateImages();
+      },
+      methods: {
+        animateImages() {
+          // Animate the laptop image from left to right
+          gsap.from(".laptop-container", {
+            x: -100, // Adjust the x value to control the distance from the left
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          });
 
+          // Animate the phone image from right to left
+          gsap.from(".phone-container", {
+            x: 100, // Adjust the x value to control the distance from the right
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+          });
+        },
+      },
+    });
+  </script>
+
+  <style>
+    #landing-images {
+      display: flex;
+      flex-direction: row; /* Align images next to each other */
+      gap: 0; /* Remove the gap to allow overlap */
+      justify-content: center; /* Optional: Centers the images horizontally */
+      align-items: center; /* Optional: Aligns images vertically in the container */
+      position: relative;
+    }
+    .laptop-container, .phone-container {
+      position: relative; /* Needed to overlap the elements */
+    }
+    .phone-image {
+      
+      width: 200px; /* Adjust width as needed */
+      height: auto;
+    }
+    .laptop-image {
+      width: 600px
+    }
+
+    .laptop-container {
+      z-index: 0; /* Ensure the laptop is behind the phone */
+    }
+    .phone-container {
+      margin-top: 30px;
+      z-index: 1; /* Ensure the phone is in front of the laptop */
+      margin-left: -100px; /* Adjust negative margin for overlap */
+    }
+  </style>
 </body>
 </html>
