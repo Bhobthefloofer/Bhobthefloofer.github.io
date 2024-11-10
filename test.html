@@ -9,14 +9,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Lato', sans-serif; /* Apply Lato font */
+        .team-body {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f5f5f5;
         }
 
         .team-container {
@@ -28,20 +26,20 @@
             padding: 20px;
         }
 
-        .card {
+        .team-card {
             background-color: #fff;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             padding: 20px;
             width: 250px; 
-            height: 380px; 
+            height: 300px; 
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .card img {
+        .team-card img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -49,19 +47,19 @@
             margin: 0 auto 15px auto;
         }
 
-        .card h2 {
+        .team-card h2 {
             font-size: 1.5em;
             margin: 10px 0 5px;
         }
 
-        .card h3 {
+        .team-card h3 {
             font-size: 1em;
             color: #666;
             margin: 5px 0;
             font-weight: normal;
         }
 
-        .card p {
+        .team-card p {
             font-size: 0.9em;
             color: #888;
             line-height: 1.4;
@@ -70,7 +68,7 @@
             text-overflow: ellipsis;
         }
 
-        .card a {
+        .team-card a {
             display: inline-block;
             text-decoration: none;
             background-color: #f0f0f0;
@@ -82,7 +80,7 @@
             margin-top: auto; /* Align the button to the bottom */
         }
 
-        .card a:hover {
+        .team-card a:hover {
             background-color: #e0e0e0;
         }
 
@@ -91,7 +89,7 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .card {
+            .team-card {
                 width: 100%;
                 max-width: 90%;
                 height: auto; /* Allow height to adjust on smaller screens */
@@ -102,16 +100,16 @@
 <body>
     <div class="team-container">
         <!-- Subo -->
-        <div class="card">
-            <img src="profile_images/Subo.jpg" alt="Subodhini's photo">
+        <div class="team-card">
+            <img src="profile_images/Subo.png" alt="Subodhini's photo">
             <h2>Subodhini</h2>
             <h3>Frontend Designer</h3>
-            <p>I'm the pixel perfectionist who makes every button, font, and color sing in harmony.</p>
+            <p>A pixel perfectionist who makes every button, font, and color sing in harmony.</p>
             <a href="https://www.linkedin.com/in/subodhini-vignesh/" target="_blank">Say hi on LinkedIn →</a>
         </div>
 
         <!-- Vivie -->
-        <div class="card">
+        <div class="team-card">
             <img src="profile_images/vivie.jpg" alt="Vivie's photo">
             <h2>Vivie</h2>
             <h3>Frontend Designer</h3>
@@ -120,7 +118,7 @@
         </div>
 
         <!-- Amrita -->
-        <div class="card">
+        <div class="team-card">
             <img src="profile_images/Amrita.jpg" alt="Amrita's photo">
             <h2>Amrita</h2>
             <h3>Frontend Designer</h3>
@@ -129,7 +127,7 @@
         </div>
 
         <!-- Nabil -->
-        <div class="card">
+        <div class="team-card">
             <img src="profile_images/Nabil.jpg" alt="Nabil's photo">
             <h2>Nabil</h2>
             <h3>Frontend Architect</h3>
@@ -138,7 +136,7 @@
         </div>
 
         <!-- Saurabh -->
-        <div class="card">
+        <div class="team-card">
             <img src="profile_images/Saurabh.jpeg" alt="Saurabh's photo">
             <h2>Saurabh</h2>
             <h3>Frontend Architect</h3>
