@@ -57,7 +57,34 @@ const magicBtn = document.getElementById('redirectHome');
 function insertData() {
     update(ref(db, "people/" + name,),
         {
-            Role: role.value
+            Role: role.value,
+            Events: [
+                {
+                    title: 'Marketing Campaign Kickoff',
+                    start: '2024-11-05T10:00:00',
+                    extendedProps: {
+                        description: 'Kickoff for the new marketing campaign!',
+                        time: '10:00 AM - 11:00 AM'
+                    }
+                },
+                {
+                    title: 'Social Media Blitz',
+                    start: '2024-11-10T14:00:00',
+                    end: '2024-11-13T16:00:00',
+                    extendedProps: {
+                        description: 'Join us for a social media blitz across all platforms.',
+                        time: '2:00 PM - 4:00 PM'
+                    }
+                },
+                {
+                    title: 'Customer Engagement Webinar',
+                    start: '2024-11-20T14:00:00',
+                    extendedProps: {
+                        description: 'Engagement webinar with our customers.',
+                        time: '2:00 PM - 3:30 PM'
+                    }
+                }
+            ]
 
         }
     )

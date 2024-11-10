@@ -20,15 +20,18 @@
         const db = getDatabase()
         const name = "Saurabh"
         // localStorage.getItem('name')
-
+        const disRole = document.getElementById("disRole") 
+        const disName = document.getElementById("disName") 
 
         function findData() {
             const dbref = ref(db)
             get(child(dbref, "people/" + name))
                 .then((snapshot) => {
-                    console.log(snapshot)
+                   
                     if (snapshot.exists()) {
                         imagePreview.src = snapshot.val().profileURL
+                        disRole.innerText = snapshot.val().Role
+                        disName.innerText = name
 
 
                     }
@@ -42,6 +45,9 @@
 
                 )
         }
+        findData()
+        
+
 
         // Modal and profile handling
         const imagePreview = document.getElementById('imagePreview');
@@ -150,7 +156,7 @@
         // };
 
         
-
+        
 
 
 

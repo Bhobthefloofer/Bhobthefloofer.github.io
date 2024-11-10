@@ -5,209 +5,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Crafted</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css_files/home.css">
-</head>
-<style>
 
-body {
-            font-family: 'Lato', sans-serif;
-            background-color: #F3F3F6;
-            color: #383A68;
-        }
-        #calendar {
-            max-width: 900px;
-            margin: 40px auto;
-            background-color: #F3F3F6;
-        }
-        /* .fc-toolbar-title {
-            font-family: 'Magnolia Script', cursive;
-        } */
-        .fc-daygrid-day.fc-day-today {
-            background-color: #E6E0D6 !important;
-        }
-        .fc-button {
-            background-color: #4B4F7D;
-            color: #F3F3F6;
-            border: none;
-        }
-        .fc-button:hover, .fc-button:focus {
-            background-color: #383A68;
-            color: #F3F3F6;
-        }
-        .fc-button:active, .fc-button:visited {
-            background-color: #383A68;
-            color: #F3F3F6;
-        }
-        @media (max-width: 768px) {
-            #calendar {
-                max-width: 100%;
-                margin: 10px;
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home | Crafted</title>
+
+        <!-- CSS Links -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+            rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css_files/home.css">
+        <link rel="stylesheet" href="css_files/calendar.css">
+        <!-- fullcalendar! -->
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+        <style>
+            .modal-content {
+                background-color: #fff;
+                margin: 15% auto;
+                padding: 20px;
+                border-radius: 8px;
+                width: 80%;
+                max-width: 300px;
+                text-align: center;
+                color: #4a4a73;
             }
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 60px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: auto;
-            padding: 15px; 
-            border: 1px solid #888;
-            width: 50%; 
-            max-width: 400px; 
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
-            border-radius: 8px; 
-        }
-    
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover, .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        @media (max-width: 600px) {
-    .modal-content {
-        width: 90%;
+
+            .modal-content button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                font-size: 16px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                background-color: #4a4a73;
+                color: #ffffff;
+                transition: background-color 0.3s ease;
             }
-        }
-</style>
+
+            .modal-content button:hover {
+                background-color: #373767;
+            }
+        </style>
+    </head>
 
 <body>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-auto sidebar collapsed" id="sidebar">
-                <!-- <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div> -->
+            <div class="col-auto sidebar" id="sidebar">
                 <div class="hamburger" id="hamburger">
                     <img src="assets/burger-menu.png" alt="Menu" style="width: 30px; cursor: pointer;">
                 </div>
                 <img src="logo.png" alt="Crafted Logo" class="logo">
                 <img src="assets/small_logo.png" alt="Crafted Small Logo" class="small-logo">
-                
+
                 <!-- Profile Section -->
                 <div class="profile" id="imageUploader">
                     <img id="imagePreview" src="" alt="Profile Picture" style="width: 80px; height: 80px;" />
-                    <h2>Maxwell Robinson</h2>
-                    <span>Senior Marketer</span>
+                    <h2 id="disName"></h2>
+                    <span id="disRole"></span>
                 </div>
 
                 <!-- Navigation Links -->
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i><span> Home</span></a></li>
-                    <li class="nav-item"><a href="calendar.html" class="nav-link"><i class="fas fa-calendar-alt"></i><span> Calendar</span></a></li>
-                    <li class="nav-item"><a href="project/post.html" class="nav-link"><i class="fas fa-rocket"></i><span> Posts</span></a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i><span> Campaigns</span></a></li>
-                    <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span> Settings</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i><span> Home</span></a>
+                    </li>
+                    <li class="nav-item"><a href="project/post.html" class="nav-link"><i
+                                class="fas fa-rocket"></i><span> Posts</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i><span>
+                                Campaigns</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span>
+                                Settings</span></a></li>
                 </ul>
             </div>
 
             <!-- Main content area -->
             <div class="col bg-light p-4">
-                xx
+                <!-- Calendar Content -->
                 <div id="calendar"></div>
 
-    <!-- Modal structure -->
-    <div id="eventModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalCampaignTitle">Campaign Title</h2>
-            <p><strong>Time:</strong> <span id="modalCampaignTime"></span></p>
-            <p><strong>Description:</strong> <span id="modalCampaignDescription"></span></p>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var modal = document.getElementById('eventModal');
-            var closeBtn = document.getElementsByClassName("close")[0];
-
-            var initialView = window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth';
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: initialView,
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: window.innerWidth < 768 ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
-                },
-                events: [
-                    {
-                        title: 'Marketing Campaign Kickoff',
-                        start: '2024-11-05T10:00:00',
-                        extendedProps: {
-                            description: 'Kickoff for the new marketing campaign!',
-                            time: '10:00 AM - 11:00 AM'
-                        }
-                    },
-                    {
-                        title: 'Social Media Blitz',
-                        start: '2024-11-10T14:00:00',
-                        end: '2024-11-13T16:00:00',
-                        extendedProps: {
-                            description: 'Join us for a social media blitz across all platforms.',
-                            time: '2:00 PM - 4:00 PM'
-                        }
-                    },
-                    {
-                        title: 'Customer Engagement Webinar',
-                        start: '2024-11-20T14:00:00',
-                        extendedProps: {
-                            description: 'Engagement webinar with our customers.',
-                            time: '2:00 PM - 3:30 PM'
-                        }
-                    }
-                ],
-                editable: true,
-                selectable: true,
-                // Event click to open the modal with event details
-                eventClick: function(info) {
-                    // Prevent the default browser behavior
-                    info.jsEvent.preventDefault();
-
-                    // Populate modal content with the clicked event's data
-                    document.getElementById('modalCampaignTitle').textContent = info.event.title;
-                    document.getElementById('modalCampaignTime').textContent = info.event.extendedProps.time || "Time not specified";
-                    document.getElementById('modalCampaignDescription').textContent = info.event.extendedProps.description || "No description available.";
-
-                    // Display the modal
-                    modal.style.display = "block";
-                }
-            });
-
-            calendar.render();
-
-            closeBtn.onclick = function() {
-                modal.style.display = "none";
-            };
-
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            };
-        });
-    </script>
+                <!-- Modal structure -->
+                <div id="eventModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2 id="modalCampaignTitle">Campaign Title</h2>
+                        <p><strong>Time:</strong> <span id="modalCampaignTime"></span></p>
+                        <p><strong>Description:</strong> <span id="modalCampaignDescription"></span></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
     <!-- Modal for Profile Options -->
     <div id="profileModal" class="modal">
         <div class="modal-content">
@@ -222,12 +119,130 @@ body {
     <script type="module" src="https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"></script>
     <script type="module" src="js_files/home.js"></script>
 
-    <!-- <script>
-        // here is the JavaScript for toggling the sidebar- need to move to the home.js file 
-        document.getElementById("hamburger").addEventListener("click", function () {
-            document.getElementById("sidebar").classList.toggle("collapsed");
+
+    <!-- FullCalendar Script -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script type="module" src="js_files/home.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getStorage, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+        import { ref as brrr } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js"
+        import { getDatabase, set, get, update, remove, child, ref } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var modal = document.getElementById('eventModal');
+            var closeBtn = document.querySelector(".close");
+
+            var initialView = window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth';
+
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+                authDomain: "wad2test-43dc0.firebaseapp.com",
+                databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "wad2test-43dc0",
+                storageBucket: "wad2test-43dc0.appspot.com",
+                messagingSenderId: "581094929615",
+                appId: "1:581094929615:web:927fb1303429498d1033ba"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const storage = getStorage(app);
+            const db = getDatabase()
+            const name = "Saurabh"
+            // localStorage.getItem('name')
+
+
+            function findData2() {
+
+            }
+
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: initialView,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: window.innerWidth < 768 ? 'listWeek,timeGridDay' : 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: () => {
+                    const dbref = ref(db)
+                    return get(child(dbref, "people/" + name))
+                        .then((snapshot) => {
+                            
+                            if (snapshot.exists()) {
+                                
+                                return snapshot.val().Events
+
+
+                            }
+                            else {
+                                return null
+                            }
+                        })
+                        .catch((error) => {
+                            alert(error)
+                        }
+
+                        )
+                },
+                // [
+                //     {
+                //         title: 'Marketing Campaign Kickoff',
+                //         start: '2024-11-05T10:00:00',
+                //         extendedProps: {
+                //             description: 'Kickoff for the new marketing campaign!',
+                //             time: '10:00 AM - 11:00 AM'
+                //         }
+                //     },
+                //     {
+                //         title: 'Social Media Blitz',
+                //         start: '2024-11-10T14:00:00',
+                //         end: '2024-11-13T16:00:00',
+                //         extendedProps: {
+                //             description: 'Join us for a social media blitz across all platforms.',
+                //             time: '2:00 PM - 4:00 PM'
+                //         }
+                //     },
+                //     {
+                //         title: 'Customer Engagement Webinar',
+                //         start: '2024-11-20T14:00:00',
+                //         extendedProps: {
+                //             description: 'Engagement webinar with our customers.',
+                //             time: '2:00 PM - 3:30 PM'
+                //         }
+                //     }
+                // ],
+                editable: true,
+                selectable: true,
+                eventClick: function (info) {
+                    info.jsEvent.preventDefault();
+
+                    document.getElementById('modalCampaignTitle').textContent = info.event.title;
+                    document.getElementById('modalCampaignTime').textContent = info.event.extendedProps.time || "Time not specified";
+                    document.getElementById('modalCampaignDescription').textContent = info.event.extendedProps.description || "No description available.";
+
+                    modal.style.display = "block";
+                }
+            });
+
+            calendar.render();
+
+            // Modal close functionality
+            closeBtn.onclick = function () {
+                modal.style.display = "none";
+            };
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
         });
-    </script> -->
+    </script>
 
 </body>
 
