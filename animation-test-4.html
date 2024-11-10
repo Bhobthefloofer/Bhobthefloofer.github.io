@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Animation</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/part-phone.png" class="part-phone" />
+  </div>
+
+  <script>
+    // GSAP animation code here
+    gsap.from(".part-phone", {
+      y: "15%", // Start 100% down (offscreen)
+      duration: 1.5, // Animation duration in seconds
+      ease: "power2.out" // Easing function for smooth animation
+    });
+  </script>
+</body>
+</html>
