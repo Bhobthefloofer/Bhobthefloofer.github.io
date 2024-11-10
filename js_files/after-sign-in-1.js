@@ -84,7 +84,8 @@ function insertData() {
                         time: '2:00 PM - 3:30 PM'
                     }
                 }
-            ]
+            ],
+            Posts: []
 
         }
     )

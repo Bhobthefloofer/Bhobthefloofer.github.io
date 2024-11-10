@@ -79,7 +79,7 @@ function insertData() {
     )
     .then(() => {
         localStorage.setItem('name', userName.value);
-        window.location.href = 'after-sign-in-1.html';
+        window.location.href = 'after-sign-in.html';
     })
     .catch((error) => {
         console.log(error)
