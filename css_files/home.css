@@ -25,6 +25,7 @@ body {
     position: relative;
 }
 
+
 /* Sidebar collapsed adjustments */
 .sidebar.collapsed {
     width: 60px;
@@ -89,8 +90,9 @@ body {
 .nav {
     width: 100%;
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    flex-direction: flex-start;
+    justify-content: left;
     align-items: center;
     padding: 0;
     margin-top: 5px; /* Reduce top margin to minimize space */
@@ -98,14 +100,14 @@ body {
 
 .nav li {
     width: 100%;
-    text-align: center;
+    text-align: left;
     margin-bottom: 8px; /* Less space between icons */
 }
 
 .nav li a {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     text-decoration: none;
     color: #4a4a73;
     font-size: 16px;
