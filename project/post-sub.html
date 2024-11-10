@@ -14,9 +14,41 @@
     <div class="card create-post-card">
         <div class="card-body">
             <h5 class="card-title"><img src="pen.png" style="width: 20px; height: 20px; margin: 5px; margin-right:10px">Post</h5>
+            
+            <!-- Title Input -->
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input type="text" id="postTitle" class="form-control" placeholder="Enter post title">
+            </div>
+            
+            <!-- Date Input -->
+            <div class="form-group">
+                <label for="postDate">Date</label>
+                <input type="date" id="postDate" class="form-control">
+            </div>
+
+            <!-- Time Input -->
+            <div class="form-group">
+                <label for="postTime">Time</label>
+                <input type="time" id="postTime" class="form-control">
+            </div>
+            
+            <!-- Status Input -->
+            <div class="form-group">
+                <label for="postStatus">Status</label>
+                <select id="postStatus" class="form-control">
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="archived">Archived</option>
+                </select>
+            </div>
+
+            <!-- Text Area for Post Content -->
             <div class="form-group">
                 <textarea class="form-control" placeholder="Start writing" style="height: 400px"></textarea>
             </div>
+            
+            <!-- File Upload Section -->
             <div class="form-group">
                 <div class="border p-3 text-center" style="border-radius: 5px;">
                     <input type="file" id="fileUpload" class="d-none">
@@ -25,18 +57,23 @@
                     </label>
                 </div>
             </div>
+
+            <!-- Campaign Bar -->
             <div class="form-group">
                 Campaign:
                 <div class="campaign-bar" id="campaignBar"></div>
             </div>
+
+            <!-- Action Buttons -->
             <div class="action-buttons">
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">
                         Share
                     </button>
-                    <img src="clock.png" style="width: 30px; height: 30px; margin: 5px; margin-left:15px">
+                    <button type="button" class="btn btn-secondary ml-2" id="saveButton">
+                        Save
+                    </button>
                 </div>
-                
             </div>
         </div>
     </div>
