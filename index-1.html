@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crafted</title>
+  <script src="https://registry.npmmirror.com/vue/3.3.11/files/dist/vue.global.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/magnolia-script" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css_files/index.css">
+</head>
+
+<body class="no-margin-padding">
+
+  <div class="w-full">
+    <!-- Header: Full Width -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+      <a class="navbar-brand" href="#">
+          <img src="assets/main_logo.png" class="main-logo d-none d-md-block">
+          <img src="assets/small_logo.png" class="small-logo d-block d-md-none ml-4">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img src="assets/burger-menu.png" class="burger-menu" alt="Toggle navigation">
+          <img src="assets/burger-menu-cross.png" class="cross-icon d-none" alt="Close navigation"> 
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#landing-main">Who Are We?</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#our-magic">Our Magic</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#testimonials">Testimonials</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">The Team</a>
+              </li>
+          </ul>
+          <div class="navbar-nav ml-auto d-lg-flex flex-column flex-lg-row align-items-lg-center">
+              <a href="#" class="btn btn-outline-primary mr-lg-2 mb-2 mb-lg-0">Login</a>
+              <a href="#" class="btn btn-primary">Sign Up</a>
+          </div>
+      </div>
+  </nav>
+  
+
+    <!-- Main Content: Full Width -->
+    <div class="container-fluid py-5 px-4" style="background-color: #4b4f7b30">
+      <section class="text-center w-100">
+        <div class="row justify-content-center">
+          <h2 class="magnolia edited fs-2 fw-bold mb-5 col-sm-4 col-12 align-content-center">Is marketing stressing you
+            out?</h2>
+          <img alt="Cloud icon" class="col mx-auto mb-5 col-sm-4 col-12 w-25" src="landing_image.png" />
+          <p class="magnolia edited fs-2 mb-5 col col-sm-4 col-12 align-content-center fw-bold">Crafted makes it the
+            least of your worries!</p>
+        </div>
+        <h3 class="display-6 mb-5">So why should you <br><span class="magnolia edited">Choose us?</span></h3>
+
+        <div class="row mb-5 justify-content-center">
+          <div class="col-12 col-md-3 mx-4 reason">
+            <h4 class="fs-3 fw-bold mb-2">No more guesswork</h4>
+            <p class="fs-4">Have you ever been stuck guessing around what strategies would work to get your brand out
+              there?
+              Lucky for you, we urn your guesswork into <span
+                style="font-family: 'Magnolia Script', sans-serif;">Craft</span>sman ship</p>
+          </div>
+          <div class="col-12 col-md-3 mx-4 reason">
+            <h4 class="fs-3 fw-bold mb-2">Effortless Planning</h4>
+            <p class="fs-4"><span style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> combines smart
+              scheduling with strategy guidance, so not only do our users get a schedule—they get a plan designed to
+              enhance engagement and boost results.</p>
+          </div>
+          <div class="col-12 col-md-3 mx-4 reason">
+            <h4 class="fs-3 fw-bold mb-2">Affordable and Scalable</h4>
+            <p class="fs-4"><i>(pssst! we are a free service)</i> We know that you prioritise result, and here at <span
+                style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> we prioritise helping aspiring
+              Entrepreneurs. So let us help you <span style="font-family: 'Magnolia Script', sans-serif;">Craft</span>
+              you dreams and skyrocket your exposure.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- "What is Crafted?" Section -->
+      <section class="text-center my-4">
+        <h3 class="display-6 mb-5" id="what-is-crafted">What is <br><span class="magnolia edited">Crafted?</span></h3>
+        <!-- images section to display our app functionalitites -->
+        <section class="display">
+          <div class="row">
+            <!-- First image is our calendar -->
+            <div class="display-col">
+              <img src="what_is_crafted_images/calendar_image.png">
+              <div class="layer">
+                <h3>Interactive Calendar</h3>
+              </div>
+            </div>
+
+            <!-- A column for second image -->
+            <div class="display-col">
+              <img src="what_is_crafted_images/create_a_post.png">
+              <div class="layer">
+                <h3>Create a post</h3>
+              </div>
+            </div>
+
+            <!-- A column for third image -->
+            <div class="display-col">
+              <img src="what_is_crafted_images/calendar_image.png">
+              <div class="layer">
+                <h3>Customize your profile</h3>
+              </div>
+            </div>
+
+            <!-- end of picture columns -->
+          </div>
+        </section>
+        <div class="row justify-content-center">
+          <h2 class="reason fw-bold fs-5"><span style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> is
+            Your Ultimate Marketing Companion – Plan, Schedule, and Launch Campaigns Effortlessly. With a built-in
+            calendar for seamless planning and ready-to-go posts to boost your brand, <span
+              style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> empowers entrepreneurs to streamline
+            their marketing and stay ahead with ease.</h2>
+        </div>
+      </section>
+
+      <!-- Red Button Section -->
+      <section class="backfill text-center py-4 my-4">
+        <h1 class="magnolia ready">Ready to get Crafted?</h1>
+        <button class="btn-started" id="startBtn">GET STARTED HERE!</button>
+      </section>
+
+      <section class="text-center my-4 backfill container-fluid pt-4">
+        <h2 class="beige magnolia fs-2 mb-2 py-2" style="margin-top: 0;" id="our-team">Meet The Team</h2>
+        <p class="light-grey center">5 aspiring web Designers from G9!</p>
+        <div class="row justify-content-center">
+          <div class="col-6 col-md-4 bg-indigo-900 rounded py-3">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="profile_images/Amrita.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Amrita</h4>
+            <!-- add a little about yourself here! -->
+            <p class="light-grey"> </p>
+          </div>
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="profile_images/Subodhini.avif" />
+            <h4 class="beige fs-4 fw-bold mb-2">Subodhini</h4>
+            <!-- add a little about yourself here! -->
+            <p class="light-grey"></p>
+          </div>
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="profile_images/Saurabh.jpeg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Saurabh</h4>
+            <!-- add a little about yourself here! -->
+            <p class="light-grey"></p>
+          </div>
+
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="profile_images/Nabil.jpg" />
+            <h4 class="beige fs-4 fw-bold mb-2">Nabil</h4>
+            <!-- add a little about yourself here! -->
+            <p class="light-grey"></p>
+          </div>
+
+          <div class="col-6 col-md-4 bg-indigo-900 rounded">
+            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
+              src="profile_images/Vivie.avif" />
+            <h4 class="beige fs-4 fw-bold mb-2">Vivie</h4>
+            <!-- add a little about yourself here! -->
+            <p class="light-grey"></p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Footer: Full Width with Full-Screen Background -->
+      <footer class="footer backfill py-4">
+        <div class="container-fluid px-4">
+          <div class="row text-center container-fluid">
+            <!-- Column 1 -->
+            <div class="col-12 col-md-2 my-auto justify-content-center ">
+              <img src="logo.png" alt="" style="width: 100px;">
+            </div>
+
+            <!-- Column 2 -->
+            <div class="col-12 col-md-8 my-auto">
+              <!-- <p>aklsdlknasdl</p> -->
+
+            </div>
+
+            <!-- Column 3 -->
+            <div class="col-12 col-md-2">
+              <p class="mb-4">Follow us on our socials!</p>
+              <div class="d-flex justify-content-center">
+                <a class="light-grey me-4" href="#"><i class="fab fa-facebook-f me-4" style="font-size: 2rem;"></i></a>
+                <a class="light-grey me-4" href="#"><i class="fab fa-twitter me-4" style="font-size: 2rem;"></i></a>
+                <a class="light-grey me-4" href="#"><i class="fab fa-instagram me-4" style="font-size: 2rem;"></i></a>
+                <a class="light-grey" href="#"><i class="fab fa-linkedin-in" style="font-size: 2rem;"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script type="module">
+      var btn = document.getElementById("startBtn")
+      btn.addEventListener('click', Redirect)
+      function Redirect() {
+        window.location.href = "signup-page.html"
+      }
+    </script>
+
+</body>
+
+</html>

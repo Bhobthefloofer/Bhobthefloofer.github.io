@@ -1,237 +1,924 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crafted</title>
-  <script src="https://registry.npmmirror.com/vue/3.3.11/files/dist/vue.global.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/magnolia-script" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css_files/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crafted | Magic x Marketing</title>
+    <link rel="icon" href="assets/small_logo.png" type="image/png"> <!-- tab logo -->
+    <!-- google font - lato start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- google font - lato end -->
+    <!-- bootstrap start -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap end -->
+     <!-- gsap library start -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+     <!-- gsap library end -->
+    <!-- font awesome for footer icons start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- font awesome for footer icons end -->
+     <style>
+        body {
+            font-family: "Lato", serif;
+        }
+        .main-logo {
+            width: 170px;
+            margin-left: 10px;
+        }
+        .small-logo {
+            width: 60px;
+        }
+        .burger-menu, .cross-icon {
+            width: 55px;
+            height: auto;
+            border: none; 
+            outline: none;
+        }
+        
+        .navbar-toggler {
+            border: 0;
+        }
+        
+        .navbar-nav .nav-link {
+            color: #4b4f7e !important;  
+            padding-left: 7px;
+        } 
+
+        .navbar-nav .nav-item {
+            margin: 3px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #4b4f7e !important;
+            color: #e6e0d6 !important;
+            border-radius: 3px;
+        } 
+
+        .magic {
+            background: linear-gradient(45deg, #383a68, #4b4f7b, #f8f8f9);
+            background-size: 400% 400%;
+            animation: gradient 7s ease infinite;
+        }
+    
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+        #our-magic { /* Default for large screens */
+            width: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            #our-magic {
+                width: 250px;
+            }
+        }
+        h2 {
+            color: #e6e0d6;
+            text-align: center;
+            font-weight: 550;
+            margin: 0px;
+            font-style:oblique;
+        } 
+        h2 {
+            font-size: 35px; /* Default for large screens */
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            h2 {
+                font-size: 30px;
+            }
+        }
+
+        .magic-list-group * {
+             background-color: #e6e0d6;
+        }
+
+        .magic-list-group .list-group-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .magic-point-img {
+            flex-shrink: 0;
+            margin-right: 15px; /* Spacing between image and text */
+            width: 120px;
+        }
+
+        .magic-point {
+            flex: 1;
+        }
+        #orbit-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* height: 70vh; */
+        margin: 0;
+        }
+
+        .orbit-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            display: flex; /* Center child elements */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outer orbit */
+        #outer-orbit {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            animation: rotateOuter 20s linear infinite; /* Slower rotation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outer orbit circle */
+        #outer-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Outer circle image with counter-rotation to keep it fixed */
+        #outer-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 20s linear infinite; /* Matches the slower outer orbit */
+        }
+
+        /* Inner orbit */
+        #inner-orbit {
+            width: 320px;
+            height: 320px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            box-sizing: border-box; /* Ensures border doesn’t affect dimensions */
+            animation: rotateInner 15s linear infinite;
+        }
+
+
+
+        /* Inner orbit circle */
+        #inner-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Inner circle image with counter-rotation to keep it fixed */
+        #inner-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 15s linear infinite; /* Matches the inner orbit */
+        }
+
+        /* Keyframe animation for outer orbit rotation */
+        @keyframes rotateOuter {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation for inner orbit rotation */
+        @keyframes rotateInner {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Keyframe animation to counter-rotate images */
+        @keyframes counterRotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }
+
+        /* Center the image inside the orbits */
+        .orbit-center-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10; /* Ensure it's above the orbits */
+        }
+
+        .orbit-center-img img {
+            width: 250px; /* Adjust size as needed */
+            height: auto;
+            border-radius: 50%; /* Optional, if you want it circular */
+        }
+
+        /* Outest orbit */
+        #outest-orbit {
+            position: absolute;
+            width: 470px;
+            height: 470px;
+            border: 1px dashed #bbb;
+            border-radius: 50%;
+            animation: rotateOutest 25s linear infinite; /* Slower rotation */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Outest orbit circle */
+        #outest-circle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 47px;
+            height: 47px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Outest circle image with counter-rotation to keep it fixed */
+        #outest-circle img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: counterRotate 25s linear infinite; /* Matches the outest orbit */
+        }
+
+        /* Keyframe animation for outest orbit rotation */
+        @keyframes rotateOutest {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .under-orbit {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad {
+            color: #4b4f7b;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 700;
+            font-size: 24px; /* Increased size for prominence */
+            line-height: 1.3;
+        }
+
+        .btn {
+            background-color: #4b4f7b;
+            color: #e6e0d6;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 500;
+            font-style: oblique;
+            /* text-transform: uppercase; */
+            transition: all 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        .btn:hover {
+            background-color: #383a68;
+            transform: scale(1.05); /* Slightly grow on hover */
+        }
+
+        @media (max-width: 767px) {
+            #orbit-body {
+                display: none !important;
+            }
+        }
+        #testimonials { /* Default for large screens */
+            width: 330px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            #our-magic {
+                width: 270px;
+            }
+        }
+        .test {
+            background-color: #383a68;
+            overflow: hidden;
+        }
+
+        
+        #landing-sub {
+            color:#383a68;
+        }
+        .landing {
+            background-color: #e6e0d6;
+        }
+        h1 {
+            color: #383a68;
+            text-align: center;
+            font-weight: 700;
+            margin: 0px;
+        } 
+        h1 {
+            font-size: 45px; /* Default for large screens */
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            h1 {
+                font-size: 35px;
+            }
+        }
+
+        #landing-text {
+            display:block;
+        }
+        @media (max-width: 768px) { 
+            #landing-text {
+                display:inline;
+            }
+        }
+        h3 {
+            color: #383a68;
+            text-align: center;
+            font-weight: 400;
+            margin: 0px;
+            font-style: oblique;
+        } 
+        h3 {
+            font-size: 25px; /* Default for large screens */
+        }
+
+        @media (max-width: 768px) { /* For medium screens and below */
+            h3 {
+                font-size: 17px;
+            }
+        }
+        #landing-images-laptop {
+        display: flex;
+        flex-direction: row; /* Align images next to each other */
+        gap: 0; /* Remove the gap to allow overlap */
+        justify-content: center; /* Optional: Centers the images horizontally */
+        align-items: center; /* Optional: Aligns images vertically in the container */
+        position: relative;
+        }
+        .laptop-container, .phone-container {
+        position: relative; /* Needed to overlap the elements */
+        }
+        .phone-image {
+        width:290px; 
+        }
+        .laptop-image {
+        width: 900px
+        }
+        @media (max-width: 992px) { 
+            .phone-image {
+            width:200px; 
+            }
+            .laptop-image {
+            width: 600px
+            }
+        }
+
+        .laptop-container {
+        z-index: 0; /* Ensure the laptop is behind the phone */
+        }
+        .phone-container {
+        margin-top: 30px;
+        z-index: 1; /* Ensure the phone is in front of the laptop */
+        margin-left: -100px; /* Adjust negative margin for overlap */
+        }
+
+        .ticker {
+            display: flex;
+            position: relative;
+            width: 100%;
+        }
+
+        .ticker__list {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .ticker__item {
+            margin-right: 20px; /* Space between items */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+        }
+
+        .testimonial-card {
+            width: 300px;
+            height: 320px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .testimonial-card .profile-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: -40px; /* Position the image half outside the card */
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white; /* Optional: Add a border around the image */
+        }
+
+        .company-logo {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .name-role {
+            font-weight: bold;
+            /* margin-top: 10px; */
+        }
+        .name-box {
+            height: 50px;
+            /* background-color: antiquewhite; */
+        }
+
+        .testimonial-card p {
+            margin-top: 60px; /* Add some space between the profile image and the text */
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card {
+                max-width: 280px; /* Adjust the card width for smaller screens */
+            }
+
+            .ticker__item {
+                margin-right: 15px; /* Adjust spacing on smaller screens */
+            }
+        }
+        .horizontal-list {
+            display: flex; /* Makes the list items display in a row */
+            justify-content: center; /* Center the items horizontally */
+            list-style: none; /* Removes the default list bullets */
+            padding-left: 0; /* Removes left padding */
+            margin: 0; /* Optional: remove margin */
+            flex-wrap: wrap; /* Allows items to wrap when space is tight */
+        }
+
+        .horizontal-list a {
+            color: #383a68;
+        }
+
+
+        /* For large screens (lg and above), display all items in a single row */
+        @media (min-width: 992px) {
+            .horizontal-list li {
+                margin-right: 20px; /* Optional: adds space between items */
+            }
+        }
+
+        /* For medium screens (md) and below, split the items into two rows */
+        @media (max-width: 991px) {
+            .horizontal-list li {
+                width: 50%; /* Makes each item take up 50% of the width, creating two items per row */
+                text-align: center; /* Centers the text */
+            }
+
+            /* Remove the right margin from the second item in each row */
+            .horizontal-list li:nth-child(2n) {
+                margin-right: 0;
+            }
+        }
+
+     </style>
+
 </head>
-
-<body class="no-margin-padding">
-
-  <div class="w-full">
-    <!-- Header: Full Width -->
-    <nav class="navbar navbar-expand-lg custom-navbar fs-5">
-      <div class="container">
-        <!-- Navbar toggler for mobile view -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Center-aligned logo -->
-        <a class="navbar-brand mx-auto" href="#">
-          <img src="logo.png" alt="Crafted" class="img-fluid">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" > 
+        <a class="navbar-brand" href="#">
+            <img src="assets/main_logo.png" class="main-logo d-none d-md-block">
+            <img src="assets/small_logo.png" class="small-logo d-block d-md-none ml-4">
         </a>
-
-        <!-- Navbar collapse for mobile and larger screens -->
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-          <!-- Left-aligned links -->
-          <ul class="navbar-nav">
-            <li class="nav-item me-3"> <!-- Added margin-end class to increase space on the right -->
-              <a class="nav-link custom-link" href="#what-is-crafted">WHAT IS CRAFTED?</a>
-            </li>
-            <li class="nav-item me-3"> <!-- Added margin-end class to increase space on the right -->
-              <a class="nav-link custom-link" href="#our-team">OUR TEAM</a>
-            </li>
-          </ul>
-
-          <!-- Right-aligned links -->
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item me-3"> <!-- Added margin-end class to increase space on the right -->
-              <a class="nav-link custom-link" href="login-page.html">LOG IN</a>
-            </li>
-            <li class="nav-item"> <!-- Removed margin on the last item -->
-              <a class="nav-link custom-link navbar-button" style="border: 1px solid; border-radius: 50px;"
-                href="signup-page.html">GET
-                STARTED HERE!</a>
-            </li>
-          </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="assets/burger-menu.png" class="burger-menu" alt="Toggle navigation">
+            <img src="assets/burger-menu-cross.png" class="cross-icon d-none" alt="Close navigation"> 
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#landing-main">Who Are We?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#our-magic">Our Magic</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">The Team</a>
+                </li>
+            </ul>
         </div>
-      </div>
     </nav>
-
-    <!-- Main Content: Full Width -->
-    <div class="container-fluid py-5 px-4" style="background-color: #4b4f7b30">
-      <section class="text-center w-100">
-        <div class="row justify-content-center">
-          <h2 class="magnolia edited fs-2 fw-bold mb-5 col-sm-4 col-12 align-content-center">Is marketing stressing you
-            out?</h2>
-          <img alt="Cloud icon" class="col mx-auto mb-5 col-sm-4 col-12 w-25" src="landing_image.png" />
-          <p class="magnolia edited fs-2 mb-5 col col-sm-4 col-12 align-content-center fw-bold">Crafted makes it the
-            least of your worries!</p>
-        </div>
-        <h3 class="display-6 mb-5">So why should you <br><span class="magnolia edited">Choose us?</span></h3>
-
-        <div class="row mb-5 justify-content-center">
-          <div class="col-12 col-md-3 mx-4 reason">
-            <h4 class="fs-3 fw-bold mb-2">No more guesswork</h4>
-            <p class="fs-4">Have you ever been stuck guessing around what strategies would work to get your brand out
-              there?
-              Lucky for you, we urn your guesswork into <span
-                style="font-family: 'Magnolia Script', sans-serif;">Craft</span>sman ship</p>
-          </div>
-          <div class="col-12 col-md-3 mx-4 reason">
-            <h4 class="fs-3 fw-bold mb-2">Effortless Planning</h4>
-            <p class="fs-4"><span style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> combines smart
-              scheduling with strategy guidance, so not only do our users get a schedule—they get a plan designed to
-              enhance engagement and boost results.</p>
-          </div>
-          <div class="col-12 col-md-3 mx-4 reason">
-            <h4 class="fs-3 fw-bold mb-2">Affordable and Scalable</h4>
-            <p class="fs-4"><i>(pssst! we are a free service)</i> We know that you prioritise result, and here at <span
-                style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> we prioritise helping aspiring
-              Entrepreneurs. So let us help you <span style="font-family: 'Magnolia Script', sans-serif;">Craft</span>
-              you dreams and skyrocket your exposure.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- "What is Crafted?" Section -->
-      <section class="text-center my-4">
-        <h3 class="display-6 mb-5" id="what-is-crafted">What is <br><span class="magnolia edited">Crafted?</span></h3>
-        <!-- images section to display our app functionalitites -->
-        <section class="display">
-          <div class="row">
-            <!-- First image is our calendar -->
-            <div class="display-col">
-              <img src="what_is_crafted_images/calendar_image.png">
-              <div class="layer">
-                <h3>Interactive Calendar</h3>
-              </div>
+    
+    
+    <!-- navbar end -->
+    <!-- landing start -->
+    <div class = "container-fluid landing">
+        <br>
+        <h1 class = "mb-2" id = "landing-main" style = "text-align: center;">Craft a Month’s Marketing Calendar <span id = "landing-text"> in Just 10 Minutes. </span></h1>
+        <h3 class = "mb-2" id = "landing-sub">Effortlessly plan, schedule, and automate your social media.</h3>
+        <div id = "landing-images-laptop" class = "d-none d-md-flex"style = "flex-direction: column;">
+            <div id="ani">
+                <div id="landing-images" style="display: flex; flex-direction: row; gap: 0;">
+                  <div class="laptop-container">
+                    <img src="assets/laptop.png" alt="Laptop Image" class="laptop-image">
+                  </div>
+                  <div class="phone-container">
+                    <img src="assets/full-phone.png" alt="Phone Image" class="phone-image">
+                  </div>
+                </div>
             </div>
-
-            <!-- A column for second image -->
-            <div class="display-col">
-              <img src="what_is_crafted_images/create_a_post.png">
-              <div class="layer">
-                <h3>Create a post</h3>
-              </div>
-            </div>
-
-            <!-- A column for third image -->
-            <div class="display-col">
-              <img src="what_is_crafted_images/calendar_image.png">
-              <div class="layer">
-                <h3>Customize your profile</h3>
-              </div>
-            </div>
-
-            <!-- end of picture columns -->
-          </div>
-        </section>
-        <div class="row justify-content-center">
-          <h2 class="reason fw-bold fs-5"><span style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> is
-            Your Ultimate Marketing Companion – Plan, Schedule, and Launch Campaigns Effortlessly. With a built-in
-            calendar for seamless planning and ready-to-go posts to boost your brand, <span
-              style="font-family: 'Magnolia Script', sans-serif;">Crafted</span> empowers entrepreneurs to streamline
-            their marketing and stay ahead with ease.</h2>
         </div>
-      </section>
 
-      <!-- Red Button Section -->
-      <section class="backfill text-center py-4 my-4">
-        <h1 class="magnolia ready">Ready to get Crafted?</h1>
-        <button class="btn-started" id="startBtn">GET STARTED HERE!</button>
-      </section>
-
-      <section class="text-center my-4 backfill container-fluid pt-4">
-        <h2 class="beige magnolia fs-2 mb-2 py-2" style="margin-top: 0;" id="our-team">Meet The Team</h2>
-        <p class="light-grey center">5 aspiring web Designers from G9!</p>
-        <div class="row justify-content-center">
-          <div class="col-6 col-md-4 bg-indigo-900 rounded py-3">
-            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
-              src="profile_images/Amrita.jpg" />
-            <h4 class="beige fs-4 fw-bold mb-2">Amrita</h4>
-            <!-- add a little about yourself here! -->
-            <p class="light-grey"> </p>
-          </div>
-          <div class="col-6 col-md-4 bg-indigo-900 rounded">
-            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
-              src="profile_images/Subodhini.avif" />
-            <h4 class="beige fs-4 fw-bold mb-2">Subodhini</h4>
-            <!-- add a little about yourself here! -->
-            <p class="light-grey"></p>
-          </div>
-          <div class="col-6 col-md-4 bg-indigo-900 rounded">
-            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
-              src="profile_images/Saurabh.jpeg" />
-            <h4 class="beige fs-4 fw-bold mb-2">Saurabh</h4>
-            <!-- add a little about yourself here! -->
-            <p class="light-grey"></p>
-          </div>
-
-          <div class="col-6 col-md-4 bg-indigo-900 rounded">
-            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
-              src="profile_images/Nabil.jpg" />
-            <h4 class="beige fs-4 fw-bold mb-2">Nabil</h4>
-            <!-- add a little about yourself here! -->
-            <p class="light-grey"></p>
-          </div>
-
-          <div class="col-6 col-md-4 bg-indigo-900 rounded">
-            <img alt="Team member photo" class="mx-auto mb-2 rounded-circle img-fluid" style="width: 100px;"
-              src="profile_images/Vivie.avif" />
-            <h4 class="beige fs-4 fw-bold mb-2">Vivie</h4>
-            <!-- add a little about yourself here! -->
-            <p class="light-grey"></p>
-          </div>
+        <div class = "d-flex d-md-none justify-content-center" id = "landing-images-phone">
+            <img src="assets/part-phone.png" class="part-phone" />
         </div>
-      </section>
+    </div>
+    <!-- landing end -->
+    <!-- magic start -->
+     <div class = "container-fluid magic">
+        <img id = "our-magic" class = "starting-title"src="assets/magic.png" alt="">
+        <h2 id = "magic-sub">Here's How We Can Help You</h2> 
+        <br>
+        <div class = "container-flex">
+            <div class = "row">
+                <div class = "col-1"></div>
+                <div class = "col-10" style = "background-color: #e6e0d6; border-radius: 5px;">
+                    <div class = "row">
+                        <div class = "col-12 col-lg-6">
+                            <div class="card">
+                                <ul class="list-group list-group-flush magic-list-group">
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-automate.png" class = "magic-point-img" alt="">
+                                        <span class = "magic-point">
+                                            Automate and Schedule Posts to Save Time and Streamline Your Workflow
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-plan.png" class = "magic-point-img" alt="">
+                                        <span>
+                                            Plan Strategically by Aligning Social Content with Key Campaigns and Trends
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-manage.png" class = "magic-point-img" alt="">
+                                        <span class = "magic-point">
+                                            Manage Multiple Platforms from One Centralized Social Media Dashboard
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-saving.png" class = "magic-point-img" alt="">
+                                        <span class = "magic-point">
+                                            Centralized Access to All Marketing Assets for Easy Bookkeeping
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <img src="assets/magic-idea.png" class = "magic-point-img" alt="">
+                                        Turn Your Quick Ideas Into Optimised Content Calendars
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class = "col-12 col-lg-6 d-flex flex-column mt-1" id = "orbit-body" style = "display:block">
+                            <!-- magic animation start -->
+                            <div class="orbit-container">
+                                <!-- Outest Orbit -->
+                                <div id="outest-orbit">
+                                    <div id="outest-circle">
+                                        <img src="assets/magic-likes.png" alt="Outest Circle">
+                                    </div>
+                                </div>
+                            
+                                <!-- Outer Orbit -->
+                                <div id="outer-orbit">
+                                    <div id="outer-circle">
+                                        <img src="assets/magic-people.png" alt="Outer Circle">
+                                    </div>
+                                </div>
+                            
+                                <!-- Inner Orbit -->
+                                <div id="inner-orbit">
+                                    <div id="inner-circle">
+                                        <img src="assets/magic-calendar.png" alt="Inner Circle">
+                                    </div>
+                                </div>
+                            
+                                <!-- Center Image -->
+                                <div class="orbit-center-img">
+                                    <img src="assets/magic-marketer.png" alt="Center Image">
+                                </div>
+                            </div>
+                            <div class = "under-orbit">
+                                <!-- <br> -->
+                                <span class = "ad">For The Marketer Who Wants To Do More With Less</span>
+                                <button class = "btn btn-primary mt-1 mb-1">Start Creating</button> 
+                            </div>
+                            <!-- magic animation end -->
 
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-1"></div>
 
-      <!-- Footer: Full Width with Full-Screen Background -->
-      <footer class="footer backfill py-4">
-        <div class="container-fluid px-4">
-          <div class="row text-center container-fluid">
+            </div>
+        </div> 
+        <br>
+    </div>
+     <!-- magic end -->
+
+     <!-- testimonials start -->
+    <div class = "container-fluid test">
+        <br>
+        <img id = "testimonials" class = "starting-title" src="assets/test-logo.png" alt="">
+        <br>
+        <br>
+        <!-- ticker start -->
+        <div class="ticker">
+            <div class="ticker__list">
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-rajesh.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            As a scientist running my own tech blog, Crafted's scheduling posts in advance gives me more time to focus on my research.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Rajesh Koothrappali, Founder</div>
+                        </div>
+                        <div class="company-logo">KoothTech</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-rosa.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            I never thought I could love something. But, Crafted is quick, easy, and keeps everything on track - just how I like it.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Rosa Diaz, Media Content Manager</div>
+                        </div>
+                        <div class="company-logo">99th Precinct</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-lily.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            For our family’s event planning business, Crafted lets me schedule everything from playdates to big weddings without missing a beat.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Lily Tucker-Pritchett, Event Coordinator</div>
+                        </div>
+                        <div class="company-logo">Modern Family</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-janice.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            Generally, I love mixing things up. But when it comes to marketing, I need it all prim and proper in one place. Crafted does that for me. 
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Janice Litman-Goralnik, Fashion Consultant</div>
+                        </div>
+                        <div class="company-logo">Friendly Fashion</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-kelly.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            Crafted is like my personal assistant for social media! It keeps my posts organized, letting me spend more time making sales.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Kelly Kapoor, Social Media Strategist</div>
+                        </div>
+                        <div class="company-logo">Dunder Mifflin</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-tracy.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            Crafted makes it easy to schedule posts and manage my band’s social media so I can focus on creating music and performing.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Tracy McConnell, Songwriter</div>
+                        </div>
+                        <div class="company-logo">Superfreakonomics</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-ross.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            Managing my paleontology lectures and museum events is a lot to juggle, but Crafted makes social media scheduling a breeze.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Ross Geller, Curator</div>
+                        </div>
+                        <div class="company-logo">Museum of Natural History</div>
+                    </div>
+                </div>
+                
+                <div class="ticker__item">
+                    <div class="card testimonial-card">
+                        <img src="assets/test-louis.png" alt="Profile Image" class="profile-image">
+                        <p>
+                            Crafted helps me schedule and manage content for our social media, keeping things professional and polished.
+                        </p>
+                        <div class="name-box">
+                            <div class="name-role">Louis Litt, Managing Partner</div>
+                        </div>
+                        <div class="company-logo">Litt Wheeler Williams Bennett</div>
+                    </div>
+                </div>            
+            </div>            
+        </div>
+        <!-- ticker end -->
+
+        <br>
+        <br>
+        <h2>Loved by marketers, creators and busy professionals!</h2>
+        <br>
+    </div>
+     <!-- testimonials end -->
+    <!-- footer start -->
+    <footer class="footer backfill py-4">
+    <div class="container-fluid px-4">
+        <div class="row text-center container-fluid">
             <!-- Column 1 -->
-            <div class="col-12 col-md-2 my-auto justify-content-center ">
-              <img src="logo.png" alt="" style="width: 100px;">
+            <div class="col-12 col-md-2 my-auto justify-content-center">
+                <img src="assets/main_logo.png" alt="" style="width: 150px;">
             </div>
 
             <!-- Column 2 -->
             <div class="col-12 col-md-8 my-auto">
-              <!-- <p>aklsdlknasdl</p> -->
-
+                <ul class="horizontal-list">
+                    <li><a class="nav-link" href="#landing-main">Who Are We?</a></li>
+                    <li><a class="nav-link" href="#our-magic">Our Magic</a></li>
+                    <li><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li><a class="nav-link" href="#">The Team</a></li>
+                </ul>
             </div>
 
             <!-- Column 3 -->
-            <div class="col-12 col-md-2">
-              <p class="mb-4">Follow us on our socials!</p>
-              <div class="d-flex justify-content-center">
-                <a class="light-grey me-4" href="#"><i class="fab fa-facebook-f me-4" style="font-size: 2rem;"></i></a>
-                <a class="light-grey me-4" href="#"><i class="fab fa-twitter me-4" style="font-size: 2rem;"></i></a>
-                <a class="light-grey me-4" href="#"><i class="fab fa-instagram me-4" style="font-size: 2rem;"></i></a>
-                <a class="light-grey" href="#"><i class="fab fa-linkedin-in" style="font-size: 2rem;"></i></a>
-              </div>
+            <div class="col-12 col-md-2 mt-2">
+                <div class="d-flex justify-content-center">
+                    <a class="me-4" href="#"><i class="fab fa-facebook-f me-4" style="color: #383a68; font-size: 2rem;"></i></a>
+                    <a class="me-4" href="#"><i class="fab fa-twitter me-4" style="color: #383a68; font-size: 2rem;"></i></a>
+                    <a class="me-4" href="#"><i class="fab fa-instagram me-4" style="color: #383a68; font-size: 2rem;"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in" style="color: #383a68; font-size: 2rem;"></i></a>
+                </div>
             </div>
-          </div>
         </div>
-      </footer>
     </div>
-    <!-- Bootstrap JS bundle to be placed before the closing </body> tag -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"></script>
-    <script type="module">
-      var btn = document.getElementById("startBtn")
-      btn.addEventListener('click', Redirect)
-      function Redirect() {
-        window.location.href = "signup-page.html"
-      }
+    </footer>
+
+
+    <!-- footer end -->
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+
+    <script>
+         new Vue({
+            el: "#ani",
+            mounted() {
+                this.animateImages();
+            },
+            methods: {
+                animateImages() {
+                // Animate the laptop image from left to right
+                gsap.from(".laptop-container", {
+                    x: -100, // Adjust the x value to control the distance from the left
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                });
+
+                // Animate the phone image from right to left
+                gsap.from(".phone-container", {
+                    x: 100, // Adjust the x value to control the distance from the right
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                });
+                },
+            },
+            });
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggler = document.querySelector(".navbar-toggler");
+            const burgerMenu = document.querySelector(".burger-menu");
+            const crossIcon = document.querySelector(".cross-icon");
+
+            navbarToggler.addEventListener("click", function() {
+                if (burgerMenu.classList.contains("d-none")) {
+                    burgerMenu.classList.remove("d-none");
+                    crossIcon.classList.add("d-none");
+                } else {
+                    burgerMenu.classList.add("d-none");
+                    crossIcon.classList.remove("d-none");
+                }
+            });
+        });
+
+        // GSAP Animation for Scrolling Ticker
+        // Select the ticker and list elements
+        const ticker = document.querySelector('.ticker');
+        const list = document.querySelector('.ticker__list');
+
+        // Clone the list to create a seamless loop
+        const clone = list.cloneNode(true);
+        ticker.appendChild(clone);
+
+        // Set up GSAP animation to move the ticker list to the left
+        const animation = gsap.to('.ticker__list', {
+            x: '-100%', // Move it to the left by 100% of the width
+            duration: 50, // Duration of the animation
+            repeat: -1, // Repeat infinitely
+            ease: 'linear', // Linear easing
+        });
+
+        // Pause the animation when hovering over the ticker
+        ticker.addEventListener('mouseenter', function() {
+            animation.pause(); // Pause the animation on hover
+        });
+
+        // Resume the animation when the mouse leaves
+        ticker.addEventListener('mouseleave', function() {
+            animation.resume(); // Resume the animation when mouse leaves
+        });
+        
+
+        gsap.from(".part-phone", {
+        y: "15%", // Start 100% down (offscreen)
+        duration: 0.5, // Animation duration in seconds
+        ease: "power2.out" // Easing function for smooth animation
+        });
+
     </script>
+     
+    <!--  jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- bootstrap end -->
 
 </body>
-
 </html>
