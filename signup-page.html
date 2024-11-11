@@ -28,33 +28,36 @@
 <body>
     <div class="container" id="authForm">
         <img class="logo" src="assets/main_logo.png">
-        <h2>Let's Get Your Account Set Up</h2>
+        <h2 class = "mb-2"style = "color: #383a68;">Let's Get Started!</h2>
         <div>
             <div id="errorbar"></div>
             <div class="form-group">
-                <input type="text" id="userName" placeholder="Name" required>
+                <span class = "question">Full Name</span>
+                <input type="text" id="userName" required>
             </div>
             <div class="form-group">
-                <input type="email" id="userEmail" placeholder="Email" required>
+                <span class = "question">Email</span>
+                <input type="email" id="userEmail" required>
             </div>
             <div class="form-group">
-                <input type="password" id="userPassword" placeholder="Password" required>
+                <span class = "question">Password</span>
+                <input type="password" id="userPassword" required>
                 <div id="message">
-                    <strong>Password must be:</strong>
+                    <span style = "font-weight: 500;"> Password must have: </span>
                     <p id="length" class="invalid criteria">At least 8 characters long.</p>
                     <p id="capital" class="invalid criteria">At least one uppercase letter.</p>
                     <p id="symbol" class="invalid criteria">At least one special character.</p>
                 </div>
             </div>
             <div class="form-group">
-                <input type="password" id="userPasswordConfirm" placeholder="Confirm Password" required>
+                <span class = "question">Confirm Password</span>
+                <input type="password" id="userPasswordConfirm" required>
                 <span id="passwordError" class="error"></span>
             </div>
-            <button id="signUp">Sign Up</button>
+            <button id="signUp" class = "btn btn-primary">Sign Up</button>
             
             <hr>
-            <p class="create-account">Already have an account? <span class="login-instead" id="login"
-                    style="text-decoration: underline;">Log in instead</span></p>
+            <p class="create-account">Already have an account? <span class="login-instead" id="login">Log in instead</span></p>
         </div>
     </div>
     <script type="module" src="js_files/signup-page.js"></script>
