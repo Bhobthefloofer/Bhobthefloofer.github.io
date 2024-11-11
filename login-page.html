@@ -1,84 +1,51 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Crafted</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css_files/login-page.css">
-</head>
-
-<body>
-    <div class="container" id="authForm">
-        <img class="logo" src="logo.png" alt="Logo">
-        <h2>Hey, Welcome back!</h2>
-        <div>
-            <div class="form-group">
-                <input type="email" id="userEmail" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <input type="password" id="userPassword" placeholder="Password">
-                <p class="forgot-password">Forgot Password?</p>
-            </div>
-            <button id="signIn">Login</button>
-            <div class="social-signup"></div>
-            <p style="margin: 10px 0;">or</p>
-            <div class="google-button">
-                <img src="google.png" alt="Google Logo">
-                <span class="google-button-text">Login with Google</span>
-            </div>
-        </div>
-        <hr>
-        <p class="create-account">Don't have an account? <span class="login-instead" id="signUp"
-                style="text-decoration: underline;">Create Account</span></p>
-    </div>
-
-    Link to external JavaScript file -->
-    <!-- <script src="js_files/login-page.js" type="module"></script>
-</body>
-
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Crafted</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Crafted | Login </title>
+    <link rel="icon" href="assets/small_logo.png" type="image/png"> <!-- tab logo -->
+    <!-- google font - lato start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- google font - lato end -->
+    <!-- bootstrap start -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap end -->
+     <!-- gsap library start -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+     <!-- gsap library end -->
+    <!-- font awesome for footer icons start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="css_files/standard.css">
     <link rel="stylesheet" type="text/css" href="css_files/login-page.css">
 
 </head>
 
 <body>
     <div class="container" id="authForm">
-        <img class="logo" src="logo.png">
-        <h2>Hey, Welcome back!</h2>
+        <img class="logo" src="assets/main_logo.png">
+        <h2 style = "color: #383a68;">Welcome back!</h2>
+        <br>
         <div>
             <div class="form-group">
-                <input type="email" id="userEmail" placeholder="Email">
+                <span class = "question">Email</span>
+                <input type="email" id="userEmail">
             </div>
             <div class="form-group">
-                <input type="password" id="userPassword" placeholder="Password">
+                <span class = "question">Password</span>
+                <input type="password" id="userPassword">
                 <p class="forgot-password">Forgot Password?</p>
             </div>
-            <button id="signIn">Login</button>
+            <button class = "btn btn-primary" id="signIn">Login</button>
             
         </div>
         <hr>
         <p class="create-account">Don't have an account? <span class="login-instead" id="signUp"
-                style="text-decoration: underline;">Create Account</span></p>
+        >Create Account</span></p>
 
     </div>
     </div>
