@@ -18,8 +18,7 @@
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
         const db = getDatabase()
-        const name = "Saurabh"
-        // localStorage.getItem('name')
+        const name = localStorage.getItem('name')
         const disRole = document.getElementById("disRole") 
         const disName = document.getElementById("disName") 
 
