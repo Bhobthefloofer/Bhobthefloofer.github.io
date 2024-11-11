@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
 import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
 
 const firebaseConfig = {
@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+
 const db = getDatabase()
 const draggables = document.querySelectorAll('.idea-card');
 const columns = document.querySelectorAll('.kanban-column');
@@ -307,26 +307,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Store campaign
-
-
-  
-
-
-
-// Function to add a campaign to the list
-
-
 function displayCampaign() {
   console.log("Displaying campaigns...");
   
   // Get the campaign list
   const dbref = ref(db)
-  get(child(dbref, "people/" + name))
+  return get(child(dbref, "people/" + name))
       .then((snapshot) => {
           console.log("snapshot", snapshot)
           if (snapshot.exists()) {
-              const campaignList = snapshot.val().initialCampaigns 
+            var campaignList = snapshot.val().initialCampaigns 
+            return campaignList
           }
           else {
               alert("User doesnt exist")
@@ -336,16 +327,18 @@ function displayCampaign() {
           alert(error)
       }
 
-      )
-  console.log("Retrieved campaigns:", campaignList);
-
+      )}
+      
   // Clear existing campaign cards first
   document.querySelectorAll('.idea-card').forEach(card => {
       if (!card.classList.contains('default-card')) {
           card.remove();
       }
   });
-
+  var campaignList = displayCampaign(name)
+  .then((campaignList) => {
+    console.log("Retrieved campaigns:", campaignList);
+  
   campaignList.forEach(campaign => {
       console.log("Processing campaign:", campaign);
       let campaignStatus = campaign.status;
@@ -396,8 +389,8 @@ function displayCampaign() {
               statusDiv.appendChild(campaignItem);
           }
       }
-  });
-}
+  })});
+
 
 function addCampaign() {
   // Get form values
