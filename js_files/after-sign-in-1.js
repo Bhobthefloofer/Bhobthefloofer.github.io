@@ -132,3 +132,8 @@ magicBtn.addEventListener('click', async () => {
 
 
 })
+
+document.getElementById("backBtn").addEventListener("click", function () {
+    const carousel = new bootstrap.Carousel(document.getElementById("carouselExample"));
+    carousel.prev(); // This moves the carousel back to the previous slide
+});
