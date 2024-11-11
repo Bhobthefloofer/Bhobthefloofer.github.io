@@ -20,7 +20,7 @@ document.getElementById('nextBtn').addEventListener('click', function () {
 document.getElementById('carouselExample').addEventListener('slid.bs.carousel', function (event) {
     updateProgress(event.to);
 });
-var name = "Saurabh"
+var name = localStorage.getItem('name')
 var fullName = document.getElementById('q-1')
 fullName.value = name
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -86,7 +86,7 @@ function insertData() {
                 }
             ],
             Posts: [],
-            ProfileURL: '../blank pfp.png'
+            ProfileURL: 'blank pfp.png'
 
         }
     )

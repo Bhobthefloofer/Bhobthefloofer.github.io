@@ -16,7 +16,7 @@
             appId: "1:581094929615:web:927fb1303429498d1033ba"
         };
         import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
-
+        const app = initializeApp(firebaseConfig);
         const db = getDatabase()
 
 
