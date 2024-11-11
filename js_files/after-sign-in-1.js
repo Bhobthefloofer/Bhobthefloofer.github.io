@@ -115,7 +115,7 @@ function insertData2() {
                     "status": "draft",
                     "content": "Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...",
                     "file": "./clock.png",
-                    "country": ["United States", "United Kingdom"]
+                    "post_campaign": "abc" 
                 },
                 {
                     "title": "plan",
@@ -125,7 +125,7 @@ function insertData2() {
                     "status": "published",
                     "content": "Save your ideas before converting them into posts. Brainstorm, plan ahead, and refine!",
                     "file": "./pen.png",
-                    "country": ["Japan", "China", "Korea"]
+                    "post_campaign": "def" 
                 }
             ]
 
