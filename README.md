@@ -13,7 +13,7 @@ How to set up the application
 
 - You can now open index.html in your brower 
 
-- You may also access it directly through the link provided above.
+- You may also access it directly through the link provided below.
 
 # Usage 
 - To access and use the website, you can either use localhost, or use the deployed link
