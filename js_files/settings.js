@@ -27,6 +27,9 @@
         var comURL = document.getElementById('url')
         var comType = document.getElementById('type')
         var comDesc = document.getElementById('description')
+        const disRole = document.getElementById("disRole") 
+        const disName = document.getElementById("disName") 
+        const imagePreview = document.getElementById('imagePreview');
 
 
         // var enterID = document.getElementById('email')
@@ -66,6 +69,10 @@
                 .then((snapshot) => {
                     console.log("snapshot", snapshot)
                     if (snapshot.exists()) {
+                        imagePreview.src = snapshot.val().ProfileURL 
+                        
+                        disRole.innerText = snapshot.val().Role
+                        disName.innerText = name
                         email.value = snapshot.val().Email
                         role.value = snapshot.val().Role
                         comURL.value = snapshot.val().OfficialWebsite
@@ -140,5 +147,134 @@
         // removeBtn.addEventListener('click', removeData)
         updateBtn.addEventListener('click', updateDataR)
         updateBtnC.addEventListener('click', updateDataC)
+
+        
+
+        
+        
+
+
+        // Modal and profile handling
+        
+        const fileInput = document.getElementById('fileInput');
+        const profileModal = document.getElementById('profileModal');
+        const sidebar = document.getElementById('sidebar');
+
+        document.getElementById('imageUploader').onclick = () => {
+            profileModal.style.display = 'block';
+        };
+
+        document.getElementById('removeProfile').onclick = () => {
+            update(ref(db, "people/" + name,),
+                            {   
+                                profileURL : 'blank pfp.png'
+
+                            }
+                        );
+                        imagePreview.src = 'blank pfp.png'
+            profileModal.style.display = 'none';
+        };
+
+        document.getElementById('changeProfile').onclick = () => {
+            fileInput.click();
+            
+            profileModal.style.display = 'none';
+        };
+
+
+        document.getElementById('cancel').onclick = () => {
+            profileModal.style.display = 'none';
+        };
+        fileInput.onchange = (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const storageRef = brrr(storage, 'profile_pictures/' + file.name);
+                uploadBytes(storageRef, file).then((snapshot) => {
+                    console.log('Uploaded a blob or file!', snapshot);
+                    getDownloadURL(snapshot.ref).then((url) => {
+                        imagePreview.src = url;
+                        console.log(name)
+                        update(ref(db, "people/" + name,),
+                            {
+                                profileURL : url
+
+                            }
+                        )
+                            
+                    });
+                });
+            }}
+        // };
+        // async function uploadImage() {
+
+        //     const file = fileInput.files[0];
+        //     console.log(file)
+
+        //     if (file) {
+        //         const storageRef = ref(storage, `profile_pictures/${file.name}`);
+        //         await uploadBytes(storageRef, file);
+
+        //         const imageURL = await getDownloadURL(storageRef);
+
+        //         imagePreview.src = imageURL;
+        //         update(ref(db, "people/" + name,),
+        //             {
+        //                 profileURL: imageURL
+
+        //             })
+        //     }
+        // }
+
+        // function findData() {
+        //     const dbref = ref(db)
+        //     get(child(dbref, "people/" + name))
+        //         .then((snapshot) => {
+        //             console.log(snapshot)
+        //             if (snapshot.exists()) {
+        //                 imagePreview.src = snapshot.val().profileURL
+
+
+        //             }
+        //             else {
+        //                 alert("User doesnt exist")
+        //             }
+        //         })
+        //         .catch((error) => {
+        //             alert(error)
+        //         }
+
+        //         )
+        // }
+
+
+
+        // document.getElementById('imageUploader').onclick = () => {
+        //     profileModal.style.display = 'block';
+        // };
+
+        // document.getElementById('removeProfile').onclick = () => {
+        //     imagePreview.src = '';
+        //     profileModal.style.display = 'none';
+        // };
+
+        // document.getElementById('changeProfile').onclick = () => {
+        //     fileInput.click();
+        //     profileModal.style.display = 'none';
+        // };
+
+        // document.getElementById('cancel').onclick = () => {
+        //     profileModal.style.display = 'none';
+        // };
+
+        
+        
+
+
+
+        // Sidebar toggle functionality
+        document.getElementById('hamburger').onclick = () => {
+            sidebar.classList.toggle('collapsed');
+        };
+    
 
         
