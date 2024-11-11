@@ -29,8 +29,8 @@
                 .then((snapshot) => {
                    
                     if (snapshot.exists()) {
-                        imagePreview.src = snapshot.val().profileURL 
-                        console.log(imagePreview)
+                        imagePreview.src = snapshot.val().ProfileURL 
+                        
                         disRole.innerText = snapshot.val().Role
                         disName.innerText = name
 
