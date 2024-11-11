@@ -231,3 +231,53 @@ body {
     margin: 0 auto;
     padding: 10px;
 }
+/* Make all dates appear in black */
+.fc-daygrid-day-number {
+    color: black !important;
+}
+
+/* Ensure no background color on individual dates */
+.fc-daygrid-day, .fc-day {
+    background-color: transparent !important;
+}
+
+/* Remove the highlight for today’s date */
+.fc-daygrid-day.fc-day-today {
+    background-color: transparent !important;
+    color: black !important;
+    font-weight: normal !important; /* Optional: remove bold if applied */
+}
+
+/* Remove highlight on selected or active dates */
+.fc-daygrid-day-selected, .fc-daygrid-day-hover {
+    background-color: transparent !important;
+}
+
+/* Adjust event color, if necessary */
+/* Make all dates appear in black */
+.fc-daygrid-day-number {
+    color: black !important;
+}
+
+/* Ensure no background color on individual dates */
+.fc-daygrid-day, .fc-day {
+    background-color: transparent !important;
+}
+
+/* Remove the highlight for today’s date */
+.fc-daygrid-day.fc-day-today {
+    background-color: transparent !important;
+    color: black !important;
+    font-weight: normal !important; /* Optional: remove bold if applied */
+}
+
+/* Remove highlight on selected or active dates */
+.fc-daygrid-day-selected, .fc-daygrid-day-hover {
+    background-color: transparent !important;
+}
+
+/* Adjust event color, if necessary */
+.fc-event {
+    background-color: #4B4F7D !important; /* Set a custom color for events */
+    color: white !important; /* Ensure event text is readable */
+}

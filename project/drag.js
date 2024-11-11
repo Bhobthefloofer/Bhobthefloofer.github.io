@@ -1,6 +1,24 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+
+import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+    authDomain: "wad2test-43dc0.firebaseapp.com",
+    databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "wad2test-43dc0",
+    storageBucket: "wad2test-43dc0.appspot.com",
+    messagingSenderId: "581094929615",
+    appId: "1:581094929615:web:927fb1303429498d1033ba"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase()
 const draggables = document.querySelectorAll('.idea-card');
 const columns = document.querySelectorAll('.kanban-column');
 const addIdeaButtons = document.querySelectorAll('.add-idea');
+const name = "Saurabh"
 
 // Create modal container
 const modalContainer = document.createElement('div');
@@ -99,7 +117,7 @@ function initializeCountryDropdown(container) {
   dropdownContainer.style.overflowY = 'auto';
   dropdownContainer.style.backgroundColor = '#fff';
   dropdownContainer.style.border = '1px solid lightgray';
- 
+
   dropdownContainer.style.borderRadius = '0 0 4px 4px';
   dropdownContainer.style.display = 'none';
   dropdownContainer.style.zIndex = '1000';
@@ -252,7 +270,7 @@ addIdeaButtons.forEach(button => {
         }
         modalContent.appendChild(closeButton);
         modalContainer.style.display = 'flex';
-        
+
         // Initialize the dropdown after loading content
         initializeCountryDropdown(modalInnerContent);
       })
@@ -275,9 +293,164 @@ function getDragAfterElement(container, y) {
 }
 
 // Initialize dropdowns on page load for non-modal content
-document.addEventListener('DOMContentLoaded', () => {
-  const mainCampaignBar = document.querySelector('#campaignBar');
-  if (mainCampaignBar) {
-    initializeCountryDropdown(document);
+// Initialize campaigns on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Only initialize if the list doesn't exist
+  if (!localStorage.getItem("campaignList")) {
+      initializeCampaignList();
+  }
+  
+  // If we're on the post.html page, display campaigns
+  if (window.location.pathname.includes("post.html")) {
+      displayCampaign();
   }
 });
+
+
+function displayCampaign() {
+  console.log("Displaying campaigns...");
+  
+  // Get the campaign list
+  const dbref = ref(db)
+  return get(child(dbref, "people/" + name))
+      .then((snapshot) => {
+          console.log("snapshot", snapshot)
+          if (snapshot.exists()) {
+            var campaignList = snapshot.val().initialCampaigns 
+            return campaignList
+          }
+          else {
+              alert("User doesnt exist")
+          }
+      })
+      .catch((error) => {
+          alert(error)
+      }
+
+      )}
+      
+  // Clear existing campaign cards first
+  document.querySelectorAll('.idea-card').forEach(card => {
+      if (!card.classList.contains('default-card')) {
+          card.remove();
+      }
+  });
+  var campaignList = displayCampaign(name)
+  .then((campaignList) => {
+    console.log("Retrieved campaigns:", campaignList);
+  
+  campaignList.forEach(campaign => {
+      console.log("Processing campaign:", campaign);
+      let campaignStatus = campaign.status;
+      console.log(campaignStatus)
+      let statusDiv = document.getElementById(campaignStatus);
+      
+      console.log("Status div found:", statusDiv, "for status:", campaignStatus);
+
+      if (statusDiv) {
+          // Create campaign item
+          let campaignItem = document.createElement("div");
+          campaignItem.setAttribute("class", "idea-card");
+          campaignItem.setAttribute("draggable", "true");
+
+          // Add drag listeners
+          campaignItem.addEventListener('dragstart', () => {
+              campaignItem.classList.add('is-dragging');
+          });
+
+          campaignItem.addEventListener('dragend', () => {
+              campaignItem.classList.remove('is-dragging');
+          });
+
+          // Create campaign content
+          let h6 = document.createElement("h6");
+          h6.innerText = campaign.header || campaign.title;
+
+          let button = document.createElement("button");
+          button.setAttribute("class", "btn btn-dark campaign-button");
+          button.innerText = campaign.post_campaign;
+
+          let para = document.createElement("p");
+          para.style.marginTop = "6px";
+          para.innerText = campaign.content;
+
+          // Assemble campaign item
+          campaignItem.appendChild(h6);
+          campaignItem.appendChild(button);
+          campaignItem.appendChild(para);
+
+          // Find the add-idea button
+          const addIdeaButton = statusDiv.querySelector('.add-idea');
+          
+          // Insert the campaign item before the add-idea button
+          if (addIdeaButton) {
+              statusDiv.insertBefore(campaignItem, addIdeaButton);
+          } else {
+              statusDiv.appendChild(campaignItem);
+          }
+      }
+  })})
+
+
+function addCampaign() {
+  // Get form values
+  const campaignTitle = document.getElementById("postTitle").value;
+  const campaignDate = document.getElementById("postDate").value;
+  const campaignTime = document.getElementById("postTime").value;
+  const campaignStatus = document.getElementById("postStatus").value;
+  const campaignContent = document.getElementById("postContent").value;
+  const campaignFile = document.getElementById("fileUpload").value;
+
+  // Debug logging
+  console.log("Adding campaign with values:", {
+      title: campaignTitle,
+      date: campaignDate,
+      time: campaignTime,
+      status: campaignStatus,
+      content: campaignContent,
+      selectedCountries: window.selectedCountries
+  });
+
+  if (campaignTitle && campaignDate && campaignTime && campaignStatus && campaignContent) {
+      const newCampaign = {
+          title: campaignTitle,
+          header: campaignTitle,
+          date: campaignDate,
+          time: campaignTime,
+          status: campaignStatus.toLowerCase(), // Ensure status is lowercase to match IDs
+          content: campaignContent,
+          file: campaignFile || "./pen.png",
+          country: window.selectedCountries || []
+      };
+
+      // Get existing campaigns
+      var campaignList = displayCampaign(name)
+       .then((campaignList) => {
+      
+      
+      // Add new campaign
+      campaignList.push(newCampaign);
+      
+      // Save to localStorage
+      
+      
+      console.log("Updated campaign list:", campaignList);
+      
+
+      // Redirect
+      window.location.href = "post.html";
+      // displayCampaign()
+    }) 
+  } else {
+      alert("Please fill all required fields");
+  }
+}
+var saveButton=document.getElementById("saveButton")
+
+saveButton.addEventListener("click",addCampaign)
+
+
+
+displayCampaign();
+
+

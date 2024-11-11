@@ -18,8 +18,7 @@
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
         const db = getDatabase()
-        const name = "Saurabh"
-        // localStorage.getItem('name')
+        const name = localStorage.getItem('name')
         const disRole = document.getElementById("disRole") 
         const disName = document.getElementById("disName") 
 
@@ -60,7 +59,13 @@
         };
 
         document.getElementById('removeProfile').onclick = () => {
-            imagePreview.src = '';
+            update(ref(db, "people/" + name,),
+                            {   
+                                profileURL : 'blank pfp.png'
+
+                            }
+                        );
+                        imagePreview.src = 'blank pfp.png'
             profileModal.style.display = 'none';
         };
 

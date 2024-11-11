@@ -24,6 +24,13 @@
     <link rel="stylesheet" type="text/css" href="css_files/signup-page.css">
 
 </head>
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+        display: none;
+    }
+</style>
 
 <body>
     <div class="container" id="authForm">
@@ -32,6 +39,7 @@
         <div>
             <div id="errorbar"></div>
             <div class="form-group">
+<<<<<<< HEAD
                 <span class = "question">Full Name</span>
                 <input type="text" id="userName" required>
             </div>
@@ -42,6 +50,18 @@
             <div class="form-group">
                 <span class = "question">Password</span>
                 <input type="password" id="userPassword" required>
+=======
+                <input type="text" id="userName" placeholder="Name" required>
+                <span id="userNameError" class="error">This field is required.</span>
+            </div>
+            <div class="form-group">
+                <input type="email" id="userEmail" placeholder="Email" required>
+                <span id="userEmailError" class="error">This field is required.</span>
+            </div>
+            <div class="form-group">
+                <input type="password" id="userPassword" placeholder="Password" required>
+                <span id="userPasswordError" class="error">This field is required.</span>
+>>>>>>> 0526abf0d21585514c7a7191dc22c07147ad6fad
                 <div id="message">
                     <span style = "font-weight: 500;"> Password must have: </span>
                     <p id="length" class="invalid criteria">At least 8 characters long.</p>
@@ -50,8 +70,13 @@
                 </div>
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <span class = "question">Confirm Password</span>
                 <input type="password" id="userPasswordConfirm" required>
+=======
+                <input type="password" id="userPasswordConfirm" placeholder="Confirm Password" required>
+                <span id="userPasswordConfirmError" class="error">This field is required.</span>
+>>>>>>> 0526abf0d21585514c7a7191dc22c07147ad6fad
                 <span id="passwordError" class="error"></span>
             </div>
             <button id="signUp" class = "btn btn-primary">Sign Up</button>
@@ -61,6 +86,68 @@
         </div>
     </div>
     <script type="module" src="js_files/signup-page.js"></script>
+    <script>
+        // Function to hide the error message when user starts typing
+        function hideErrorOnInput(input, errorElement) {
+            input.addEventListener("input", function() {
+                if (input.value !== "") {
+                    errorElement.style.display = "none";
+                }
+            });
+        }
+    
+        document.getElementById("signUp").addEventListener("click", function(event) {
+            event.preventDefault();
+    
+            // Get form inputs
+            const userName = document.getElementById("userName");
+            const userEmail = document.getElementById("userEmail");
+            const userPassword = document.getElementById("userPassword");
+            const userPasswordConfirm = document.getElementById("userPasswordConfirm");
+    
+            // Get error message elements
+            const userNameError = document.getElementById("userNameError");
+            const userEmailError = document.getElementById("userEmailError");
+            const userPasswordError = document.getElementById("userPasswordError");
+            const userPasswordConfirmError = document.getElementById("userPasswordConfirmError");
+    
+            // Flag for form validity
+            let isValid = true;
+    
+            // Check if fields are empty
+            if (userName.value === "") {
+                userNameError.style.display = "block";
+                isValid = false;
+            }
+    
+            if (userEmail.value === "") {
+                userEmailError.style.display = "block";
+                isValid = false;
+            }
+    
+            if (userPassword.value === "") {
+                userPasswordError.style.display = "block";
+                isValid = false;
+            }
+    
+            if (userPasswordConfirm.value === "") {
+                userPasswordConfirmError.style.display = "block";
+                isValid = false;
+            }
+    
+            // Proceed only if form is valid
+            if (isValid) {
+                // Submit form or further validation
+                console.log("Form submitted successfully!");
+            }
+        });
+    
+        // Attach input event listeners to hide error messages on typing
+        hideErrorOnInput(document.getElementById("userName"), document.getElementById("userNameError"));
+        hideErrorOnInput(document.getElementById("userEmail"), document.getElementById("userEmailError"));
+        hideErrorOnInput(document.getElementById("userPassword"), document.getElementById("userPasswordError"));
+        hideErrorOnInput(document.getElementById("userPasswordConfirm"), document.getElementById("userPasswordConfirmError"));
+    </script>
 
     
 </body>
