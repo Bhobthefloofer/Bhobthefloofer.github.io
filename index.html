@@ -581,24 +581,25 @@
 
         .meet-team-container {
           display: flex;
-          gap: 15px; /* Reduced gap to fit cards in one row */
+          flex-wrap: wrap; /* Allows wrapping to the next line */
+          gap: 15px;
           justify-content: center;
-          max-width: 1600px; /* Increase max width to fit all cards in one row */
+          max-width: 1200px; /* Adjust as needed */
           padding: 20px;
-          flex-wrap: nowrap; /* Prevent wrapping to keep cards in a single row */
         }
 
         .meet-team-card {
-          background-color: #fff;
-          border-radius: 15px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          text-align: center;
-          padding: 20px;
-          width: 400px; /* Increase card width */
-          height: 400px; /* Increase card height */
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 20px;
+        width: 45%; /* Adjust width to allow two columns */
+        max-width: 350px; /* Set a max-width for larger screens */
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         }
 
         .meet-team-card img {
@@ -952,7 +953,7 @@
                     <h2>Vivie</h2>
                     <h3>Frontend Designer</h3>
                     <p>Attempting to make the internet a prettier place, one pixel at a time.</p>
-                    <a href="#" target="_blank">Say hi on LinkedIn →</a>
+                    <a href="https://www.linkedin.com/in/vivie-cherysia-6619a0273" target="_blank">Say hi on LinkedIn →</a>
                 </div>
     
                 <!-- Amrita -->
@@ -963,7 +964,6 @@
                     <p>I'm not into cars, but I am into wheels, the colour wheel to be exact.</p>
                     <a href="https://www.linkedin.com/in/amritadutta725/" target="_blank">Say hi on LinkedIn →</a>
                 </div>
-    
                 <!-- Nabil -->
                 <div class="meet-team-card">
                     <img src="profile_images/Nabil.jpg" alt="Nabil's photo">
