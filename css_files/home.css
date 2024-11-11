@@ -10,7 +10,6 @@ body {
     color: #383A68;
 }
 
-
 /* Sidebar styling */
 .sidebar {
     width: 250px;
@@ -21,10 +20,9 @@ body {
     align-items: center;
     height: 100vh;
     transition: width 0.3s ease;
-    overflow: hidden;
+    overflow-y: auto;
     position: relative;
 }
-
 
 /* Sidebar collapsed adjustments */
 .sidebar.collapsed {
@@ -35,7 +33,7 @@ body {
 .sidebar.collapsed .logo,
 .sidebar.collapsed .profile,
 .sidebar.collapsed .nav li a span {
-    display: none; 
+    display: none;
 }
 
 /* Small Logo in Collapsed View */
@@ -46,21 +44,21 @@ body {
 
 .sidebar.collapsed .small-logo {
     display: block;
-    margin-top: 22px; /* Add space above the small logo */
-    margin-bottom: 10px; /* Reduce space below the small logo */
+    margin-top: 22px;
+    margin-bottom: 10px;
 }
 
 /* Hamburger icon styling */
 .hamburger {
     position: absolute;
-    top: 10px; /* Set more precise spacing from the top */
+    top: 10px;
     left: 15px;
     z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding-bottom: 5px; /* Fine-tune space between hamburger and logo */
+    padding-bottom: 5px;
 }
 
 /* Profile section - hide in collapsed view */
@@ -81,37 +79,34 @@ body {
     background-color: #d3d3d3;
 }
 
-
 .sidebar.collapsed .profile {
     display: none;
 }
 
 /* Navigation links styling */
 .nav {
-    width: 100%;
-    list-style: none;
-    /* display: flex; */
-    flex-direction: flex-start;
-    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
     padding: 0;
-    margin-top: 5px; /* Reduce top margin to minimize space */
+    margin-top: 5px;
 }
 
 .nav li {
     width: 100%;
     text-align: left;
-    margin-bottom: 8px; /* Less space between icons */
+    margin-bottom: 8px;
 }
 
 .nav li a {
     display: flex;
     align-items: center;
-    justify-content: left;
     text-decoration: none;
     color: #4a4a73;
     font-size: 16px;
-    padding: 5px; /* Decrease padding to fit icons better */
+    padding: 5px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
     width: 100%;
@@ -132,6 +127,7 @@ body {
 
 /* FullCalendar styling */
 #calendar {
+    display: block;
     max-width: 900px;
     margin: 40px auto;
     background-color: #F3F3F6;
@@ -147,10 +143,12 @@ body {
     border: none;
 }
 
-.fc-button:hover, .fc-button:focus,
-.fc-button:active, .fc-button:visited {
+.fc-button:hover,
+.fc-button:focus,
+.fc-button:active,
+.fc-button:visited {
     background-color: #383A68;
-    color: #F3F3F6;
+    color: white;
 }
 
 @media (max-width: 768px) {
@@ -185,7 +183,6 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Modal close button styling */
 .modal-content .close {
     position: absolute;
     top: 10px;
@@ -195,19 +192,42 @@ body {
     color: #666;
 }
 
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
 }
 
-/* Adjustments for smaller screens */
 @media (max-width: 600px) {
     .modal-content {
         width: 90%;
+        margin: 5% auto;
     }
 }
+
 .logo {
-    width: 120px; /* Adjust width as needed */
-    max-width: 100%; /* Prevents it from going beyond container width */
+    width: 120px;
+    max-width: 100%;
     height: auto;
+}
+
+/* fixing some issues */
+.fc-daygrid-day {
+    background-color: transparent !important;
+}
+
+.fc-daygrid-day.fc-day-today {
+    background-color: transparent !important;
+}
+
+.col.bg-light.p-4 {
+    padding: 0 !important;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
 }
