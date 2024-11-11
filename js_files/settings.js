@@ -158,4 +158,5 @@
         // removeBtn.addEventListener('click', removeData)
         updateBtn.addEventListener('click', updateDataR)
         updateBtnC.addEventListener('click', updateDataC)
+
         

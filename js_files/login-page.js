@@ -50,7 +50,13 @@ const userSignIn = async () => {
 
         )
         .catch((error) => {
-            alert(error)
+            if (error.code == "auth/invalid-credential") {
+                errorHeading.innerText="Incorrect Username or Password"
+            }
+            if (error.code == "auth/user-does-not-exist") {
+                errorHeading.innerText="You do not have an account. Please log in instead"
+            } 
+            
 
         })
 }

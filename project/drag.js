@@ -1,6 +1,24 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+    authDomain: "wad2test-43dc0.firebaseapp.com",
+    databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "wad2test-43dc0",
+    storageBucket: "wad2test-43dc0.appspot.com",
+    messagingSenderId: "581094929615",
+    appId: "1:581094929615:web:927fb1303429498d1033ba"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase()
 const draggables = document.querySelectorAll('.idea-card');
 const columns = document.querySelectorAll('.kanban-column');
 const addIdeaButtons = document.querySelectorAll('.add-idea');
+const name = "Saurabh"
 
 // Create modal container
 const modalContainer = document.createElement('div');
@@ -291,35 +309,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Store campaign
 
-function initializeCampaignList() {
-  // Only initialize if the list doesn't exist
-  if (!localStorage.getItem("campaignList")) {
-      const initialCampaigns = [
-          {
-              "title": "inspirations",
-              "header": "Save inspirations you find online with one click",
-              "date": "14/11/2024",
-              "time": "15:30",
-              "status": "draft",
-              "content": "Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...",
-              "file": "./clock.png",
-              "country": ["United States", "United Kingdom"]
-          },
-          {
-              "title": "plan",
-              "header": "This is a place to plan your content",
-              "date": "14/11/2024",
-              "time": "15:30",
-              "status": "published",
-              "content": "Save your ideas before converting them into posts. Brainstorm, plan ahead, and refine!",
-              "file": "./pen.png",
-              "country": ["Japan", "China", "Korea"]
-          }
-      ];
 
-      localStorage.setItem("campaignList", JSON.stringify(initialCampaigns));
-  }
-}
+  
+
 
 
 // Function to add a campaign to the list
@@ -329,7 +321,22 @@ function displayCampaign() {
   console.log("Displaying campaigns...");
   
   // Get the campaign list
-  const campaignList = JSON.parse(localStorage.getItem("campaignList")) || [];
+  const dbref = ref(db)
+  get(child(dbref, "people/" + name))
+      .then((snapshot) => {
+          console.log("snapshot", snapshot)
+          if (snapshot.exists()) {
+              const campaignList = snapshot.val().initialCampaigns 
+          }
+          else {
+              alert("User doesnt exist")
+          }
+      })
+      .catch((error) => {
+          alert(error)
+      }
+
+      )
   console.log("Retrieved campaigns:", campaignList);
 
   // Clear existing campaign cards first
@@ -368,7 +375,7 @@ function displayCampaign() {
 
           let button = document.createElement("button");
           button.setAttribute("class", "btn btn-dark campaign-button");
-          button.innerText = "Campaign Name";
+          button.innerText = campaign.country;
 
           let para = document.createElement("p");
           para.style.marginTop = "6px";
@@ -444,6 +451,6 @@ function addCampaign() {
 }
 
 
-initializeCampaignList();
+displayCampaign();
 
 

@@ -102,7 +102,30 @@ function insertData2() {
             CompanyName: comName.value,
             OfficialWebsite: comWeb.value,
             CompanyType: comType.value,
-            CompanyDesc: ''
+            CompanyDesc: '',
+
+            initialCampaigns : [
+                {
+                    "title": "inspirations",
+                    "header": "Save inspirations you find online with one click",
+                    "date": "14/11/2024",
+                    "time": "15:30",
+                    "status": "draft",
+                    "content": "Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...",
+                    "file": "./clock.png",
+                    "country": ["United States", "United Kingdom"]
+                },
+                {
+                    "title": "plan",
+                    "header": "This is a place to plan your content",
+                    "date": "14/11/2024",
+                    "time": "15:30",
+                    "status": "published",
+                    "content": "Save your ideas before converting them into posts. Brainstorm, plan ahead, and refine!",
+                    "file": "./pen.png",
+                    "country": ["Japan", "China", "Korea"]
+                }
+            ]
 
 
         }

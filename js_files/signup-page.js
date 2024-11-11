@@ -95,7 +95,7 @@ signUpBtn.addEventListener('click', async () => {
             await createUserWithEmailAndPassword(auth, email, password);
             insertData()
         } catch (error) {
-            console.log(error.code)
+        
             if (error.code == "auth/email-already-in-use") {
                 errorHeading.innerText="You already have an account. Please log in instead."
             }
