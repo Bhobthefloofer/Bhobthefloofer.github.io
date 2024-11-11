@@ -43,12 +43,15 @@ const validatePassword = () => {
     return length && uppercase && symbol;
 };
 
-const validateConfirmPassword = () => {
+const validateConfirmPassword = () => { 
     const errorElement = document.getElementById('passwordError');
+    console.log(userPassword.value !== userPasswordConfirm.value)
     if (userPassword.value !== userPasswordConfirm.value) {
         errorElement.textContent = 'Passwords do not match';
         errorElement.classList.remove('success');
         errorElement.classList.add('error');
+        errorElement.style.display= 'block'
+        console.log(errorElement)
         return false;
     } else {
         errorElement.textContent = '';
@@ -57,9 +60,37 @@ const validateConfirmPassword = () => {
 };
 
 const validateForm = () => {
+    // Get error message elements
+    const userNameError = document.getElementById("userNameError");
+    const userEmailError = document.getElementById("userEmailError");
+
+    // Flag for form validity
+    let isValid = true;
+
+    // Check if fields are empty
+    if (userName.value === "") {
+        userNameError.style.display = "block";
+        isValid = false;
+    }
+
+    if (userEmail.value === "") {
+        userEmailError.style.display = "block";
+        isValid = false;
+    }
+
+    if (userPassword.value === "") {
+        userPasswordError.style.display = "block";
+        isValid = false;
+    }
+
+    if (userPasswordConfirm.value === "") {
+        userPasswordConfirmError.style.display = "block";
+        isValid = false;
+    }
+
     const isPasswordValid = validatePassword();
     const isConfirmPasswordValid = validateConfirmPassword();
-    return isPasswordValid && isConfirmPasswordValid;
+    return isValid && isPasswordValid && isConfirmPasswordValid;
 };
 
 userPassword.addEventListener('input', () => {
@@ -68,22 +99,23 @@ userPassword.addEventListener('input', () => {
 
 userPasswordConfirm.addEventListener('input', () => {
     validateConfirmPassword();
+    
 });
 
 function insertData() {
-    set(ref(db, "people/" + userName.value, ),
+    set(ref(db, "people/" + userName.value,),
         {
             Name: userName.value,
             Email: userEmail.value
         }
     )
-    .then(() => {
-        localStorage.setItem('name', userName.value);
-        window.location.href = 'after-sign-in.html';
-    })
-    .catch((error) => {
-        console.log(error)
-    })
+        .then(() => {
+            localStorage.setItem('name', userName.value);
+            window.location.href = 'after-sign-in.html';
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 }
 
 signUpBtn.addEventListener('click', async () => {
@@ -95,12 +127,12 @@ signUpBtn.addEventListener('click', async () => {
             await createUserWithEmailAndPassword(auth, email, password);
             insertData()
         } catch (error) {
-        
+
             if (error.code == "auth/email-already-in-use") {
-                errorHeading.innerText="You already have an account. Please log in instead."
+                errorHeading.innerText = "You already have an account. Please log in instead."
             }
             if (error.code == "auth/invalid-email") {
-                errorHeading.innerText="Incorrect Email Provided"
+                errorHeading.innerText = "Incorrect Email Provided"
             }
         }
     }
@@ -109,3 +141,19 @@ signUpBtn.addEventListener('click', async () => {
 signInBtn.addEventListener('click', () => {
     window.location.href = 'login-page.html';
 });
+
+
+// Function to hide the error message when user starts typing
+function hideErrorOnInput(input, errorElement2) {
+    input.addEventListener("input", function () {
+        if (input.value !== "") {
+           
+            errorElement2.style.display = "none";
+        }
+    });
+}
+
+// Attach input event listeners to hide error messages on typing
+hideErrorOnInput(document.getElementById("userName"), document.getElementById("userNameError"));
+hideErrorOnInput(document.getElementById("userEmail"), document.getElementById("userEmailError"));
+

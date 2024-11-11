@@ -21,6 +21,7 @@
         const name = localStorage.getItem('name')
         const disRole = document.getElementById("disRole") 
         const disName = document.getElementById("disName") 
+        const imagePreview = document.getElementById('imagePreview');
 
         function findData() {
             const dbref = ref(db)
@@ -28,7 +29,8 @@
                 .then((snapshot) => {
                    
                     if (snapshot.exists()) {
-                        imagePreview.src = snapshot.val().profileURL
+                        imagePreview.src = snapshot.val().profileURL 
+                        console.log(imagePreview)
                         disRole.innerText = snapshot.val().Role
                         disName.innerText = name
 
@@ -49,7 +51,7 @@
 
 
         // Modal and profile handling
-        const imagePreview = document.getElementById('imagePreview');
+        
         const fileInput = document.getElementById('fileInput');
         const profileModal = document.getElementById('profileModal');
         const sidebar = document.getElementById('sidebar');
