@@ -368,7 +368,7 @@ function displayCampaign() {
 
           let button = document.createElement("button");
           button.setAttribute("class", "btn btn-dark campaign-button");
-          button.innerText = campaign.country;
+          button.innerText = campaign.post_campaign;
 
           let para = document.createElement("p");
           para.style.marginTop = "6px";

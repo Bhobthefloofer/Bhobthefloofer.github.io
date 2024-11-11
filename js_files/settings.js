@@ -15,24 +15,6 @@
             messagingSenderId: "581094929615",
             appId: "1:581094929615:web:927fb1303429498d1033ba"
         };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app)
-        const checkAuth = async () => {
-            onAuthStateChanged(auth, user => {
-                if (user) {
-
-
-
-                    content.style.display = 'block'
-                }
-                else {
-                    window.location.href = 'login-page.html'
-                }
-            })
-        }
-        checkAuth()
         import { getDatabase, set, get, update, remove, ref, child } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
 
         const db = getDatabase()
