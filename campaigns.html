@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="posts-container"></div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"
+        import { getDatabase, set, get, update, remove, child, ref, query, orderByChild, equalTo } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js"
+        const firebaseConfig = {
+            apiKey: "AIzaSyCyW2mK7zbaeQ6jIqzumE1no3h-pL6aBXs",
+            authDomain: "wad2test-43dc0.firebaseapp.com",
+            databaseURL: "https://wad2test-43dc0-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "wad2test-43dc0",
+            storageBucket: "wad2test-43dc0.appspot.com",
+            messagingSenderId: "581094929615",
+            appId: "1:581094929615:web:927fb1303429498d1033ba"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const userPostsRef = ref(db, 'people/Saurabh/initialCampaigns');
+
+
+
+        // Initialize Firebase (make sure Firebase is initialized before this)
+
+
+        // Function to fetch and categorize posts
+        async function fetchAndDisplayPosts() {
+            try {
+                // Get reference to the user's posts
+
+
+                // Fetch the data
+                const snapshot = await get(userPostsRef);
+
+                if (snapshot.exists()) {
+                    const posts = snapshot.val();
+
+                    // Create an object to store posts by campaign
+                    const categorizedPosts = {};
+
+                    // Loop through each post and categorize by 'post_campaign'
+                    posts.forEach(post => {
+                        const campaign = post.post_campaign;
+
+                        // If the campaign category doesn't exist, create it
+                        if (!categorizedPosts[campaign]) {
+                            categorizedPosts[campaign] = [];
+                        }
+
+                        // Push the post into the respective campaign category
+                        categorizedPosts[campaign].push(post);
+                    });
+
+                    // Now, display posts categorized by campaign
+                    displayCategorizedPosts(categorizedPosts);
+
+                } else {
+                    console.log("No posts available.");
+                }
+            } catch (error) {
+                console.error("Error fetching posts:", error);
+            }
+        }
+
+        // Function to display the posts
+        function displayCategorizedPosts(categorizedPosts) {
+            const container = document.getElementById("posts-container"); // Make sure this container exists in your HTML
+
+            for (const campaign in categorizedPosts) {
+                const campaignSection = document.createElement("section");
+                campaignSection.innerHTML = `<h3>${campaign}</h3>`;
+
+                categorizedPosts[campaign].forEach(post => {
+                    const postElement = document.createElement("div");
+                    postElement.classList.add("post");
+
+                    postElement.innerHTML = `
+        <p><strong>Post:</strong> ${post.content}</p>
+      `;
+
+                    campaignSection.appendChild(postElement);
+                });
+
+                container.appendChild(campaignSection);
+            }
+        }
+
+        // Example usage: Fetch and display posts for a specific user
+        // Replace with the actual user ID
+        fetchAndDisplayPosts();
+
+        // const searchEmail = userEmail;
+
+        // const emailQuery = query(peopleRef, orderByChild('Email'), equalTo(searchEmail));
+
+        // // Run the query and handle the result
+        // get(emailQuery).then((snapshot) => {
+        //     if (snapshot.exists()) {
+        //         snapshot.forEach((childSnapshot) => {
+        //             const name = childSnapshot.key; // 'name' is the key of each child node
+        //             localStorage.setItem('name', name)
+        //             window.location.href = 'home.html'
+        //         });
+        //     } else {
+        //         console.log("Email not found.");
+        //     }
+        // }).catch((error) => {
+        //     console.error("Error getting data: ", error);
+        // });
+    </script>
+</body>
+
+</html>
