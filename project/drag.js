@@ -435,11 +435,32 @@ function addCampaign() {
       alert("Please fill all required fields");
   }
 }
-var saveButton=document.getElementById("saveButton")
+function observeSaveButton() {
+  // Get the parent node where the button will be added (assuming it's the body or a container)
+  const parentNode = document.body; // Or replace with a more specific parent element
 
-saveButton.addEventListener("click",addCampaign)
+  // Create a MutationObserver to watch for changes in the DOM
+  const observer = new MutationObserver((mutationsList) => {
+    // Loop through all mutations that have been observed
+    for (const mutation of mutationsList) {
+      // Check if nodes were added to the DOM
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach(node => {
+          // If the added node is the saveButton, set up the event listener
+          if (node.id === "saveButton") {
+            console.log('saveButton added dynamically');
+            node.addEventListener("click", addCampaign);
+            observer.disconnect();  // Stop observing after the button is added
+          }
+        });
+      }
+    }
+  });
 
-
+  // Start observing the parent node for added nodes
+  observer.observe(parentNode, { childList: true, subtree: true });
+}
+observeSaveButton()
 
 displayCampaign();
 
