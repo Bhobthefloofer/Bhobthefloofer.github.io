@@ -51,7 +51,7 @@ const validateConfirmPassword = () => {
         errorElement.classList.remove('success');
         errorElement.classList.add('error');
         errorElement.style.display= 'block'
-        console.log(errorElement)
+        
         return false;
     } else {
         errorElement.textContent = '';
