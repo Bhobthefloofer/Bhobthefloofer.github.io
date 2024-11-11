@@ -133,9 +133,6 @@ body {
     background-color: #F3F3F6;
 }
 
-.fc-daygrid-day.fc-day-today {
-    background-color: #E6E0D6 !important;
-}
 
 .fc-button {
     background-color: #4B4F7D;
@@ -151,6 +148,7 @@ body {
     color: white;
 }
 
+/* Responsive calendar adjustments */
 @media (max-width: 768px) {
     #calendar {
         max-width: 100%;
@@ -211,7 +209,6 @@ body {
     height: auto;
 }
 
-/* fixing some issues */
 .fc-daygrid-day {
     background-color: transparent !important;
 }
@@ -231,9 +228,11 @@ body {
     margin: 0 auto;
     padding: 10px;
 }
-/* Make all dates appear in black */
-.fc-daygrid-day-number {
-    color: black !important;
+
+/* Calendar day and date colors */
+.fc .fc-daygrid-day-number,
+.fc .fc-col-header-cell-cushion {
+    color: #383A68 !important; /* Set dates and days of the week to #383A68 */
 }
 
 /* Ensure no background color on individual dates */
@@ -244,7 +243,7 @@ body {
 /* Remove the highlight for today’s date */
 .fc-daygrid-day.fc-day-today {
     background-color: transparent !important;
-    color: black !important;
+    color: #383A68 !important;
     font-weight: normal !important; /* Optional: remove bold if applied */
 }
 
@@ -253,30 +252,7 @@ body {
     background-color: transparent !important;
 }
 
-/* Adjust event color, if necessary */
-/* Make all dates appear in black */
-.fc-daygrid-day-number {
-    color: black !important;
-}
-
-/* Ensure no background color on individual dates */
-.fc-daygrid-day, .fc-day {
-    background-color: transparent !important;
-}
-
-/* Remove the highlight for today’s date */
-.fc-daygrid-day.fc-day-today {
-    background-color: transparent !important;
-    color: black !important;
-    font-weight: normal !important; /* Optional: remove bold if applied */
-}
-
-/* Remove highlight on selected or active dates */
-.fc-daygrid-day-selected, .fc-daygrid-day-hover {
-    background-color: transparent !important;
-}
-
-/* Adjust event color, if necessary */
+/* Adjust event color */
 .fc-event {
     background-color: #4B4F7D !important; /* Set a custom color for events */
     color: white !important; /* Ensure event text is readable */
