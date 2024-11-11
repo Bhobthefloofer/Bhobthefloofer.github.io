@@ -18,7 +18,7 @@ const db = getDatabase()
 const draggables = document.querySelectorAll('.idea-card');
 const columns = document.querySelectorAll('.kanban-column');
 const addIdeaButtons = document.querySelectorAll('.add-idea');
-const name = "Saurabh"
+const name = localStorage.getItem('name')
 
 // Create modal container
 const modalContainer = document.createElement('div');
@@ -335,7 +335,7 @@ function displayCampaign() {
           card.remove();
       }
   });
-  var campaignList = displayCampaign(name)
+  var campaignList = displayCampaign()
   .then((campaignList) => {
     console.log("Retrieved campaigns:", campaignList);
   
@@ -422,25 +422,15 @@ function addCampaign() {
           file: campaignFile || "./pen.png",
           country: window.selectedCountries || []
       };
-
-      // Get existing campaigns
-      var campaignList = displayCampaign(name)
-       .then((campaignList) => {
+      var postsRef = ref(db, "people/" + name + "/initialCampaigns")
+      push(postsRef, newCampaign)
+      .then(() => {
+      console.log('Post added successfully!');
+    })
+    .catch((error) => {
+      console.error('Error adding post:', error);
+    });
       
-      
-      // Add new campaign
-      campaignList.push(newCampaign);
-      
-      // Save to localStorage
-      
-      
-      console.log("Updated campaign list:", campaignList);
-      
-
-      // Redirect
-      window.location.href = "post.html";
-      // displayCampaign()
-    }) 
   } else {
       alert("Please fill all required fields");
   }
