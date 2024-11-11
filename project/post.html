@@ -41,10 +41,10 @@
                         </div>
                     </div>
                     <div class="row mt-4">
-                        <!-- Unassigned Column -->
-                        <div class="col-md-3">
-                            <div class="kanban-column">
-                                <h5>Unassigned</h5>
+                        <!-- Draft Column -->
+                        <div class="col-md-4">
+                            <div class="kanban-column" id="draft">
+                                <h5>Draft</h5>
                                 <div class="idea-card" draggable="true">
                                     <h6>This is a place to plan ✍️ your content</h6>
                                     <button class="btn btn-dark campaign-button">Campaign Name</button>
@@ -57,25 +57,22 @@
                                 </div>
                                 <span class="add-idea">+ New Idea</span>
                             </div>
+                            
                         </div>
-                        <!-- To Do Column -->
-                        <div class="col-md-3">
-                            <div class="kanban-column">
-                                <h5>To Do</h5>
+                        
+                        
+                        <!-- Published Column -->
+                        <div class="col-md-4">
+                            <div class="kanban-column" id="published">
+                                <h5>Published</h5>
                                 <span class="add-idea">+ New Idea</span>
                             </div>
                         </div>
-                        <!-- In Progress Column -->
-                        <div class="col-md-3">
-                            <div class="kanban-column">
-                                <h5>In Progress</h5>
-                                <span class="add-idea">+ New Idea</span>
-                            </div>
-                        </div>
-                        <!-- Done Column -->
-                        <div class="col-md-3">
-                            <div class="kanban-column">
-                                <h5>Done</h5>
+
+                        <!-- Archived Column -->
+                        <div class="col-md-4">
+                            <div class="kanban-column" id="archived">
+                                <h5>Archived</h5>
                                 <span class="add-idea">+ New Idea</span>
                             </div>
                         </div>

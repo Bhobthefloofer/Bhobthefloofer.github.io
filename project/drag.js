@@ -99,7 +99,7 @@ function initializeCountryDropdown(container) {
   dropdownContainer.style.overflowY = 'auto';
   dropdownContainer.style.backgroundColor = '#fff';
   dropdownContainer.style.border = '1px solid lightgray';
- 
+
   dropdownContainer.style.borderRadius = '0 0 4px 4px';
   dropdownContainer.style.display = 'none';
   dropdownContainer.style.zIndex = '1000';
@@ -252,7 +252,7 @@ addIdeaButtons.forEach(button => {
         }
         modalContent.appendChild(closeButton);
         modalContainer.style.display = 'flex';
-        
+
         // Initialize the dropdown after loading content
         initializeCountryDropdown(modalInnerContent);
       })
@@ -275,9 +275,175 @@ function getDragAfterElement(container, y) {
 }
 
 // Initialize dropdowns on page load for non-modal content
-document.addEventListener('DOMContentLoaded', () => {
-  const mainCampaignBar = document.querySelector('#campaignBar');
-  if (mainCampaignBar) {
-    initializeCountryDropdown(document);
+// Initialize campaigns on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Only initialize if the list doesn't exist
+  if (!localStorage.getItem("campaignList")) {
+      initializeCampaignList();
+  }
+  
+  // If we're on the post.html page, display campaigns
+  if (window.location.pathname.includes("post.html")) {
+      displayCampaign();
   }
 });
+
+
+// Store campaign
+
+function initializeCampaignList() {
+  // Only initialize if the list doesn't exist
+  if (!localStorage.getItem("campaignList")) {
+      const initialCampaigns = [
+          {
+              "title": "inspirations",
+              "header": "Save inspirations you find online with one click",
+              "date": "14/11/2024",
+              "time": "15:30",
+              "status": "draft",
+              "content": "Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...",
+              "file": "./clock.png",
+              "country": ["United States", "United Kingdom"]
+          },
+          {
+              "title": "plan",
+              "header": "This is a place to plan your content",
+              "date": "14/11/2024",
+              "time": "15:30",
+              "status": "published",
+              "content": "Save your ideas before converting them into posts. Brainstorm, plan ahead, and refine!",
+              "file": "./pen.png",
+              "country": ["Japan", "China", "Korea"]
+          }
+      ];
+
+      localStorage.setItem("campaignList", JSON.stringify(initialCampaigns));
+  }
+}
+
+
+// Function to add a campaign to the list
+
+
+function displayCampaign() {
+  console.log("Displaying campaigns...");
+  
+  // Get the campaign list
+  const campaignList = JSON.parse(localStorage.getItem("campaignList")) || [];
+  console.log("Retrieved campaigns:", campaignList);
+
+  // Clear existing campaign cards first
+  document.querySelectorAll('.idea-card').forEach(card => {
+      if (!card.classList.contains('default-card')) {
+          card.remove();
+      }
+  });
+
+  campaignList.forEach(campaign => {
+      console.log("Processing campaign:", campaign);
+      let campaignStatus = campaign.status;
+      console.log(campaignStatus)
+      let statusDiv = document.getElementById(campaignStatus);
+      
+      console.log("Status div found:", statusDiv, "for status:", campaignStatus);
+
+      if (statusDiv) {
+          // Create campaign item
+          let campaignItem = document.createElement("div");
+          campaignItem.setAttribute("class", "idea-card");
+          campaignItem.setAttribute("draggable", "true");
+
+          // Add drag listeners
+          campaignItem.addEventListener('dragstart', () => {
+              campaignItem.classList.add('is-dragging');
+          });
+
+          campaignItem.addEventListener('dragend', () => {
+              campaignItem.classList.remove('is-dragging');
+          });
+
+          // Create campaign content
+          let h6 = document.createElement("h6");
+          h6.innerText = campaign.header || campaign.title;
+
+          let button = document.createElement("button");
+          button.setAttribute("class", "btn btn-dark campaign-button");
+          button.innerText = "Campaign Name";
+
+          let para = document.createElement("p");
+          para.style.marginTop = "6px";
+          para.innerText = campaign.content;
+
+          // Assemble campaign item
+          campaignItem.appendChild(h6);
+          campaignItem.appendChild(button);
+          campaignItem.appendChild(para);
+
+          // Find the add-idea button
+          const addIdeaButton = statusDiv.querySelector('.add-idea');
+          
+          // Insert the campaign item before the add-idea button
+          if (addIdeaButton) {
+              statusDiv.insertBefore(campaignItem, addIdeaButton);
+          } else {
+              statusDiv.appendChild(campaignItem);
+          }
+      }
+  });
+}
+
+function addCampaign() {
+  // Get form values
+  const campaignTitle = document.getElementById("postTitle").value;
+  const campaignDate = document.getElementById("postDate").value;
+  const campaignTime = document.getElementById("postTime").value;
+  const campaignStatus = document.getElementById("postStatus").value;
+  const campaignContent = document.getElementById("postContent").value;
+  const campaignFile = document.getElementById("fileUpload").value;
+
+  // Debug logging
+  console.log("Adding campaign with values:", {
+      title: campaignTitle,
+      date: campaignDate,
+      time: campaignTime,
+      status: campaignStatus,
+      content: campaignContent,
+      selectedCountries: window.selectedCountries
+  });
+
+  if (campaignTitle && campaignDate && campaignTime && campaignStatus && campaignContent) {
+      const newCampaign = {
+          title: campaignTitle,
+          header: campaignTitle,
+          date: campaignDate,
+          time: campaignTime,
+          status: campaignStatus.toLowerCase(), // Ensure status is lowercase to match IDs
+          content: campaignContent,
+          file: campaignFile || "./pen.png",
+          country: window.selectedCountries || []
+      };
+
+      // Get existing campaigns
+      let campaignList = JSON.parse(localStorage.getItem("campaignList")) || [];
+      
+      // Add new campaign
+      campaignList.push(newCampaign);
+      
+      // Save to localStorage
+      localStorage.setItem("campaignList", JSON.stringify(campaignList));
+      
+      console.log("Updated campaign list:", campaignList);
+      console.log(localStorage)
+
+      // Redirect
+      window.location.href = "post.html";
+      // displayCampaign()
+  } else {
+      alert("Please fill all required fields");
+  }
+}
+
+
+initializeCampaignList();
+
+
