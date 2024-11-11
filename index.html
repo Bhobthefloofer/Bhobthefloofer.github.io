@@ -568,6 +568,93 @@
                 margin-right: 0;
             }
         }
+
+        /* meet the team styling */
+        .meet-team-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .meet-team-container {
+          display: flex;
+          gap: 15px; /* Reduced gap to fit cards in one row */
+          justify-content: center;
+          max-width: 1600px; /* Increase max width to fit all cards in one row */
+          padding: 20px;
+          flex-wrap: nowrap; /* Prevent wrapping to keep cards in a single row */
+        }
+
+        .meet-team-card {
+          background-color: #fff;
+          border-radius: 15px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          padding: 20px;
+          width: 400px; /* Increase card width */
+          height: 400px; /* Increase card height */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .meet-team-card img {
+        width: 120px; /* Increase image size */
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 15px auto;
+       }
+
+        .meet-team-card h2 {
+            color: #333 !important;
+            font-weight: 700 !important;
+        }
+
+        .meet-team-card h3 {
+          color: #666 !important;
+          font-weight: 400 !important;
+        }
+
+        .meet-team-card p {
+            font-size: 0.9em;
+            color: #888;
+            line-height: 1.4;
+            height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .meet-team-card a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #333 ; 
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+
+        .meet-team-card a:hover {
+            background-color: #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .meet-team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .meet-team-card {
+                width: 100%;
+                max-width: 90%;
+                height: auto;
+            }
+        }
      </style>
 
 </head>
@@ -841,17 +928,60 @@
         <br>
     </div>
      <!-- testimonials end -->
+
     <!-- meet the team start -->
 
     <div class = "team container-flex">
         <br>
         <img id = "team-logo" src="assets/meet-the-team.png" class = "starting-title">
-        <br>
-        <div class = "team-body">
-            <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
-
-        </div>
-        
+        <!-- <div class = "team-body"> -->
+          <div class="meet-team-body">
+            <div class="meet-team-container">
+                <!-- Subo -->
+                <div class="meet-team-card">
+                    <img src="profile_images/Subo.png" alt="Subodhini's photo">
+                    <h2>Subodhini</h2>
+                    <h3>Frontend Designer</h3>
+                    <p>A pixel perfectionist who makes every button, font, and color sing in harmony.</p>
+                    <a href="https://www.linkedin.com/in/subodhini-vignesh/" target="_blank">Say hi on LinkedIn →</a>
+                </div>
+    
+                <!-- Vivie -->
+                <div class="meet-team-card">
+                    <img src="profile_images/vivie.jpg" alt="Vivie's photo">
+                    <h2>Vivie</h2>
+                    <h3>Frontend Designer</h3>
+                    <p>Attempting to make the internet a prettier place, one pixel at a time.</p>
+                    <a href="#" target="_blank">Say hi on LinkedIn →</a>
+                </div>
+    
+                <!-- Amrita -->
+                <div class="meet-team-card">
+                    <img src="profile_images/Amrita.jpg" alt="Amrita's photo">
+                    <h2>Amrita</h2>
+                    <h3>Frontend Designer</h3>
+                    <p>I'm not into cars, but I am into wheels, the colour wheel to be exact.</p>
+                    <a href="https://www.linkedin.com/in/amritadutta725/" target="_blank">Say hi on LinkedIn →</a>
+                </div>
+    
+                <!-- Nabil -->
+                <div class="meet-team-card">
+                    <img src="profile_images/Nabil.jpg" alt="Nabil's photo">
+                    <h2>Nabil</h2>
+                    <h3>Frontend Architect</h3>
+                    <p>If there's a way to make the code better, faster, or cleaner, I'm already on it.</p>
+                    <a href="https://www.linkedin.com/in/muhammad-nabil-zuhair-933250217/" target="_blank">Say hi on LinkedIn →</a>
+                </div>
+    
+                <!-- Saurabh -->
+                <div class="meet-team-card">
+                    <img src="profile_images/Saurabh.jpeg" alt="Saurabh's photo">
+                    <h2>Saurabh</h2>
+                    <h3>Frontend Architect</h3>
+                    <p>If there’s a way to make our app more efficient, I'll find it – usually at 2 a.m.!</p>
+                    <a href="https://www.linkedin.com/in/saurabh-maskara/?originalSubdomain=sg" target="_blank">Say hi on LinkedIn →</a>
+                </div>
+            </div>      
     </div>
         <!-- meet the team end -->
     <!-- footer start -->
