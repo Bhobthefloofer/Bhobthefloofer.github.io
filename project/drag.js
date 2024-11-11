@@ -389,7 +389,7 @@ function displayCampaign() {
               statusDiv.appendChild(campaignItem);
           }
       }
-  })});
+  })})
 
 
 function addCampaign() {
@@ -424,24 +424,30 @@ function addCampaign() {
       };
 
       // Get existing campaigns
-      let campaignList = JSON.parse(localStorage.getItem("campaignList")) || [];
+      var campaignList = displayCampaign(name)
+       .then((campaignList) => {
+      
       
       // Add new campaign
       campaignList.push(newCampaign);
       
       // Save to localStorage
-      localStorage.setItem("campaignList", JSON.stringify(campaignList));
+      
       
       console.log("Updated campaign list:", campaignList);
-      console.log(localStorage)
+      
 
       // Redirect
       window.location.href = "post.html";
       // displayCampaign()
+    }) 
   } else {
       alert("Please fill all required fields");
   }
 }
+var saveButton=document.getElementById("saveButton")
+saveButton.addEventListener("click",addCampaign)
+
 
 
 displayCampaign();
