@@ -60,7 +60,13 @@
         };
 
         document.getElementById('removeProfile').onclick = () => {
-            imagePreview.src = '';
+            update(ref(db, "people/" + name,),
+                            {   
+                                profileURL : 'blank pfp.png'
+
+                            }
+                        );
+                        imagePreview.src = 'blank pfp.png'
             profileModal.style.display = 'none';
         };
 

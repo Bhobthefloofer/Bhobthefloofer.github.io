@@ -85,7 +85,8 @@ function insertData() {
                     }
                 }
             ],
-            Posts: []
+            Posts: [],
+            ProfileURL: '../blank pfp.png'
 
         }
     )
@@ -103,6 +104,7 @@ function insertData2() {
             OfficialWebsite: comWeb.value,
             CompanyType: comType.value,
             CompanyDesc: '',
+            
 
             initialCampaigns : [
                 {
