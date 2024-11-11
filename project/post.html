@@ -3,73 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="post.css">
+    <title>Crafted | Posts</title>
+    <link rel="icon" href="assets/small_logo.png" type="image/png"> <!-- tab logo -->
+    <!-- google font - lato start -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- google font - lato end -->
+    <!-- bootstrap start -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap end -->
+     <!-- gsap library start -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+     <!-- gsap library end -->
+    <!-- font awesome for footer icons start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- font awesome for footer icons end -->
+    <link rel="stylesheet" href="../css_files/home.css">
+    <link rel="stylesheet" href="../css_files/post.css">
+
     
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
-                <div class="mt-5 channels">
-                   
-                    <button class = "twitter connect">
-                        <i class="fab fa-twitter social-icon"></i> Connect Twitter/X
-                    </button>
-                    
-                </div> 
+            <div class="col-auto sidebar" id="sidebar">
+                <div class="hamburger" id="hamburger">
+                    <img src="../assets/burger-menu.png" alt="Menu" style="width: 30px; cursor: pointer;">
+                </div>
+                <img src="../assets/main_logo.png" alt="Crafted Logo" class="logo">
+                <img src="../assets/small_logo.png" alt="Crafted Small Logo" class="small-logo">
+
+                <!-- Profile Section -->
+                <div class="profile" id="imageUploader">
+                    <img id="imagePreview" src="" alt="Profile Picture" style="width: 80px; height: 80px;" />
+                    <h2 id="disName"></h2>
+                    <span id="disRole"></span>
+                </div>
+
+                <!-- Navigation Links -->
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i><span> Home</span></a>
+                    </li>
+
+                    <li class="nav-item"><a href="project/post.html" class="nav-link"><i
+                                class="fas fa-rocket"></i><span> Posts</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-bullhorn"></i><span>
+                                Campaigns</span></a></li>
+                    <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span>
+                                Settings</span></a></li>
+                </ul>
             </div>
-            <!-- <div class="col-1"></div> -->
-            <div class="col-10">
-                <div class="my-5">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h2>Create Posts</h2>
-                        <div class = "justify-content-right">
-                            <button class="btn btn-outline-primary add-idea" >+ New Idea</button>
+            <div class = "col">
+                <div class="col-2">
+                    <div class="mt-5 channels">
+                       
+                        <button class = "twitter connect">
+                            <i class="fab fa-twitter social-icon"></i> Connect Twitter/X
+                        </button>
+                        
+                    </div> 
+                </div>
+                <!-- <div class="col-1"></div> -->
+                <div class="col-10">
+                    <div class="my-5">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>Create Posts</h2>
+                            <div class = "justify-content-right">
+                                <button class="btn btn-outline-primary add-idea" >+ New Idea</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-4">
-                        <!-- Draft Column -->
-                        <div class="col-md-4">
-                            <div class="kanban-column" id="draft">
-                                <h5>Draft</h5>
-                                <div class="idea-card" draggable="true">
-                                    <h6>This is a place to plan ✍️ your content</h6>
-                                    <button class="btn btn-dark campaign-button">Campaign Name</button>
-                                    <p style="margin-top: 6px;">Save your Ideas before converting them into posts. Brainstorm, plan ahead, and refine!</p>
+                        <div class="row mt-4">
+                            <!-- Draft Column -->
+                            <div class="col-md-4">
+                                <div class="kanban-column" id="draft">
+                                    <h5>Draft</h5>
+                                    <div class="idea-card" draggable="true">
+                                        <h6>This is a place to plan ✍️ your content</h6>
+                                        <button class="btn btn-dark campaign-button">Campaign Name</button>
+                                        <p style="margin-top: 6px;">Save your Ideas before converting them into posts. Brainstorm, plan ahead, and refine!</p>
+                                    </div>
+                                    <div class="idea-card" draggable="true">
+                                        <h6>Save inspirations you find online with one click 🥳</h6>
+                                        <button class="btn btn-dark campaign-button">Campaign Name</button>
+                                        <p>Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...</p>
+                                    </div>
+                                    <span class="add-idea">+ New Idea</span>
                                 </div>
-                                <div class="idea-card" draggable="true">
-                                    <h6>Save inspirations you find online with one click 🥳</h6>
-                                    <button class="btn btn-dark campaign-button">Campaign Name</button>
-                                    <p>Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...</p>
-                                </div>
-                                <span class="add-idea">+ New Idea</span>
+                                
                             </div>
                             
-                        </div>
-                        
-                        
-                        <!-- Published Column -->
-                        <div class="col-md-4">
-                            <div class="kanban-column" id="published">
-                                <h5>Published</h5>
-                                <span class="add-idea">+ New Idea</span>
+                            
+                            <!-- Published Column -->
+                            <div class="col-md-4">
+                                <div class="kanban-column" id="published">
+                                    <h5>Published</h5>
+                                    <span class="add-idea">+ New Idea</span>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Archived Column -->
-                        <div class="col-md-4">
-                            <div class="kanban-column" id="archived">
-                                <h5>Archived</h5>
-                                <span class="add-idea">+ New Idea</span>
+    
+                            <!-- Archived Column -->
+                            <div class="col-md-4">
+                                <div class="kanban-column" id="archived">
+                                    <h5>Archived</h5>
+                                    <span class="add-idea">+ New Idea</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>   
+                </div>   
+            </div>
         </div>
     </div>
     <script type="module" src="drag.js"></script>
