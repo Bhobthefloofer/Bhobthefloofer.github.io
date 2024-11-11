@@ -125,7 +125,6 @@ function insertData2() {
                     "status": "published",
                     "content": "Save your ideas before converting them into posts. Brainstorm, plan ahead, and refine!",
                     "file": "./pen.png",
-                    "country": ["Japan", "China", "Korea"],
                     "post_campaign": "def" 
                 }
             ]
