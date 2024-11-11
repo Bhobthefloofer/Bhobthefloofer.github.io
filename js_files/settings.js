@@ -20,7 +20,7 @@
         const db = getDatabase()
 
 
-        var name = document.getElementById('username').value
+        var name = localStorage.getItem('name')
         var email = document.getElementById('email')
         var role = document.getElementById('role')
         var company = document.getElementById('organization')
@@ -63,6 +63,7 @@
         //             alert(error)
         //         })
         // }
+        document.getElementById('username').value = name
         function findData() {
             const dbref = ref(db)
             get(child(dbref, "people/" + name))

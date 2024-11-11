@@ -50,7 +50,7 @@ const validateConfirmPassword = () => {
         errorElement.textContent = 'Passwords do not match';
         errorElement.classList.remove('success');
         errorElement.classList.add('error');
-        errorElement.style.display= 'block'
+        errorElement.style.display= 'blockz'
         console.log(errorElement)
         return false;
     } else {
