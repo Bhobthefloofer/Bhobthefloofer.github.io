@@ -46,18 +46,22 @@ const userSignIn = async () => {
     const signInPassword = userPassword.value
     signInWithEmailAndPassword(auth, signInEmail, signInPassword)
         .then((userCredential) => {
+            
             const peopleRef = ref(db, 'people');
-            const searchEmail = userEmail;
+            const searchEmail = signInEmail;
 
             const emailQuery = query(peopleRef, orderByChild('Email'), equalTo(searchEmail));
+            console.log(emailQuery)
 
             // Run the query and handle the result
             get(emailQuery).then((snapshot) => {
                 if (snapshot.exists()) {
+                    
                     snapshot.forEach((childSnapshot) => {
                         const name = childSnapshot.key; // 'name' is the key of each child node
                         localStorage.setItem('name', name)
-                        window.location.href='home.html'
+                        console.log(name)
+                        
                     });
                 } else {
                     console.log("Email not found.");
@@ -65,7 +69,7 @@ const userSignIn = async () => {
             }).catch((error) => {
                 console.error("Error getting data: ", error);
             });
-            
+            window.location.href='home.html'
         }
         )
         .catch((error) => {

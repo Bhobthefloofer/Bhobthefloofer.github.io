@@ -20,7 +20,7 @@ document.getElementById('nextBtn').addEventListener('click', function () {
 document.getElementById('carouselExample').addEventListener('slid.bs.carousel', function (event) {
     updateProgress(event.to);
 });
-var name = "Saurabh"
+var name = localStorage.getItem('name')
 var fullName = document.getElementById('q-1')
 fullName.value = name
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -86,7 +86,7 @@ function insertData() {
                 }
             ],
             Posts: [],
-            ProfileURL: '../blank pfp.png'
+            ProfileURL: 'blank pfp.png'
 
         }
     )
@@ -115,7 +115,7 @@ function insertData2() {
                     "status": "draft",
                     "content": "Use Buffer browser extension to save Ideas from the Web. Highlight text or select an image and right-click...",
                     "file": "./clock.png",
-                    "country": ["United States", "United Kingdom"]
+                    "post_campaign": "abc" 
                 },
                 {
                     "title": "plan",
@@ -125,7 +125,8 @@ function insertData2() {
                     "status": "published",
                     "content": "Save your ideas before converting them into posts. Brainstorm, plan ahead, and refine!",
                     "file": "./pen.png",
-                    "country": ["Japan", "China", "Korea"]
+                    "country": ["Japan", "China", "Korea"],
+                    "post_campaign": "def" 
                 }
             ]
 
